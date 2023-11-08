@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
@@ -14,6 +15,9 @@ public class MapManager : MonoBehaviour
     private int Height => LayerHeights.Sum();
     [SerializeField]
     private Vector3Int mapOffset = new (-12, -2, 0);
+    [SerializeField]
+    [Tooltip("How many tiles in y axis to blend layerlines per direction")]
+    private int layerOverlap;
     [SerializeField]
     [Range(0, 1)]
     private double GoldChance;
@@ -57,12 +61,26 @@ public class MapManager : MonoBehaviour
 
     int[,] GenerateLayer(int layer)
     {
-        var layerMap = new int[Width, LayerHeights[layer]];
+        var height = LayerHeights[layer];
+        var layerMap = new int[Width, height];
         for (int x = 0; x < Width; x++)
         {
-            for (int y = 0; y < LayerHeights[layer]; y++)
+            for (int y = 0; y < height; y++)
             {
-                layerMap[x, y] = rnd.NextDouble() > GoldChance ? layer + 1 : 5;
+                if (height - y <= layerOverlap && layer < LayerHeights.Count - 1) // Blending down
+                {
+                    layerMap[x, y] = rnd.NextDouble() > GoldChance ? 
+                        rnd.NextDouble() < (double)(layerOverlap + height - y) / (layerOverlap * 2)  ? layer + 1 : layer + 2
+                        : 5;
+                }
+                else if (y < layerOverlap && layer != 0) // Blending up
+                {
+                    layerMap[x, y] = rnd.NextDouble() > GoldChance ? 
+                        rnd.NextDouble() < (double)(layerOverlap + y) / (layerOverlap * 2)  ? layer + 1 : layer
+                        : 5;
+                }
+                else // "normal"
+                    layerMap[x, y] = rnd.NextDouble() > GoldChance ? layer + 1 : 5;
             }
         }
 
@@ -72,7 +90,6 @@ public class MapManager : MonoBehaviour
     public void AddLayerToMap(int[,] layerMap, int layer)
     {
         var yOffset = LayerHeights.Take(layer).Sum();
-        Debug.Log("layer: " + layer + ", yOffset: " + yOffset);
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < LayerHeights[layer]; y++)
@@ -95,6 +112,22 @@ public class MapManager : MonoBehaviour
                     tilemap.SetTile(new Vector3Int(x, -y, 0) + mapOffset, tiles.GetArray()[tile - 1]);
                 }
             }
+        }
+    }
+    public static void ShuffleArray<T>(Random random, T[,] array)
+    {
+        int lengthRow = array.GetLength(1);
+
+        for (int i = array.Length - 1; i > 0; i--)
+        {
+            int i0 = i / lengthRow;
+            int i1 = i % lengthRow;
+
+            int j = random.Next(i + 1);
+            int j0 = j / lengthRow;
+            int j1 = j % lengthRow;
+
+            (array[i0, i1], array[j0, j1]) = (array[j0, j1], array[i0, i1]);
         }
     }
 }
