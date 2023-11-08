@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263428999099864324}
   - component: {fileID: 7289058530270301620}
+  - component: {fileID: 962317312919104076}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -278,6 +279,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &962317312919104076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222601702901545615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656758156ad5d15459b53504f72c3a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 7289058530270301620}
+  headLight: {fileID: 5008025657092793781}
+  lightSwapSpeed: 10
 --- !u!1 &5886878136683895968
 GameObject:
   m_ObjectHideFlags: 0
