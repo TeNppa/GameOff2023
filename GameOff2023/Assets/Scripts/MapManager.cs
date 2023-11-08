@@ -27,7 +27,6 @@ public class MapManager : MonoBehaviour
     private int[,] map;
     private Random rnd;
     
-    private float t = 0;
     private void Start()
     {
         rnd = new Random((int)DateTime.Now.Ticks);
@@ -38,16 +37,6 @@ public class MapManager : MonoBehaviour
 
     private void Update()
     {
-        if (t > 2)
-        {
-            t = 0;
-            GenerateArray();
-            RenderMap();
-        }
-        else
-        {
-            t += Time.deltaTime;
-        }
     }
 
     void GenerateArray()
@@ -129,5 +118,11 @@ public class MapManager : MonoBehaviour
 
             (array[i0, i1], array[j0, j1]) = (array[j0, j1], array[i0, i1]);
         }
+    }
+
+    public void Dig(Vector3 pos, float dmg)
+    {
+        var position = tilemap.WorldToCell(pos);
+        tilemap.SetTile(new Vector3Int(position.x, position.y, 0), null);
     }
 }
