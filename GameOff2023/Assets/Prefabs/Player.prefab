@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7289058530270301620}
-  headLight: {fileID: 5008025657092793781}
+  headlight: {fileID: 5008025657092793781}
   lightSwapSpeed: 10
 --- !u!1 &5886878136683895968
 GameObject:

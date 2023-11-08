@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Transform headLight;
+    [SerializeField] private Transform headlight;
     [SerializeField] private float lightSwapSpeed = 10;
     private float lightTargetZRotation = -90f;
 
@@ -29,8 +29,8 @@ public class PlayerAnimator : MonoBehaviour
             lightTargetZRotation = -90f;
         }
 
-        // smoothly rotate the headLight to the target dirtection
-        Quaternion targetRotation = Quaternion.Euler(headLight.rotation.eulerAngles.x, headLight.rotation.eulerAngles.y, lightTargetZRotation);
-        headLight.rotation = Quaternion.Lerp(headLight.rotation, targetRotation, Time.deltaTime * lightSwapSpeed);
+        // Smoothly rotate the headlight to the target direction
+        Quaternion targetRotation = Quaternion.Euler(headlight.rotation.eulerAngles.x, headlight.rotation.eulerAngles.y, lightTargetZRotation);
+        headlight.rotation = Quaternion.Lerp(headlight.rotation, targetRotation, Time.deltaTime * lightSwapSpeed);
     }
 }

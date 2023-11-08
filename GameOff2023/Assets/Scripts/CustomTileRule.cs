@@ -1,24 +1,28 @@
+using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "new_tile", menuName = "2D/Tiles/Custom Rule Tile")]
 public class CustomTileRule : RuleTile
 {
-    // Overrides the default neighbor matching behavior
-    public override bool RuleMatch(int neighbor, TileBase other)
+    // Overrides the default neighbor matching behavior to smoothly blend all tiles together
+    public override bool RuleMatch(int neighbor, TileBase tile)
     {
-        // Matches only empty spaces if required by the rule (neighbor == 2)
-        if (other == null)
+        // If there is no tile, match only if the neighbor's index is default empty state
+        if (tile == null)
         {
-            return neighbor == 2;
+            return (neighbor == 2);
         }
 
+        // I have no idea why/how this works, but it just does..
         switch (neighbor)
         {
             case TilingRuleOutput.Neighbor.This: return true;
             case TilingRuleOutput.Neighbor.NotThis: return false;
         }
 
-        return base.RuleMatch(neighbor, other);
+        // For other cases fallback to the default rule match
+        return base.RuleMatch(neighbor, tile);
     }
 }
