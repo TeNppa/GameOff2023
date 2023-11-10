@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
@@ -12,13 +13,13 @@ public class MapManager : MonoBehaviour
     private int Width = 24;
 
     private int fullWidth => Width + wallThickness * 2;
-    private int fullHeight => Width + wallThickness;
-    private int wallInt = 10;
     [SerializeField] 
     private List<GroundLayer> Layers;
 
     [SerializeField] 
     private List<ValuablesTiles> valuableTiles;
+    [SerializeField] 
+    private List<GroundTiles> groundTiles;
 
     private int Height => Layers.Sum(layer => layer.Height);
     [SerializeField] 
@@ -40,6 +41,7 @@ public class MapManager : MonoBehaviour
     private int[,] groundMap;
     private int[,] valuablesMap;
     private Random rnd;
+    public UnityAction OnEndDig;
     
     private void Start()
     {
@@ -102,7 +104,8 @@ public class MapManager : MonoBehaviour
 
     int[,] GenerateGroundLayer(int layer)
     {
-        var height = Layers[layer].Height;
+        var layerInfo = Layers[layer]; 
+        var height = layerInfo.Height;
         var layerMap = new int[Width, height];
         for (int x = 0; x < Width; x++)
         {
@@ -111,15 +114,15 @@ public class MapManager : MonoBehaviour
                 if (height - y <= layerOverlap && layer < Layers.Count - 1) // Blending down
                 {
                     layerMap[x, y] = rnd.NextDouble() < (double)(layerOverlap + height - y) / (layerOverlap * 2)
-                        ? layer + 1
-                        : layer + 2;
+                        ? (int)layerInfo.Ground + 1
+                        : (int)Layers[layer + 1].Ground + 1;
                 }
                 else if (y < layerOverlap && layer != 0) // Blending up
                 {
-                    layerMap[x, y] = rnd.NextDouble() < (double)(layerOverlap + y) / (layerOverlap * 2) ? layer + 1 : layer;
+                    layerMap[x, y] = rnd.NextDouble() < (double)(layerOverlap + y) / (layerOverlap * 2) ? (int)layerInfo.Ground + 1 : (int)Layers[layer -1].Ground + 1;
                 }
                 else // "normal"
-                    layerMap[x, y] = layer + 1;
+                    layerMap[x, y] = (int)layerInfo.Ground + 1;
             }
         }
 
@@ -150,13 +153,13 @@ public class MapManager : MonoBehaviour
                 var groundTile = groundMap[x, y];
                 if (groundTile != 0)
                 {
-                    groundTilemap.SetTile(new Vector3Int(x, -y, 0) + mapOffset, Layers[groundTile-1].BaseTile);
+                    groundTilemap.SetTile(new Vector3Int(x, -y, 0) + mapOffset, groundTiles.FirstOrDefault(ground => (int)ground.Name == (groundTile -1)).Tile);
                 }
 
                 var valTile = valuablesMap[x, y];
                 if (valTile != 0)
                 {
-                    valuablesTilemap.SetTile(new Vector3Int(x, -y, 0) + mapOffset, valuableTiles.FirstOrDefault(valuable => (int)valuable.Name == (valTile -1)).tile);
+                    valuablesTilemap.SetTile(new Vector3Int(x, -y, 0) + mapOffset, valuableTiles.FirstOrDefault(valuable => (int)valuable.Name == (valTile -1)).Tile);
                 }
             }
         }
@@ -196,12 +199,26 @@ public class MapManager : MonoBehaviour
     public void Dig(Vector3 pos, float dmg)
     {
         var tileMapPos = groundTilemap.WorldToCell(pos);
-        var mapPos = TileMapToMap(tileMapPos);
-        if (!CellInsideMap(mapPos))
-            return;
-        var groundTile = groundMap[mapPos.x, mapPos.y];
-        var valuablesTile = valuablesMap[mapPos.x, mapPos.y];
-        //groundTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
+        var mapPos = TileMapToMap(tileMapPos) * new Vector3Int(1, -1, 1);
+        if (CellInsideMap(mapPos))
+        {
+            var groundTile = groundMap[mapPos.x, mapPos.y];
+            var valuablesTile = valuablesMap[mapPos.x, mapPos.y];
+            if (groundTile != 0)
+            {
+                GameManager.Instance.AddGround(groundTile - 1, 1);
+                groundTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
+                groundMap[mapPos.x, mapPos.y] = 0;
+            }
+
+            if (valuablesTile != 0)
+            {
+                GameManager.Instance.AddValuable(valuablesTile - 1, 1);
+                valuablesTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
+                valuablesMap[mapPos.x, mapPos.y] = 0;
+            }
+        }
+        OnEndDig?.Invoke();
     }
 
     private bool CellInsideMap(Vector3Int pos)

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject Highlight;
     public UnityAction<Vector3, float> OnDig;
+    public Tool CurrentTool;
+    public bool Digging;
 
     private Vector3 lookPosition;
     // Start is called before the first frame update
@@ -43,10 +45,18 @@ public class PlayerController : MonoBehaviour
 
     void Dig()
     {
+        if (Digging)
+            return;
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            Digging = true;
             OnDig?.Invoke(lookPosition, 1.5f);
         }
+    }
+
+    public void EndDig()
+    {
+        Digging = false;
     }
     void MouseLook()
     {

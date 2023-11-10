@@ -1,28 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    
     [SerializeField]
-    private int GoldAmount;
+    private List<ValuablesInventory> valuables;
     [SerializeField]
-    private int DirtAmount;
+    private List<GroundsInventory> grounds;
 
-    public void AddDirt(int amount)
+    public void AddGround(int ground, int amount)
     {
-        DirtAmount += amount;
+        Debug.Log("Trying to add " + (Grounds)ground + ", amount: " + amount );
+        grounds.FirstOrDefault(g => (int)g.Ground == ground)!.Amount += amount;
     }
-    public void AddGold(int amount)
+    public void UseGround(int ground, int amount)
     {
-        GoldAmount += amount;
+    }
+    public void AddValuable(int valuable, int amount)
+    {
+        valuables.FirstOrDefault(v => (int)v.Valuable == valuable)!.Amount += amount;
+    }
+    public void UseValuable(int valuable, int amount)
+    {
+        
     }
 
-    public bool UseGold(int amount)
-    {
-        if (amount > GoldAmount)
-            return false;
-        GoldAmount -= amount;
-        return true;
-    }
+}
+[Serializable]
+public class ValuablesInventory
+{
+    public Valuables Valuable;
+    public int Amount;
+}
+[Serializable]
+public class GroundsInventory
+{
+    public Grounds Ground;
+    public int Amount;
 }

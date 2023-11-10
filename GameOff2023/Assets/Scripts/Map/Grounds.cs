@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[Serializable]
-public struct GroundLayer
+public enum Grounds
 {
-    public string Name;
-    public int Height;
-    public List<Valuable> Valuables;
-    public Grounds Ground;
+    Mud,
+    Dirt,
+    Stone
+}
+[Serializable]
+public struct GroundTiles
+{
+    public Grounds Name;
+    public TileBase Tile;
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 [Serializable]
@@ -23,5 +24,5 @@ public enum Valuables
 public struct ValuablesTiles
 {
     public Valuables Name;
-    public TileBase tile;
+    public TileBase Tile;
 }
