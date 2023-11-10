@@ -117,7 +117,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,16 +159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Width: 24
-  LayerHeights: 3200000032000000320000000a000000
+  LayerHeights: 320000003200000032000000
   mapOffset: {x: -12, y: -2, z: 0}
   layerOverlap: 5
   GoldChance: 0.05000000074505806
   tiles:
-    Ground1: {fileID: 11400000, guid: 69d102d9a70618a4fabddc9bac52c224, type: 2}
-    Ground2: {fileID: 11400000, guid: 62c03bfc8cfba4b44ba2bace062e3ba8, type: 2}
-    Ground3: {fileID: 11400000, guid: 53c26f1f6a2517a4f87388edf302a231, type: 2}
+    Ground1: {fileID: 11400000, guid: 46df2c10d9b62ed4ea9bd9fef23ff46e, type: 2}
+    Ground2: {fileID: 11400000, guid: cf42f64f8f824f54392192bef628ea56, type: 2}
+    Ground3: {fileID: 11400000, guid: 105cbc4f7000aea478fa1b50fcba61f2, type: 2}
     GroundDragon: {fileID: 11400000, guid: f6b4855654c715e4aae04a434771b90f, type: 2}
-    Gold: {fileID: 11400000, guid: c131a5c818549514f8e09e0882958d0b, type: 2}
+    Gold: {fileID: 11400000, guid: 2477acc565126e841b9441d80a8ae606, type: 2}
 --- !u!19719996 &1124417703151512120
 TilemapCollider2D:
   m_ObjectHideFlags: 0
