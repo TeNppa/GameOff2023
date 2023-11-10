@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay((Vector2)transform.position, (Vector2)Vector3.left);
     }
 
     private void FixedUpdate()

@@ -22,7 +22,8 @@ public class MapManager : MonoBehaviour
     [Range(0, 1)]
     private double GoldChance;
     
-    public TileTypes tiles;
+    [SerializeField]
+    private TileTypes tiles;
     private Tilemap tilemap;
     private int[,] map;
     private Random rnd;
@@ -109,10 +110,10 @@ public class MapManager : MonoBehaviour
 
         for (int i = array.Length - 1; i > 0; i--)
         {
-            int i0 = i / lengthRow;
-            int i1 = i % lengthRow;
+            var i0 = i / lengthRow;
+            var i1 = i % lengthRow;
 
-            int j = random.Next(i + 1);
+            var j = random.Next(i + 1);
             int j0 = j / lengthRow;
             int j1 = j % lengthRow;
 
