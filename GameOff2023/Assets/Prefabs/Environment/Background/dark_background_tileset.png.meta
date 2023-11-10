@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 306001c4bf74fac45b3131b87ce025eb
+guid: 052f21711b9b23247b24f7700f597648
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 6
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,217 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0
+      name: dark_background_tileset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b8ab5a4efa52d4e81d4e5153460215
+      internalID: 578264033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd9740b065de1449b81781c2b9885f4
+      internalID: 55805668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d92e9b6028dad4b8193c844bb9ee92
+      internalID: -711841717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35724cf41463054882cc342aef7bce6
+      internalID: 1918938372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a618f4c6317bc154f8fa56afe866c11f
+      internalID: -1304340348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c17c4dcc218ee54192d0ad5e0c3e875
+      internalID: 549740507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372c7cdc3130b7d4593f81194d87c0e2
+      internalID: 2020103993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748454df31e14464abbfe62f4497c7fb
+      internalID: -1192594962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4fc98340169bde4a825b05641c053b2
+      internalID: -1248172553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebc6d83c51081f41b4a359d33162113
+      internalID: -1817588694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_background_tileset_10
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54c576388852fda4f9fcc5941ddb18be
-      internalID: 1627978291
+      spriteID: b14fd1f785e85024bbd1043db2d13637
+      internalID: -2098732725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_1
+      name: dark_background_tileset_11
       rect:
         serializedVersion: 2
         x: 8
@@ -145,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3dd57455d80f3048af141e98141d548
-      internalID: -271520047
+      spriteID: 33b892bdab9237848b8619d2b1202ffa
+      internalID: -284005722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_2
+      name: dark_background_tileset_12
       rect:
         serializedVersion: 2
         x: 16
@@ -166,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dcbce8e0c15b544dade50aa7a2092d9
-      internalID: -982059868
+      spriteID: aeef722351b9f434789230b489eae4e9
+      internalID: -316392828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_3
+      name: dark_background_tileset_13
       rect:
         serializedVersion: 2
         x: 24
@@ -187,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ac3f47e640e82a41a862fd4a59916ac
-      internalID: -438908472
+      spriteID: c461e60e15905584e91f5a2f9e193ea4
+      internalID: 1705648034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_4
+      name: dark_background_tileset_14
       rect:
         serializedVersion: 2
         x: 32
@@ -208,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b98dbc606369d64479958bf8e874d0a7
-      internalID: 289948884
+      spriteID: 5e4ee0d2572eab340a44584b7dd1416f
+      internalID: -1596305085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_5
+      name: dark_background_tileset_15
       rect:
         serializedVersion: 2
         x: 0
@@ -229,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 729092a3b46db6f46a1a443340b1317f
-      internalID: -127400742
+      spriteID: 3f6243fa8cf0b664794f645a453b3aec
+      internalID: -443680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_6
+      name: dark_background_tileset_16
       rect:
         serializedVersion: 2
         x: 8
@@ -250,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7e0bb45ac0b6624b916d2c0add32001
-      internalID: -2118267098
+      spriteID: 875b41abe5bd2b546821c47638be69df
+      internalID: 1053288939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_7
+      name: dark_background_tileset_17
       rect:
         serializedVersion: 2
         x: 16
@@ -271,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53b35126217400e419b0981faa8ac8db
-      internalID: 753448564
+      spriteID: 4435ddff069d17c4cb200403036ef446
+      internalID: 1543851368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_8
+      name: dark_background_tileset_18
       rect:
         serializedVersion: 2
         x: 24
@@ -292,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7bef3d385a4a4a45b635154367d48b4
-      internalID: -998820344
+      spriteID: c9dc4572d2b21df48813ff20ee616d6b
+      internalID: 690856047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_9
+      name: dark_background_tileset_19
       rect:
         serializedVersion: 2
         x: 32
@@ -313,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c72be396d1350b469aeb558241bd6f7
-      internalID: -38411365
+      spriteID: f296e9035b0fbb040a3f514cf5322d8b
+      internalID: 1457439161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_10
+      name: dark_background_tileset_20
       rect:
         serializedVersion: 2
         x: 0
@@ -334,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9737986c6cec73d4abf1bbddd08b6066
-      internalID: 1016055956
+      spriteID: 771dd04ef3372864e8e68523df1df89a
+      internalID: -196499617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_11
+      name: dark_background_tileset_21
       rect:
         serializedVersion: 2
         x: 8
@@ -355,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab38ec2a4d8c9794e803dcba77460f66
-      internalID: -1103373545
+      spriteID: dba460f59093229419ea9e30e585b3b0
+      internalID: -745943917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_12
+      name: dark_background_tileset_22
       rect:
         serializedVersion: 2
         x: 16
@@ -376,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f090d01af9464f04e85e676a6a061a0d
-      internalID: 1192194972
+      spriteID: a699335f4717e134e8afc786be37937a
+      internalID: -1262089029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_13
+      name: dark_background_tileset_23
       rect:
         serializedVersion: 2
         x: 24
@@ -397,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a5ec945d46afdd458bc5d097b461dea
-      internalID: 1682846700
+      spriteID: 829045b117ddfc342a1616838e44643d
+      internalID: -1512456653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_14
+      name: dark_background_tileset_24
       rect:
         serializedVersion: 2
         x: 32
@@ -418,8 +628,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f79f48e3f03c6f846a41bf71961459b4
-      internalID: 2078044427
+      spriteID: d831f271b590cae439adcdd35d37cc1e
+      internalID: 482734672
       vertices: []
       indices: 
       edges: []
@@ -435,21 +645,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      background_0: 1627978291
-      background_1: -271520047
-      background_10: 1016055956
-      background_11: -1103373545
-      background_12: 1192194972
-      background_13: 1682846700
-      background_14: 2078044427
-      background_2: -982059868
-      background_3: -438908472
-      background_4: 289948884
-      background_5: -127400742
-      background_6: -2118267098
-      background_7: 753448564
-      background_8: -998820344
-      background_9: -38411365
+      dark_background_tileset_0: 578264033
+      dark_background_tileset_1: 55805668
+      dark_background_tileset_10: -2098732725
+      dark_background_tileset_11: -284005722
+      dark_background_tileset_12: -316392828
+      dark_background_tileset_13: 1705648034
+      dark_background_tileset_14: -1596305085
+      dark_background_tileset_15: -443680
+      dark_background_tileset_16: 1053288939
+      dark_background_tileset_17: 1543851368
+      dark_background_tileset_18: 690856047
+      dark_background_tileset_19: 1457439161
+      dark_background_tileset_2: -711841717
+      dark_background_tileset_20: -196499617
+      dark_background_tileset_21: -745943917
+      dark_background_tileset_22: -1262089029
+      dark_background_tileset_23: -1512456653
+      dark_background_tileset_24: 482734672
+      dark_background_tileset_3: 1918938372
+      dark_background_tileset_4: -1304340348
+      dark_background_tileset_5: 549740507
+      dark_background_tileset_6: 2020103993
+      dark_background_tileset_7: -1192594962
+      dark_background_tileset_8: -1248172553
+      dark_background_tileset_9: -1817588694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
