@@ -161,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 781209618065285574, guid: f6ca09be0aedd7f4dba63d1000d5b783, type: 3}
       propertyPath: groundTiles.Array.data[0].Tile
       value: 
-      objectReference: {fileID: 11400000, guid: 46df2c10d9b62ed4ea9bd9fef23ff46e, type: 2}
+      objectReference: {fileID: 11400000, guid: 105cbc4f7000aea478fa1b50fcba61f2, type: 2}
     - target: {fileID: 781209618065285574, guid: f6ca09be0aedd7f4dba63d1000d5b783, type: 3}
       propertyPath: groundTiles.Array.data[1].Name
       value: 1
@@ -432,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 170111699640925248, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900110690842258914, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: orthographic size
+      value: 7.0416665
       objectReference: {fileID: 0}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
