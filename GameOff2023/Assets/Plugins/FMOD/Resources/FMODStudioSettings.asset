@@ -653,6 +653,7 @@ MonoBehaviour:
   - Master
   Banks:
   - SFX
+  - World
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

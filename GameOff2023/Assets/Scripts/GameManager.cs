@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerController playerCtrlr;
     private MapManager mapManager;
+
+    public PlayerInventory playerInventory;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         mapManager = GroundTileMap.GetComponent<MapManager>();
         playerCtrlr = Player.GetComponent<PlayerController>();
+        playerInventory = gameObject.GetComponent<PlayerInventory>();
         ConnectEvents();
     }
 
@@ -34,8 +37,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void AddGround(int ground, int amount)
+    {
+        Debug.Log("In gm");
+            playerInventory.AddGround(ground, amount);
+    }
+
+    public void AddValuable(int valuable, int amount)
+    {
+        Debug.Log("In gm");
+        playerInventory.AddValuable(valuable, amount);
+    }
+
     void ConnectEvents()
     {
         playerCtrlr.OnDig += mapManager.Dig;
+        mapManager.OnEndDig += playerCtrlr.EndDig;
     }
 }

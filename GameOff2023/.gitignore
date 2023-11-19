@@ -9,6 +9,9 @@
 [Bb]uilds/
 [Ll]ogs/
 
+# Don't ignore fmod build files or there aregoing to be consequences!
+!/Assets/FMOD/Project/Build/
+
 # IDE
 .idea
 
@@ -88,7 +91,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-Crankshaft Crust/Packages/packages-lock.json
 
 # Never ignore DLLs in the FMOD subfolder.
 !/[Aa]ssets/Plugins/FMOD/**/lib/*
