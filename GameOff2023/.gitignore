@@ -9,6 +9,9 @@
 [Bb]uilds/
 [Ll]ogs/
 
+# Don't ignore fmod build files or there aregoing to be consequences!
+!/Assets/FMOD/Project/Build/
+
 # IDE
 .idea
 
