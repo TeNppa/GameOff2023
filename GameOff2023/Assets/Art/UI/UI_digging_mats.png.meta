@@ -172,6 +172,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_digging_mats_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62289650863d39d4a83fd2448cd8b409
+      internalID: 537191356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -186,6 +207,7 @@ TextureImporter:
       UI_digging_mats_0: 1127687821
       UI_digging_mats_1: -1132569171
       UI_digging_mats_2: -1613922467
+      UI_digging_mats_3: 537191356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
