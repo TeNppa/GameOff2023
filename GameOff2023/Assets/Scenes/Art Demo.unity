@@ -79548,7 +79548,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 41
+      m_TileSpriteIndex: 42
       m_TileMatrixIndex: 5
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -79808,8 +79808,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 25
-      m_TileMatrixIndex: 3
+      m_TileSpriteIndex: 43
+      m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -80288,8 +80288,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 25
-      m_TileMatrixIndex: 3
+      m_TileSpriteIndex: 41
+      m_TileMatrixIndex: 4
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -80588,8 +80588,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 25
-      m_TileMatrixIndex: 3
+      m_TileSpriteIndex: 41
+      m_TileMatrixIndex: 4
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -81678,7 +81678,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 25
+      m_TileSpriteIndex: 43
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -81751,8 +81751,8 @@ Tilemap:
     m_Data: {fileID: -1262089029, guid: 052f21711b9b23247b24f7700f597648, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: -1512456653, guid: 052f21711b9b23247b24f7700f597648, type: 3}
-  - m_RefCount: 4
-    m_Data: {fileID: 578264033, guid: 052f21711b9b23247b24f7700f597648, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 25
     m_Data: {fileID: 1053288939, guid: 052f21711b9b23247b24f7700f597648, type: 3}
   - m_RefCount: 72
@@ -81783,8 +81783,12 @@ Tilemap:
     m_Data: {fileID: -316392828, guid: 052f21711b9b23247b24f7700f597648, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -2098732725, guid: 052f21711b9b23247b24f7700f597648, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: 749499180, guid: 052f21711b9b23247b24f7700f597648, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -789570269, guid: 306001c4bf74fac45b3131b87ce025eb, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: -49918340, guid: 052f21711b9b23247b24f7700f597648, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 582
     m_Data:
@@ -81822,7 +81826,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 200
+  - m_RefCount: 201
     m_Data:
       e00: 0.000000059604645
       e01: -0.99999994
@@ -81840,7 +81844,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 853
+  - m_RefCount: 850
     m_Data:
       e00: 1
       e01: 0
@@ -81858,7 +81862,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 1561
+  - m_RefCount: 1563
     m_Data:
       e00: -1
       e01: 0
@@ -81894,6 +81898,24 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: -732782
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 6e-45
+      e20: 0
+      e21: 0
+      e22: 1.7426055e-31
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 4.5904e-41
+      e33: 0
   m_TileColorArray:
   - m_RefCount: 8148
     m_Data: {r: 1, g: 1, b: 1, a: 1}
@@ -82839,16 +82861,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Width: 24
-  LayerHeights: 320000003200000032000000
+  Layers: []
+  valuableTiles: []
+  groundTiles: []
+  wallThickness: 0
+  wallTile: {fileID: 0}
   mapOffset: {x: -12, y: -2, z: 0}
   layerOverlap: 5
-  GoldChance: 0.05000000074505806
-  tiles:
-    Ground1: {fileID: 11400000, guid: cf42f64f8f824f54392192bef628ea56, type: 2}
-    Ground2: {fileID: 11400000, guid: 105cbc4f7000aea478fa1b50fcba61f2, type: 2}
-    Ground3: {fileID: 11400000, guid: b37e3385a36340a47b5e79c6dbcbfc6c, type: 2}
-    GroundDragon: {fileID: 11400000, guid: 2810ecfb8326adc49b7aa80a62ae45c5, type: 2}
-    Gold: {fileID: 11400000, guid: 2477acc565126e841b9441d80a8ae606, type: 2}
+  groundTilemap: {fileID: 0}
+  valuablesTilemap: {fileID: 0}
+  wallTilemap: {fileID: 0}
 --- !u!1 &9218244125235727910
 GameObject:
   m_ObjectHideFlags: 0
