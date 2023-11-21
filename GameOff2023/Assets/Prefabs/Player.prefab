@@ -69,9 +69,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.4084612}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.4690869
 --- !u!50 &492240474437432000
 Rigidbody2D:
   serializedVersion: 4
@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 1263428999099864324}
   - component: {fileID: 7289058530270301620}
   - component: {fileID: 962317312919104076}
+  - component: {fileID: 5660305546286734548}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -269,7 +270,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: a98209a26f39de84eaabd677c55ccec9, type: 3}
+  m_Sprite: {fileID: 1961026852, guid: b6be1fc009c37ea409756e6ef31d50b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -295,6 +296,27 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7289058530270301620}
   headlight: {fileID: 5008025657092793781}
   lightSwapSpeed: 10
+--- !u!95 &5660305546286734548
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222601702901545615}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f78557254c3aa444abce395bcf742555, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5886878136683895968
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +479,10 @@ PrefabInstance:
     - target: {fileID: 3572793925744946768, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: orthographic size
+      value: 8.84375
       objectReference: {fileID: 0}
     - target: {fileID: 8565103515720241256, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_Name
