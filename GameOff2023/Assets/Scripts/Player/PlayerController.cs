@@ -1,30 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
+
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Highlight;
+    [SerializeField] private GameObject Highlight;
+    [SerializeField] private Tilemap digTilemap;
     public UnityAction<Vector3, float> OnDig;
     public Tool CurrentTool;
     public bool Digging;
-
     private Vector3 lookPosition;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float diggingDistance = 3;
+    public LayerMask digLayer;
+    private RaycastHit2D hitTest;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.DrawRay((Vector2)transform.position, (Vector2)Vector3.left);
-    }
 
     private void FixedUpdate()
     {
@@ -32,6 +23,7 @@ public class PlayerController : MonoBehaviour
         MouseLook();
         Dig();
     }
+
 
     void Movement()
     {
@@ -43,52 +35,67 @@ public class PlayerController : MonoBehaviour
             transform.position += Vector3.up * 0.1f;
     }
 
+
     void Dig()
     {
         if (Digging)
             return;
-        if (Input.GetKey(KeyCode.Mouse0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             Digging = true;
             OnDig?.Invoke(lookPosition, 1.5f);
         }
     }
 
+
     public void EndDig()
     {
         Digging = false;
     }
+
+
     void MouseLook()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var vector =((Vector2)(mousePos - transform.position)).normalized;
-        Highlight.transform.position = lookPosition = FloorVector3(transform.position + (Vector3)GetDirection(vector));
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        Vector3 direction = mousePos - transform.position;
+
+        // Perform the raycast, ignoring the specified layer
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, diggingDistance, digLayer);
+
+        // Draw a debug ray
+        // Debug.DrawLine(transform.position, transform.position + direction * diggingDistance, Color.red, 0.1f);
+
+        Highlight.SetActive(false);
+
+        if (hit.collider != null)
+        {
+            Vector3 hitPoint = hit.point;
+            hitPoint.x = hit.point.x - 0.01f * hit.normal.x;
+            hitPoint.y = hit.point.y - 0.01f * hit.normal.y;
+            lookPosition = FloorVector3(hitPoint);
+
+            if (CheckTileAtPosition(lookPosition))
+            {
+                Highlight.SetActive(true);
+                Highlight.transform.position = lookPosition;
+            }
+        }
     }
 
-    Vector2 GetDirection(Vector2 vector)
+
+    bool CheckTileAtPosition(Vector3 position)
     {
-        if (vector.x is < 0.33f and > -0.33f)
-        {
-            return vector.y > 0 ? Vector2.up : Vector2.down;
-        }
-
-        if (vector.y is < 0.33f and > -0.33f)
-        {
-            return vector.x > 0 ? Vector2.right : Vector2.left;
-        }
-
-        if (vector.x > 0)
-        {
-            return vector.y > 0 ? Vector2.up + Vector2.right : Vector2.down + Vector2.right;
-        }
-        return vector.y > 0 ? Vector2.up + Vector2.left : Vector2.down + Vector2.left;
+        return digTilemap.GetTile(digTilemap.WorldToCell(position)) != null;
     }
+
 
     Vector3 FloorVector3(Vector3 vector)
     {
         return new Vector3(
             math.floor(vector.x) + 0.5f,
             math.floor(vector.y) + 0.5f,
-            math.floor(vector.z) + 0.5f);
+            math.floor(vector.z) + 0.5f
+        );
     }
 }

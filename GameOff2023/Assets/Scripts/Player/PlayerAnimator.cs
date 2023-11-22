@@ -31,7 +31,7 @@ public class PlayerAnimator : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) SetIsMoving(true);
         else SetIsMoving(false);
 
-        if (Input.GetKey(KeyCode.Mouse0)) animator.SetTrigger("Dig Iron Pick");
+        if (Input.GetMouseButtonDown(0)) animator.SetTrigger("Dig Iron Pick");
     }
 
 
