@@ -6,10 +6,8 @@ public class MainMenuController : MonoBehaviour
 {
     private enum MenuOption { StartGame, Settings, Credits, Leaderboards, QuitGame }
     private MenuOption menuIndex = MenuOption.StartGame;
-
     [SerializeField] private MainMenuCamera mainMenuCamera;
     [SerializeField] private Text cancelCreditsText;
-
     [SerializeField] private Text[] menuButtons;
     [SerializeField] private Color activeColor = Color.yellow;
     [SerializeField] private Color unactiveColor = Color.white;
@@ -32,8 +30,7 @@ public class MainMenuController : MonoBehaviour
 
     private void CheckActivationKeys()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) ||
-            Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
         {
             ActivateLink();
         }
@@ -148,7 +145,6 @@ public class MainMenuController : MonoBehaviour
     // Unity mouse click event
     public void OpenLeaderboards()
     {
-        Debug.Log("Opened leaderboards");
         mainMenuCamera.MoveToLeaderboardPosition();
     }
 

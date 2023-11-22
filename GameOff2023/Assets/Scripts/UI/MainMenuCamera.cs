@@ -11,7 +11,6 @@ public class MainMenuCamera : MonoBehaviour
     private Vector3 endPosition;
     private float journeyLength;
     private float startTime;
-    private bool isInitialMovementDone = false;
 
 
     private void Start()
@@ -22,58 +21,44 @@ public class MainMenuCamera : MonoBehaviour
 
     private void Update()
     {
-        if (journeyLength != 0)
-        {
-            float distCovered = (Time.time - startTime) * speed;
-            float fractionOfJourney = distCovered / journeyLength;
-
-            if (!isInitialMovementDone && fractionOfJourney >= 1.0f)
-            {
-                isInitialMovementDone = true;
-            }
-
-            float newY;
-            if (isInitialMovementDone)
-            {
-                newY = Mathf.SmoothStep(startPosition.y, endPosition.y, fractionOfJourney);
-            }
-            else
-            {
-                newY = Mathf.Lerp(startPosition.y, endPosition.y, fractionOfJourney);
-            }
+        AnimateCamera();
+    }
 
 
-            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-        }
-
+    private void AnimateCamera()
+    {
         animator.SetBool("showMenu", transform.position.y == defaultPosition.position.y);
         animator.SetBool("showCredits", transform.position.y == creditsPosition.position.y);
+
+        // Move camera towards target position
+        float newY = Mathf.SmoothStep(startPosition.y, endPosition.y, (Time.time - startTime) * speed / journeyLength);
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 
 
     public void MoveToDefaultPosition()
     {
-        SetYDestination(defaultPosition.position.y);
+        SetDestination(defaultPosition.position.y);
     }
 
 
     public void MoveToLeaderboardPosition()
     {
-        SetYDestination(leaderboardPosition.position.y);
+        SetDestination(leaderboardPosition.position.y);
     }
 
 
     public void MoveToCreditsPosition()
     {
-        SetYDestination(creditsPosition.position.y);
+        SetDestination(creditsPosition.position.y);
     }
 
 
-    private void SetYDestination(float newY)
+    private void SetDestination(float posY)
     {
         startPosition = transform.position;
-        endPosition = new Vector3(transform.position.x, newY, transform.position.z);
+        endPosition = new Vector3(transform.position.x, posY, transform.position.z);
         startTime = Time.time;
-        journeyLength = Mathf.Abs(startPosition.y - newY);
+        journeyLength = Mathf.Abs(startPosition.y - posY);
     }
 }

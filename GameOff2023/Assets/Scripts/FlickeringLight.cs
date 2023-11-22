@@ -14,6 +14,7 @@ public class FlickeringLight : MonoBehaviour
     void Start()
     {
         flickerLight = GetComponent<Light2D>();
+
         if (flickerLight == null)
         {
             Debug.LogError("FlickeringLight2D requires a Light2D component");
