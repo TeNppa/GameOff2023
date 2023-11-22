@@ -6,9 +6,10 @@ using UnityEngine.Tilemaps;
 
 public enum Grounds
 {
-    Mud,
     Dirt,
-    Stone
+    Stone,
+    Bedrock,
+    DragonStone
 }
 [Serializable]
 public struct GroundTiles

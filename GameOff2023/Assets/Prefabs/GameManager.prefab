@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundTileMap: {fileID: 0}
   Player: {fileID: 0}
-  playerInventory: {fileID: 0}
+  playerInventory: {fileID: 1070133540470240815}
 --- !u!114 &1070133540470240815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,4 +73,6 @@ MonoBehaviour:
   - Ground: 1
     Amount: 0
   - Ground: 2
+    Amount: 0
+  - Ground: 3
     Amount: 0
