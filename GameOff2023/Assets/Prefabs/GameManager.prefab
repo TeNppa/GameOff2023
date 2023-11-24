@@ -63,11 +63,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valuables:
   - Valuable: 0
-    Amount: 0
+    Amount: 99999
   - Valuable: 1
-    Amount: 0
+    Amount: 99999
   - Valuable: 2
-    Amount: 0
+    Amount: 99999
   grounds:
   - Ground: 0
     Amount: 0

@@ -212,6 +212,20 @@ public class PurchaseManager : MonoBehaviour
         button.color = purchaseButtonBoughtColor;
         button.text = "Bought";
         purchasedItems[itemIdentifier] = true;
+
+        // Hide the currency costs for the purchased item
+        ItemPrice? itemPrice = GetItemPriceByIdentifier(itemIdentifier);
+        if (itemPrice != null)
+        {
+            foreach (CurrencyAmount currencyAmount in itemPrice.Value.prices)
+            {
+                if (currencyAmount.text != null)
+                {
+                    currencyAmount.text.gameObject.SetActive(false);
+                    currencyAmount.text.transform.parent.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
 

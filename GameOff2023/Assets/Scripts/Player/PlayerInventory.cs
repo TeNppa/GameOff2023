@@ -33,6 +33,11 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         currentStamina = maxStamina;
+        UpdateGroundsUI();
+        UpdateValuablesUI();
+        UpdateTorchesUI();
+        UpdateStaminaPotionsUI();
+        UpdateStaminaUI();
     }
 
 
