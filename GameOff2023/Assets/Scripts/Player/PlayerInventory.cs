@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static PurchaseManager;
-using static UnityEditor.Progress;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerInventory : MonoBehaviour
 {
