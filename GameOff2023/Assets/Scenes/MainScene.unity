@@ -212,6 +212,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 170111699640925248, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
   m_PrefabInstance: {fileID: 3281076551579965419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &117116443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+  m_PrefabInstance: {fileID: 3281076551579965419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117116442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fac27040fc2519409ccfc305cd60720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &124909339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2292679156958425005, guid: a46c378be574c9647bc8773519e49bf6, type: 3}
@@ -250,9 +261,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 986445751193604579, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 1197693029}
+    - target: {fileID: 986445751193604579, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 347666357}
+    - target: {fileID: 986445751193604579, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 117116443}
     - target: {fileID: 1562222318529783534, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1062,6 +1081,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1197693029 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 962317312919104076, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+  m_PrefabInstance: {fileID: 3281076551579965419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656758156ad5d15459b53504f72c3a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640925146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1288,10 @@ PrefabInstance:
       propertyPath: digTilemap
       value: 
       objectReference: {fileID: 577490739}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 347666357}
     - target: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1311,18 +1345,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
-      propertyPath: valuables.Array.data[0].Amount
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
-      propertyPath: valuables.Array.data[1].Amount
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
-      propertyPath: valuables.Array.data[2].Amount
-      value: 999
-      objectReference: {fileID: 0}
     - target: {fileID: 1706243593722220202, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

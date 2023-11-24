@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,12 +10,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject Highlight;
     [SerializeField] private Tilemap digTilemap;
     [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private GameObject torch;
+    [SerializeField] private BoxCollider2D torchChecker;
     [SerializeField] private LayerMask digLayer;
     public UnityAction<Vector3, float> OnDig;
     public Tool CurrentTool;
     public bool Digging;
     private Vector3 lookPosition;
     public float diggingDistance = 3;
+    private float runSpeed = 0.1f;
 
 
 
@@ -28,7 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         MouseLook();
         Dig();
+        UseTorch();
+        UseStaminaPotion();
     }
+
+
+
 
 
     void Movement()
@@ -47,10 +57,70 @@ public class PlayerController : MonoBehaviour
 
 
         if (Input.GetKey(KeyCode.D))
-            transform.position += Vector3.right * 0.1f;
+            transform.position += Vector3.right * runSpeed;
 
         if (Input.GetKey(KeyCode.A))
-            transform.position += Vector3.left * 0.1f;
+            transform.position += Vector3.left * runSpeed;
+    }
+
+
+    public void ActivateRunBoost()
+    {
+        runSpeed *= 1.5f;
+    }
+
+    void UseStaminaPotion()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (playerInventory.HasStaminaPotions())
+            {
+                // TODO: Actually ad stamina
+                playerInventory.RemoveStaminaPotion(1);
+            }
+        }
+    }
+
+    void UseTorch()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            List<GameObject> nearbyTorches = GetNearbyTorches();
+            if (nearbyTorches.Count > 0)
+            {
+                foreach (GameObject torchObj in nearbyTorches)
+                {
+                    Destroy(torchObj);
+                }
+
+                playerInventory.AddTorch(nearbyTorches.Count);
+            }
+            else if (playerInventory.HasTorches())
+            {
+                Instantiate(torch, transform.position, Quaternion.identity);
+                playerInventory.RemoveTorch(1);
+            }
+        }
+    }
+
+    List<GameObject> GetNearbyTorches()
+    {
+        List<GameObject> foundTorches = new List<GameObject>();
+
+        Vector2 size = torchChecker.size;
+        Vector2 center = (Vector2)torchChecker.transform.position + torchChecker.offset;
+        float angle = torchChecker.transform.eulerAngles.z;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, angle);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.gameObject.CompareTag("torch"))
+            {
+                foundTorches.Add(hit.gameObject);
+            }
+        }
+
+        return foundTorches;
     }
 
 
@@ -79,6 +149,9 @@ public class PlayerController : MonoBehaviour
 
     void MouseLook()
     {
+        if (Digging)
+            return;
+
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 

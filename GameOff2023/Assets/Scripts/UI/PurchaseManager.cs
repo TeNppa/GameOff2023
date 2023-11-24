@@ -26,6 +26,8 @@ public class PurchaseManager : MonoBehaviour
 
     [SerializeField] private List<ItemPrice> itemPrices;
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private Text errorMessageText;
     private Dictionary<string, bool> purchasedItems = new Dictionary<string, bool>();
 
@@ -186,18 +188,18 @@ public class PurchaseManager : MonoBehaviour
                 SetAsBought(purchaseButtonUpgradeStamina, itemIdentifier);
                 break;
             case "upgrade_movement":
-                Debug.Log("Movement upgrade applied.");
+                playerController.ActivateRunBoost();
                 SetAsBought(purchaseButtonUpgradeMovement, itemIdentifier);
                 break;
             case "upgrade_mining":
-                Debug.Log("Mining upgrade applied.");
+                playerAnimator.ActivateMiningBoost();
                 SetAsBought(purchaseButtonUpgradeMining, itemIdentifier);
                 break;
             case "buy_torch":
-                Debug.Log("Torch granted to the player.");
+                playerInventory.AddTorch(1);
                 break;
             case "buy_stamina_potion":
-                Debug.Log("Stamina potion granted to the player.");
+                playerInventory.AddStaminaPotion(1);
                 break;
             default:
                 Debug.LogWarning("Unrecognized item identifier: " + itemIdentifier);

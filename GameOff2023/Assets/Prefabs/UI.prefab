@@ -7930,6 +7930,8 @@ MonoBehaviour:
       currency: 2
       amount: 0
   playerInventory: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  playerController: {fileID: 0}
   errorMessageText: {fileID: 3749580277202799156}
   purchaseButtonShovel: {fileID: 7491824925245435403}
   purchaseButtonIronPick: {fileID: 1217728295091125428}
@@ -10468,7 +10470,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Torches will help you light the way, you can buy more from the merchant.
+  m_Text: 'Torches will help you light the way, you can buy more from the merchant.
+
+
+    Place
+    and pickup torches by using ''T'' key'
 --- !u!1 &5067121394461328876
 GameObject:
   m_ObjectHideFlags: 0
@@ -12602,7 +12608,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 160}
+  m_SizeDelta: {x: 500, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5387473102902542416
 CanvasRenderer:
@@ -14332,9 +14338,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Take a sip of this liquid 'gold'! It may not be the real deal, but who
-    cares when it's as golden as your dreams of striking it rich? Just don't confuse
+  m_Text: 'Take a sip of this liquid ''gold''! It may not be the real deal, but who
+    cares when it''s as golden as your dreams of striking it rich? Just don''t confuse
     your shovel for a bottle opener!
+
+
+    Drink by pressing ''R'' key'
 --- !u!1 &7472753758587506141
 GameObject:
   m_ObjectHideFlags: 0
@@ -14606,7 +14615,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 260}
+  m_SizeDelta: {x: 500, y: 320}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3160712870898465428
 CanvasRenderer:

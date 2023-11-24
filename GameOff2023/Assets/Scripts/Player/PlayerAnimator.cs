@@ -34,6 +34,11 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("isJumping", isJumping);
     }
 
+    public void ActivateMiningBoost()
+    {
+        animator.SetFloat("animationSpeed", 1.5f);
+    }
+
 
     public void TriggerDigging(int toolTier)
     {

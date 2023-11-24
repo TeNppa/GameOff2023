@@ -63,11 +63,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valuables:
   - Valuable: 0
-    Amount: 0
+    Amount: 999
   - Valuable: 1
-    Amount: 0
+    Amount: 999
   - Valuable: 2
-    Amount: 0
+    Amount: 999
   grounds:
   - Ground: 0
     Amount: 0
@@ -77,6 +77,8 @@ MonoBehaviour:
     Amount: 0
   - Ground: 3
     Amount: 0
+  torches: 0
+  staminaPotions: 0
 --- !u!114 &7189994850224041909
 MonoBehaviour:
   m_ObjectHideFlags: 0
