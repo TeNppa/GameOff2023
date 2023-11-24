@@ -113,11 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Highlight: {fileID: 0}
   digTilemap: {fileID: 0}
-  Digging: 0
-  diggingDistance: 3
+  playerAnimator: {fileID: 962317312919104076}
   digLayer:
     serializedVersion: 2
     m_Bits: 128
+  Digging: 0
+  diggingDistance: 3
 --- !u!1 &2229298709384645410
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7289058530270301620}
+  playerController: {fileID: 8829420660106092979}
   headlight: {fileID: 5008025657092793781}
   lightSwapSpeed: 10
 --- !u!95 &5660305546286734548
@@ -487,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 9.28125
+      value: 9.71875
       objectReference: {fileID: 0}
     - target: {fileID: 8565103515720241256, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_Name

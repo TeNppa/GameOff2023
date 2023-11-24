@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private Transform headlight;
     [SerializeField] private float lightSwapSpeed = 10;
     private float lightTargetZRotation = -90f;
@@ -19,19 +20,6 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         HandleSpriteFlipping();
-        Example_MoveToPlayerControllerWhenReady();
-    }
-
-
-    private void Example_MoveToPlayerControllerWhenReady()
-    {
-        if (Input.GetKey(KeyCode.W)) SetIsJumping(true);
-        else SetIsJumping(false);
-
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) SetIsMoving(true);
-        else SetIsMoving(false);
-
-        if (Input.GetMouseButtonDown(0)) animator.SetTrigger("Dig Iron Pick");
     }
 
 
@@ -71,6 +59,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.ResetTrigger("Dig Iron Pick");
         animator.ResetTrigger("Dig Gold Pick");
         animator.ResetTrigger("Dig Diamond Pick");
+        playerController.BreakBlock();
     }
 
 

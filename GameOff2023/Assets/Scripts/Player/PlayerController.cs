@@ -8,18 +8,24 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject Highlight;
     [SerializeField] private Tilemap digTilemap;
+    [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private LayerMask digLayer;
     public UnityAction<Vector3, float> OnDig;
     public Tool CurrentTool;
     public bool Digging;
     private Vector3 lookPosition;
     public float diggingDistance = 3;
-    public LayerMask digLayer;
-    private RaycastHit2D hitTest;
+
 
 
     private void FixedUpdate()
     {
         Movement();
+    }
+
+
+    private void Update()
+    {
         MouseLook();
         Dig();
     }
@@ -27,12 +33,24 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += Vector3.up * 0.1f;
+            playerAnimator.SetIsJumping(true);
+        }
+        else playerAnimator.SetIsJumping(false);
+
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) playerAnimator.SetIsMoving(true);
+        else playerAnimator.SetIsMoving(false);
+
+
         if (Input.GetKey(KeyCode.D))
             transform.position += Vector3.right * 0.1f;
+
         if (Input.GetKey(KeyCode.A))
             transform.position += Vector3.left * 0.1f;
-        if (Input.GetKey(KeyCode.W))
-            transform.position += Vector3.up * 0.1f;
     }
 
 
@@ -40,31 +58,31 @@ public class PlayerController : MonoBehaviour
     {
         if (Digging)
             return;
-
-        if (Input.GetMouseButtonDown(0))
+    
+        if (Input.GetMouseButton(0))
         {
+            playerAnimator.TriggerDigging(1);
             Digging = true;
-            OnDig?.Invoke(lookPosition, 1.5f);
         }
     }
 
+    // Called from animator to time block breaking with animations
+    public void BreakBlock()
+    {
+        OnDig?.Invoke(lookPosition, 1.5f);
+    }
 
     public void EndDig()
     {
         Digging = false;
     }
 
-
     void MouseLook()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 
-        // Perform the raycast, ignoring the specified layer
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, diggingDistance, digLayer);
-
-        // Draw a debug ray
-        // Debug.DrawLine(transform.position, transform.position + direction * diggingDistance, Color.red, 0.1f);
 
         Highlight.SetActive(false);
 
