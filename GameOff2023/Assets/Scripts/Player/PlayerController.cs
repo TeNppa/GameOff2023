@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 lookPosition;
     public float diggingDistance = 3;
     private float runSpeed = 0.1f;
+    private float runSpeedUpgrade = 0.125f;
 
 
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateRunBoost()
     {
-        runSpeed *= 1.5f;
+        runSpeed = runSpeedUpgrade;
     }
 
     void UseStaminaPotion()
