@@ -26,11 +26,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Color startButtonHoverColor = new Color(1f, 0.647f, 0f);
 
 
-
     // Unity event called from shop next button
     public void CancelHoverPaginationButton()
     {
-        // We only have 2 pages, so this is a quick and dirty way handle this, will need to be redone if 3rd shop page is added
+        // We only have 2 pages and only 1 pagination arrow is ever visible, so this is a quick and dirty way to handle this, will need to be redone if 3rd shop page is added
         nextPageButton.GetComponent<Image>().sprite = PaginationNormalSprite;
         previousPageButton.GetComponent<Image>().sprite = PaginationNormalSprite;
     }
@@ -39,7 +38,7 @@ public class ShopManager : MonoBehaviour
     // Unity event called from shop next button
     public void HoverPaginationButton()
     {
-        // We only have 2 pages, so this is a quick and dirty way handle this, will need to be redone if 3rd shop page is added
+        // We only have 2 pages and only 1 pagination arrow is ever visible, so this is a quick and dirty way to handle this, will need to be redone if 3rd shop page is added
         nextPageButton.GetComponent<Image>().sprite = PaginationHoverSprite;
         previousPageButton.GetComponent<Image>().sprite = PaginationHoverSprite;
     }

@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5660305546286734548}
   m_Layer: 0
   m_Name: Visuals
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,7 +570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 6.4895835
+      value: 6.4375
       objectReference: {fileID: 0}
     - target: {fileID: 8565103515720241256, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_Name

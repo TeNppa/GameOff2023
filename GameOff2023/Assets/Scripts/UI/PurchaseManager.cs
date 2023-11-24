@@ -62,19 +62,15 @@ public class PurchaseManager : MonoBehaviour
             foreach (CurrencyAmount currencyAmount in itemPrice.prices)
             {
                 // Check if text component exists and if the amount is more than 0
-                if (currencyAmount.text != null && currencyAmount.amount > 0)
+                if (currencyAmount.amount > 0)
                 {
                     // Set price
                     currencyAmount.text.text = FormatCurrencyText(currencyAmount.amount, currencyAmount.currency);
                 }
                 else
                 {
-                    // Deactivate parent GameObject if amount is 0 or text component is missing
-                    Transform parentTransform = currencyAmount.text != null ? currencyAmount.text.transform.parent : null;
-                    if (parentTransform != null)
-                    {
-                        parentTransform.gameObject.SetActive(false);
-                    }
+                    // Hide prices that are 0
+                    currencyAmount.text.transform.parent.gameObject.SetActive(false);
                 }
             }
         }
@@ -85,7 +81,6 @@ public class PurchaseManager : MonoBehaviour
     {
         string currencyName = currency.ToString();
 
-        // Handle specific cases where plural form is the same as singular
         if (currency != Valuables.Gold)
         {
             if (amount != 1)
@@ -98,11 +93,11 @@ public class PurchaseManager : MonoBehaviour
     }
 
 
-    private ItemPrice? GetItemPriceByIdentifier(string identifier)
+    private ItemPrice? GetItemPriceByIdentifier(string itemIdentifier)
     {
         foreach (ItemPrice itemPrice in itemPrices)
         {
-            if (itemPrice.identifier == identifier)
+            if (itemPrice.identifier == itemIdentifier)
             {
                 return itemPrice;
             }
@@ -129,7 +124,6 @@ public class PurchaseManager : MonoBehaviour
         // Check if the item has already been purchased
         if (purchasedItems.TryGetValue(itemIdentifier, out bool isPurchased) && isPurchased)
         {
-            Debug.Log("Item already purchased: " + itemIdentifier);
             return;
         }
 
@@ -152,6 +146,7 @@ public class PurchaseManager : MonoBehaviour
         }
     }
 
+
     private void clearErrorMessage()
     {
         errorMessageText.gameObject.SetActive(false);
@@ -160,31 +155,35 @@ public class PurchaseManager : MonoBehaviour
 
     private void GrantItemToPlayer(string itemIdentifier)
     {
-        // TODO: Handle what happens when player receives the bought item
         switch (itemIdentifier)
         {
             case "tool_shovel":
                 Debug.Log("Shovel granted to the player.");
+                // TODO: Handle what happens when player receives the bought item
                 SetAsBought(purchaseButtonShovel, itemIdentifier);
                 break;
             case "tool_iron_pick":
                 Debug.Log("Iron pick granted to the player.");
+                // TODO: Handle what happens when player receives the bought item
                 SetAsBought(purchaseButtonIronPick, itemIdentifier);
                 break;
             case "tool_gold_pick":
                 Debug.Log("Gold pick granted to the player.");
+                // TODO: Handle what happens when player receives the bought item
                 SetAsBought(purchaseButtonGoldPick, itemIdentifier);
                 break;
             case "tool_diamond_pick":
                 Debug.Log("Diamond pick granted to the player.");
+                // TODO: Handle what happens when player receives the bought item
                 SetAsBought(purchaseButtonDiamondPick, itemIdentifier);
                 break;
             case "tool_super_drill":
                 Debug.Log("Super drill granted to the player.");
+                // TODO: Handle what happens when player receives the bought item
                 SetAsBought(purchaseButtonSuperDrill, itemIdentifier);
                 break;
             case "upgrade_stamina":
-                Debug.Log("Stamina upgrade applied.");
+                playerInventory.AddMaxStamina(playerInventory.GetMaxStamina() * 0.5f);
                 SetAsBought(purchaseButtonUpgradeStamina, itemIdentifier);
                 break;
             case "upgrade_movement":
@@ -205,6 +204,14 @@ public class PurchaseManager : MonoBehaviour
                 Debug.LogWarning("Unrecognized item identifier: " + itemIdentifier);
                 break;
         }
+    }
+
+
+    public void SetAsBought(Text button, string itemIdentifier)
+    {
+        button.color = purchaseButtonBoughtColor;
+        button.text = "Bought";
+        purchasedItems[itemIdentifier] = true;
     }
 
 
@@ -252,21 +259,6 @@ public class PurchaseManager : MonoBehaviour
             return;
         }
 
-        if (isHovering)
-        {
-            button.color = purchaseButtonHoverColor;
-        }
-        else
-        {
-            button.color = purchaseButtonNormalColor;
-        }
-    }
-
-
-    public void SetAsBought(Text button, string itemIdentifier)
-    {
-        button.color = purchaseButtonBoughtColor;
-        button.text = "Bought";
-        purchasedItems[itemIdentifier] = true;
+        button.color = isHovering ? purchaseButtonHoverColor : purchaseButtonNormalColor;
     }
 }

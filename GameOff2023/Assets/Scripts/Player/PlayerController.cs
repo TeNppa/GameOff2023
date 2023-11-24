@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     private float runSpeedUpgrade = 0.125f;
 
 
+    private void Start()
+    {
+        InvokeRepeating("PassiveStaminaDrain", 1, 1);
+    }
+
 
     private void FixedUpdate()
     {
@@ -39,12 +44,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    private void PassiveStaminaDrain()
+    {
+        if (playerInventory.RemoveStamina(1) == false)
+        {
+            Debug.Log("Player is out of stamina!");
+        }
+    }
 
 
     void Movement()
     {
-
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += Vector3.up * 0.1f;
@@ -70,21 +80,23 @@ public class PlayerController : MonoBehaviour
         runSpeed = runSpeedUpgrade;
     }
 
+
     void UseStaminaPotion()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.F))
         {
             if (playerInventory.HasStaminaPotions())
             {
-                // TODO: Actually ad stamina
                 playerInventory.RemoveStaminaPotion(1);
+                playerInventory.AddStamina(200);
             }
         }
     }
 
+
     void UseTorch()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.T))
         {
             List<GameObject> nearbyTorches = GetNearbyTorches();
             if (nearbyTorches.Count > 0)
@@ -103,6 +115,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     List<GameObject> GetNearbyTorches()
     {
@@ -132,21 +145,25 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetMouseButton(0))
         {
-            playerAnimator.TriggerDigging(1);
+            playerAnimator.TriggerDigging(2); // TODO: hard coded iron pick, get tool tier from somewhere
             Digging = true;
         }
     }
+
 
     // Called from animator to time block breaking with animations
     public void BreakBlock()
     {
         OnDig?.Invoke(lookPosition, 1.5f);
+        playerInventory.RemoveStamina(20);
     }
+
 
     public void EndDig()
     {
         Digging = false;
     }
+
 
     void MouseLook()
     {

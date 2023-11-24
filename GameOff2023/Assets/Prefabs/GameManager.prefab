@@ -79,6 +79,8 @@ MonoBehaviour:
     Amount: 0
   torches: 0
   staminaPotions: 0
+  maxStamina: 1000
+  currentStamina: 1000
   goldText: {fileID: 0}
   amethystText: {fileID: 0}
   diamondText: {fileID: 0}
@@ -88,6 +90,8 @@ MonoBehaviour:
   dragonStoneText: {fileID: 0}
   torchesText: {fileID: 0}
   staminaPotionsText: {fileID: 0}
+  staminaSlider: {fileID: 0}
+  staminaText: {fileID: 0}
 --- !u!114 &7189994850224041909
 MonoBehaviour:
   m_ObjectHideFlags: 0

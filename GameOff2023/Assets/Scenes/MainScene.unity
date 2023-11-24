@@ -774,6 +774,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9218244125264757242, guid: f6ca09be0aedd7f4dba63d1000d5b783, type: 3}
   m_PrefabInstance: {fileID: 764484673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &435647452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2295976766132971871, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &436504175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1182,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656758156ad5d15459b53504f72c3a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1198275104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5403940556473967559, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1209080983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1670469148363736234, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -1489,6 +1511,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1871284861}
     - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 1198275104}
+    - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: torchesText
       value: 
       objectReference: {fileID: 1438491700}
@@ -1496,6 +1522,10 @@ PrefabInstance:
       propertyPath: amethystText
       value: 
       objectReference: {fileID: 525816311}
+    - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: staminaSlider
+      value: 
+      objectReference: {fileID: 435647452}
     - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: dragonStoneText
       value: 

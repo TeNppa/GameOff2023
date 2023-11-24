@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -34,6 +33,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("isJumping", isJumping);
     }
 
+
     public void ActivateMiningBoost()
     {
         animator.SetFloat("animationSpeed", 1.5f);
@@ -44,19 +44,29 @@ public class PlayerAnimator : MonoBehaviour
     {
         switch (toolTier)
         {
+            case 0:
+                animator.SetTrigger("Dig Hands");
+                break;
             case 1:
-                animator.SetTrigger("Dig Iron Pick");
+                animator.SetTrigger("Dig Shovel");
                 break;
             case 2:
-                animator.SetTrigger("Dig Gold Pick");
+                animator.SetTrigger("Dig Iron Pick");
                 break;
             case 3:
+                animator.SetTrigger("Dig Gold Pick");
+                break;
+            case 4:
                 animator.SetTrigger("Dig Diamond Pick");
+                break;
+            case 5:
+                animator.SetTrigger("Dig Super Drill");
                 break;
             default:
                 break;
         }
     }
+
 
     // Called within the dig animations as an event
     private void ResetDigging()

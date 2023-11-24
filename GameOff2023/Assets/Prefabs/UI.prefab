@@ -10282,7 +10282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Mining Speed
+  m_Text: Mining Boost
 --- !u!1 &4968256111743191923
 GameObject:
   m_ObjectHideFlags: 0
@@ -10474,7 +10474,7 @@ MonoBehaviour:
 
 
     Place
-    and pickup torches by using ''T'' key'
+    and pickup torches by using right mouse click or pressing the ''T'' key'
 --- !u!1 &5067121394461328876
 GameObject:
   m_ObjectHideFlags: 0
@@ -11293,7 +11293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: max Stamina + 25%
+  m_Text: max Stamina + 50%
 --- !u!1 &5794706852238787437
 GameObject:
   m_ObjectHideFlags: 0
@@ -14256,7 +14256,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1000
   m_WholeNumbers: 1
-  m_Value: 641
+  m_Value: 1000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14343,7 +14343,8 @@ MonoBehaviour:
     your shovel for a bottle opener!
 
 
-    Drink by pressing ''R'' key'
+    Drink by using right mouse click or pressing
+    the ''T'' key'
 --- !u!1 &7472753758587506141
 GameObject:
   m_ObjectHideFlags: 0
