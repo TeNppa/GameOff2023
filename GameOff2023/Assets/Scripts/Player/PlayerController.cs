@@ -167,9 +167,6 @@ public class PlayerController : MonoBehaviour
 
     void MouseLook()
     {
-        if (Digging)
-            return;
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 

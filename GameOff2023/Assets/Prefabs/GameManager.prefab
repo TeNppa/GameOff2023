@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3555197610470542227}
   - component: {fileID: 1070133540470240815}
   - component: {fileID: 7189994850224041909}
+  - component: {fileID: 5351267036389588766}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -111,3 +112,42 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 3374ea7e794b08b4ea9ea3d0c11f86c4, type: 3}
   animationFrameTime: 0.25
   cursorOffset: {x: 25, y: 25}
+--- !u!114 &5351267036389588766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205d502cb9113604fb6cef4bdcf838bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainQuestTitle: {fileID: 0}
+  mainQuestDescription: {fileID: 0}
+  mainQuests:
+  - title: One block at a time
+    description: Collect 5 gold for shovel
+    questRewards:
+      currency: 0
+      amount: 5
+    goal: 5
+    isCompleted: 0
+    currentProgress: 0
+  - title: Lets go deeper
+    description: Reach 50 meters
+    questRewards:
+      currency: 2
+      amount: 3
+    goal: 50
+    isCompleted: 0
+    currentProgress: 0
+  - title: Diamonds!
+    description: Collect 10 diamonds for a diamond pick
+    questRewards:
+      currency: 2
+      amount: 5
+    goal: 10
+    isCompleted: 0
+    currentProgress: 0
