@@ -64,11 +64,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valuables:
   - Valuable: 0
-    Amount: 99999
+    Amount: 0
   - Valuable: 1
-    Amount: 99999
+    Amount: 0
   - Valuable: 2
-    Amount: 99999
+    Amount: 0
   grounds:
   - Ground: 0
     Amount: 0
@@ -124,30 +124,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205d502cb9113604fb6cef4bdcf838bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainQuestTitle: {fileID: 0}
-  mainQuestDescription: {fileID: 0}
-  mainQuests:
-  - title: One block at a time
-    description: Collect 5 gold for shovel
-    questRewards:
-      currency: 0
-      amount: 5
-    goal: 5
-    isCompleted: 0
-    currentProgress: 0
-  - title: Lets go deeper
-    description: Reach 50 meters
-    questRewards:
-      currency: 2
-      amount: 3
-    goal: 50
-    isCompleted: 0
-    currentProgress: 0
-  - title: Diamonds!
-    description: Collect 10 diamonds for a diamond pick
-    questRewards:
-      currency: 2
-      amount: 5
-    goal: 10
-    isCompleted: 0
-    currentProgress: 0
+  quest1: {fileID: 0}
+  quest2: {fileID: 0}
+  quest3: {fileID: 0}
+  quest4: {fileID: 0}
+  quest5: {fileID: 0}
+  quest6: {fileID: 0}
+  quest7: {fileID: 0}
+  quest1Progression: {fileID: 0}
+  quest2Progression: {fileID: 0}
+  quest3Progression: {fileID: 0}
+  quest4Progression: {fileID: 0}
+  quest5Progression: {fileID: 0}
+  quest6Progression: {fileID: 0}
+  quest7Progression: {fileID: 0}
+  player: {fileID: 0}
+  playerInventory: {fileID: 1070133540470240815}

@@ -52,6 +52,17 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
+    public int GetGroundAmount(Grounds ground)
+    {
+        var inventoryItem = grounds.FirstOrDefault(g => g.Ground == ground);
+        if (inventoryItem != null)
+        {
+            return inventoryItem.Amount;
+        }
+        return 0;
+    }
+
+
     public void AddValuable(int valuable, int amount)
     {
         valuables.FirstOrDefault(v => (int)v.Valuable == valuable)!.Amount += amount;
@@ -68,6 +79,17 @@ public class PlayerInventory : MonoBehaviour
             inventoryItem.Amount -= amount;
             UpdateValuablesUI();
         }
+    }
+
+
+    public int GetValuableAmount(Valuables valuable)
+    {
+        var inventoryItem = valuables.FirstOrDefault(v => v.Valuable == valuable);
+        if (inventoryItem != null)
+        {
+            return inventoryItem.Amount;
+        }
+        return 0;
     }
 
 
