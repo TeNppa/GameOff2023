@@ -5052,7 +5052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4650667079709882361
@@ -13142,8 +13142,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: iamonds are the rarest gems, hidden deep within the bedrock. They are precious
-    and can be used to obtain powerful tools.
+  m_Text: Diamonds are the rarest gems, hidden deep within the bedrock. They are
+    precious and can be used to obtain powerful tools.
 --- !u!1 &6752508673720961107
 GameObject:
   m_ObjectHideFlags: 0

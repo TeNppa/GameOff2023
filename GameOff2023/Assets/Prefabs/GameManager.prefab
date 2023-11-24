@@ -63,11 +63,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valuables:
   - Valuable: 0
-    Amount: 999
+    Amount: 0
   - Valuable: 1
-    Amount: 999
+    Amount: 0
   - Valuable: 2
-    Amount: 999
+    Amount: 0
   grounds:
   - Ground: 0
     Amount: 0
@@ -79,6 +79,15 @@ MonoBehaviour:
     Amount: 0
   torches: 0
   staminaPotions: 0
+  goldText: {fileID: 0}
+  amethystText: {fileID: 0}
+  diamondText: {fileID: 0}
+  dirtText: {fileID: 0}
+  stoneText: {fileID: 0}
+  bedrockText: {fileID: 0}
+  dragonStoneText: {fileID: 0}
+  torchesText: {fileID: 0}
+  staminaPotionsText: {fileID: 0}
 --- !u!114 &7189994850224041909
 MonoBehaviour:
   m_ObjectHideFlags: 0
