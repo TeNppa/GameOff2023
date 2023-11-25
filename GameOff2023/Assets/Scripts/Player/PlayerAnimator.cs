@@ -36,7 +36,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void ActivateMiningBoost()
     {
-        animator.SetFloat("animationSpeed", 1.5f);
+        animator.SetFloat("miningSpeed", 1.5f);
     }
 
 

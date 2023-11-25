@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetMouseButton(0))
         {
-            playerAnimator.TriggerDigging(2); // TODO: hard coded iron pick, get tool tier from somewhere
+            playerAnimator.TriggerDigging(5); // TODO: hard coded iron pick, get tool tier from somewhere
             Digging = true;
         }
     }
