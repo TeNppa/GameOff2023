@@ -15,25 +15,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D torchChecker;
     [SerializeField] private LayerMask digLayer;
 
+    [Header("Movement")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float climbSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldownSeconds;
-
     [SerializeField] private Vector2 groundCheckBoxSize;
     [SerializeField] private float groundCheckCastDistance;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector2 climbCheckBoxSize;
     [SerializeField] private float climbCheckCastDistance;
 
-    [SerializeField] private ToolBase startingTool;
+    [Header("Stamina costs")]
+    [SerializeField] private int passiveStaminaCost = 1;
+    [SerializeField] private int climbStaminaCost = 3;
+    [SerializeField] private int jumpStaminaCost = 5;
+    [SerializeField] private int staminaPotionreplenish = 200;
 
-    public UnityAction<Vector3, float> OnDig;
+    [Header("Tools")]
+    [SerializeField] private ToolBase startingTool;
     public ToolBase CurrentTool;
-    public bool Digging;
-    public bool isFacingRight = true;
-    public bool isClimbing = false;
+
+    [HideInInspector] public UnityAction<Vector3, float> OnDig;
+    [HideInInspector] public bool Digging;
+    [HideInInspector] public bool isFacingRight = true;
+    [HideInInspector] public bool isClimbing = false;
     private Vector3 lookPosition;
     private float horizontal;
     private float vertical;
@@ -68,7 +75,14 @@ public class PlayerController : MonoBehaviour
 
     private void PassiveStaminaDrain()
     {
-        if (playerInventory.RemoveStamina(1) == false)
+        int passiveEnergyCost = passiveStaminaCost;
+
+        if (isClimbing)
+        {
+            passiveEnergyCost = climbStaminaCost;
+        }
+
+        if (playerInventory.RemoveStamina(passiveEnergyCost) == false)
         {
             Debug.Log("Player is out of stamina!");
         }
@@ -116,6 +130,7 @@ public class PlayerController : MonoBehaviour
         #region Jumping
         if (shouldJump)
         {
+            playerInventory.RemoveStamina(jumpStaminaCost);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             shouldJump = false;
@@ -191,7 +206,7 @@ public class PlayerController : MonoBehaviour
             if (playerInventory.HasStaminaPotions())
             {
                 playerInventory.RemoveStaminaPotion(1);
-                playerInventory.AddStamina(200);
+                playerInventory.AddStamina(staminaPotionreplenish);
             }
         }
     }
@@ -280,7 +295,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = mousePos - transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, CurrentTool.Range, digLayer);
-       
+
         Highlight.SetActive(false);
 
         if (hit.collider != null)
