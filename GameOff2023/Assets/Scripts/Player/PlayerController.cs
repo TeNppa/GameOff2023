@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject Highlight;
