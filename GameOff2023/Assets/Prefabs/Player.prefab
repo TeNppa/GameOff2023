@@ -133,6 +133,8 @@ MonoBehaviour:
     m_Bits: 128
   climbCheckBoxSize: {x: -0.1, y: 0.7}
   climbCheckCastDistance: 0.43
+  startingTool: {fileID: 11400000, guid: 868481894cd6d6941a909964c37b6d78, type: 2}
+  CurrentTool: {fileID: 0}
   Digging: 0
   diggingDistance: 3
 --- !u!1 &2229298709384645410

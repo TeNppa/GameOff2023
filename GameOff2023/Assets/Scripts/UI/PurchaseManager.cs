@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,6 +47,8 @@ public class PurchaseManager : MonoBehaviour
     [SerializeField] private Color purchaseButtonNormalColor = Color.black;
     [SerializeField] private Color purchaseButtonHoverColor = Color.white;
     [SerializeField] private Color purchaseButtonBoughtColor = Color.green;
+
+    [SerializeField] private List<ToolBase> availableTools; 
 
 
     private void Start()
@@ -159,27 +162,27 @@ public class PurchaseManager : MonoBehaviour
         {
             case "tool_shovel":
                 Debug.Log("Shovel granted to the player.");
-                // TODO: Handle what happens when player receives the bought item
+                GiveToolToPlayer(itemIdentifier);
                 SetAsBought(purchaseButtonShovel, itemIdentifier);
                 break;
             case "tool_iron_pick":
                 Debug.Log("Iron pick granted to the player.");
-                // TODO: Handle what happens when player receives the bought item
+                GiveToolToPlayer(itemIdentifier);
                 SetAsBought(purchaseButtonIronPick, itemIdentifier);
                 break;
             case "tool_gold_pick":
                 Debug.Log("Gold pick granted to the player.");
-                // TODO: Handle what happens when player receives the bought item
+                GiveToolToPlayer(itemIdentifier);
                 SetAsBought(purchaseButtonGoldPick, itemIdentifier);
                 break;
             case "tool_diamond_pick":
                 Debug.Log("Diamond pick granted to the player.");
-                // TODO: Handle what happens when player receives the bought item
+                GiveToolToPlayer(itemIdentifier);
                 SetAsBought(purchaseButtonDiamondPick, itemIdentifier);
                 break;
             case "tool_super_drill":
                 Debug.Log("Super drill granted to the player.");
-                // TODO: Handle what happens when player receives the bought item
+                GiveToolToPlayer(itemIdentifier);
                 SetAsBought(purchaseButtonSuperDrill, itemIdentifier);
                 break;
             case "upgrade_stamina":
@@ -274,5 +277,15 @@ public class PurchaseManager : MonoBehaviour
         }
 
         button.color = isHovering ? purchaseButtonHoverColor : purchaseButtonNormalColor;
+    }
+
+    private void GiveToolToPlayer(string itemIdentifier)
+    {
+         var tool = availableTools.FirstOrDefault(tool => tool.Identifier == itemIdentifier);
+
+        if (tool != null)
+        {
+            playerController.EquipTool(tool);
+        }
     }
 }

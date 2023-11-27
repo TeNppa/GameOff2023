@@ -30,8 +30,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 climbCheckBoxSize;
     [SerializeField] private float climbCheckCastDistance;
 
+    [SerializeField] private ToolBase startingTool;
+
     public UnityAction<Vector3, float> OnDig;
-    public Tool CurrentTool;
+    public ToolBase CurrentTool;
     public bool Digging;
     private Vector3 lookPosition;
     public float diggingDistance = 3;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("PassiveStaminaDrain", 1, 1);
+        EquipTool(startingTool);
     }
 
 
@@ -139,6 +142,10 @@ public class PlayerController : MonoBehaviour
         runSpeed = runSpeedUpgrade;
     }
 
+    public void EquipTool(ToolBase newTool)
+    {
+        CurrentTool = newTool;
+    }
 
     void UseStaminaPotion()
     {
@@ -204,7 +211,7 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetMouseButton(0))
         {
-            playerAnimator.TriggerDigging(5); // TODO: hard coded iron pick, get tool tier from somewhere
+            playerAnimator.TriggerDigging(CurrentTool.Tier);
             Digging = true;
         }
     }
@@ -213,8 +220,8 @@ public class PlayerController : MonoBehaviour
     // Called from animator to time block breaking with animations
     public void BreakBlock()
     {
-        OnDig?.Invoke(lookPosition, 1.5f);
-        playerInventory.RemoveStamina(20);
+        OnDig?.Invoke(lookPosition, CurrentTool.Damage);
+        playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
     }
 
 
@@ -229,7 +236,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, diggingDistance, digLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, CurrentTool.Range, digLayer);
 
         Highlight.SetActive(false);
 
