@@ -9,47 +9,46 @@ using Random = System.Random;
 
 public class MapManager : MonoBehaviour
 {
-    [SerializeField] 
-    private int Width = 24;
-
-    private int fullWidth => Width + wallThickness * 2;
-    [SerializeField] 
-    private List<GroundLayer> Layers;
-
-    [SerializeField] 
-    private List<ValuablesTiles> valuableTiles;
-    [SerializeField] 
-    private List<GroundTiles> groundTiles;
-
-    private int Height => Layers.Sum(layer => layer.Height);
-    [SerializeField] 
-    private int wallThickness;
-    [SerializeField] 
-    private TileBase wallTile;
-    [SerializeField]
-    private Vector3Int mapOffset = new (-12, -2, 0);
+    [Header("General")]
+    [SerializeField] private Vector3Int mapOffset = new(-12, -2, 0);
+    [SerializeField] private int Width = 24;
     [SerializeField]
     [Tooltip("How many tiles in y axis to blend layerlines per direction")]
     private int layerOverlap;
-    
-    [SerializeField]
-    private Tilemap groundTilemap;
-    [SerializeField]
-    private Tilemap valuablesTilemap;
-    [SerializeField]
-    private Tilemap wallTilemap;
+    [SerializeField] private int wallThickness;
+
+    [Header("Layers")]
+    [SerializeField] private List<GroundLayer> Layers;
+    [SerializeField] private List<ValuablesTiles> valuableTiles;
+    [SerializeField] private List<GroundTiles> groundTiles;
+    [SerializeField] private Tilemap groundTilemap;
+    [SerializeField] private Tilemap valuablesTilemap;
+    [SerializeField] private Tilemap wallTilemap;
+    [SerializeField] private TileBase wallTile;
+
+    private int Height => Layers.Sum(layer => layer.Height);
+    private int fullWidth => Width + wallThickness * 2;
     private int[,] groundMap;
     private int[,] valuablesMap;
     private Random rnd;
     public UnityAction OnEndDig;
-    
+
+    [Header("Caves")]
+    [SerializeField] private int numberOfCaves = 5;
+    [SerializeField] private int maxCaveLength = 20;
+    [SerializeField] [Range(0, 1f)] private float branchingChance = 0.1f;
+    [SerializeField] private int branchingLimit = 2;
+
+
     private void Start()
     {
         rnd = new Random((int)DateTime.Now.Ticks);
         GenerateGroundArray();
         GenerateValuablesArray();
+        GenerateCaves();
         RenderMaps();
     }
+
 
     void GenerateGroundArray()
     {
@@ -60,6 +59,8 @@ public class MapManager : MonoBehaviour
         }
         
     }
+
+
     void GenerateValuablesArray()
     {
         valuablesMap = new int[Width, Height];
@@ -68,6 +69,7 @@ public class MapManager : MonoBehaviour
             AddLayerToMap(ref valuablesMap, GenerateValuableLayer(layer), layer);
         }
     }
+
 
     private int[,] GenerateValuableLayer(int layer)
     {
@@ -102,6 +104,7 @@ public class MapManager : MonoBehaviour
         return ShuffleArray(rnd, layerMap);
     }
 
+
     int[,] GenerateGroundLayer(int layer)
     {
         var layerInfo = Layers[layer]; 
@@ -130,6 +133,7 @@ public class MapManager : MonoBehaviour
         return layerMap;
     }
 
+
     private void AddLayerToMap(ref int[,] map, int[,] layerMap, int layer)
     {
         var yOffset = Layers.Take(layer).Sum(l => l.Height);
@@ -141,6 +145,7 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+
 
     private void RenderMaps()
     {
@@ -165,6 +170,8 @@ public class MapManager : MonoBehaviour
         }
         RenderWalls();
     }
+
+
     private void RenderWalls()
     {
         wallTilemap.ClearAllTiles();
@@ -177,6 +184,8 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+
+
     private static T[,] ShuffleArray<T>(Random random, T[,] array)
     {
         int lengthRow = array.GetLength(1);
@@ -195,6 +204,7 @@ public class MapManager : MonoBehaviour
 
         return array;
     }
+
 
     public void Dig(Vector3 pos, float dmg)
     {
@@ -221,14 +231,107 @@ public class MapManager : MonoBehaviour
         OnEndDig?.Invoke();
     }
 
+
     private bool CellInsideMap(Vector3Int pos)
     {
-        return pos is { x: >= 0, y: >= 0 } &&
-                          pos.x < Width &&
-                          pos.y < Height;  
+        return pos is { x: >= 0, y: >= 0 } && pos.x < Width && pos.y < Height;  
     }
+
+
     private Vector3Int TileMapToMap(Vector3Int pos)
     {
         return pos - mapOffset;
+    }
+
+
+    private void GenerateCaves()
+    {
+        for (int i = 0; i < numberOfCaves; i++)
+        {
+            Vector2Int caveStart = new Vector2Int(rnd.Next(Width), rnd.Next(Height));
+            CreateCaveBranch(caveStart, maxCaveLength);
+        }
+    }
+
+
+    private void CreateCaveBranch(Vector2Int currentPoint, int maxLength, int currentDepth = 0)
+    {
+        if (currentDepth > branchingLimit) return;
+
+        // Make branches shorter than main cave
+        if (currentDepth != 0)
+        {
+            maxLength = (int)Mathf.Floor(maxLength / 2f);
+        }
+
+        // Get cave main direction
+        Vector2Int caveDirection = RandomCaveDirection();
+
+        for (int i = 0; i < maxLength; i++)
+        {
+            // Set cave to go into main direction with additional randomness
+            currentPoint += caveDirection + RandomCaveDirection() + RandomCaveDirection();
+
+            // Cancel if we have reaches edge of the map
+            if (!IsInsideMapBounds(currentPoint)) break;
+
+            CarveCaveAtPoint(currentPoint);
+
+            // Create a new branch of the cave
+            if (rnd.NextDouble() < branchingChance)
+            {
+                CreateCaveBranch(currentPoint, maxLength, currentDepth + 1);
+            }
+        }
+    }
+
+
+    private void CarveCaveAtPoint(Vector2Int point)
+    {
+        // Always carve middle and edges
+        groundMap[point.x, point.y] = 0;
+        groundMap[point.x + 1, point.y] = 0;
+        groundMap[point.x - 1, point.y] = 0;
+        groundMap[point.x, point.y + 1] = 0;
+        groundMap[point.x, point.y - 1] = 0;
+        valuablesMap[point.x, point.y] = 0;
+        valuablesMap[point.x + 1, point.y] = 0;
+        valuablesMap[point.x - 1, point.y] = 0;
+        valuablesMap[point.x, point.y + 1] = 0;
+        valuablesMap[point.x, point.y - 1] = 0;
+
+        // 50% chance to also carve diagonal points for more natural cave edges
+        if (rnd.NextDouble() < 0.5)
+        {
+            groundMap[point.x + 1, point.y + 1] = 0;
+            groundMap[point.x + 1, point.y - 1] = 0;
+            groundMap[point.x - 1, point.y + 1] = 0;
+            groundMap[point.x - 1, point.y - 1] = 0;
+            valuablesMap[point.x + 1, point.y + 1] = 0;
+            valuablesMap[point.x + 1, point.y - 1] = 0;
+            valuablesMap[point.x - 1, point.y + 1] = 0;
+            valuablesMap[point.x - 1, point.y - 1] = 0;
+        }
+    }
+
+
+    private Vector2Int RandomCaveDirection()
+    {
+        switch (rnd.Next(6))
+        {
+            case 0: return new Vector2Int(-1, 0);
+            case 1: return new Vector2Int(1, 0);
+            case 2: return new Vector2Int(1, 1);
+            case 3: return new Vector2Int(1, -1);
+            case 4: return new Vector2Int(-1, 1);
+            case 5: return new Vector2Int(-1, -1);
+            default: return Vector2Int.zero;
+        }
+    }
+
+
+    private bool IsInsideMapBounds(Vector2Int point)
+    {
+        return point.x > 0 && point.x + 1 < Width && point.y > 0 && point.y + 1 < Height;
     }
 }
