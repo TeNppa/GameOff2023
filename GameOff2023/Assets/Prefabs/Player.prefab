@@ -133,6 +133,10 @@ MonoBehaviour:
     m_Bits: 128
   climbCheckBoxSize: {x: -0.1, y: 0.7}
   climbCheckCastDistance: 0.43
+  passiveStaminaCost: 1
+  climbStaminaCost: 3
+  jumpStaminaCost: 5
+  staminaPotionreplenish: 200
   startingTool: {fileID: 11400000, guid: 868481894cd6d6941a909964c37b6d78, type: 2}
   CurrentTool: {fileID: 0}
   Digging: 0
@@ -585,7 +589,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 5.8541665
+      value: 5.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.56078434
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.24705882
       objectReference: {fileID: 0}
     - target: {fileID: 8565103515720241256, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_Name

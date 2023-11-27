@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1070133540470240815}
   - component: {fileID: 7189994850224041909}
   - component: {fileID: 5351267036389588766}
+  - component: {fileID: 936480824385137851}
+  - component: {fileID: 383494482856144074}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -140,3 +142,41 @@ MonoBehaviour:
   quest7Progression: {fileID: 0}
   player: {fileID: 0}
   playerInventory: {fileID: 1070133540470240815}
+  playerController: {fileID: 0}
+--- !u!114 &936480824385137851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c068b066f840545a030e6dfa1aee47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthText: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &383494482856144074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af08e3fc3e346d94894a5276bba69fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  globalLight: {fileID: 0}
+  playerLight: {fileID: 0}
+  PlayerHeadLight: {fileID: 0}
+  playerLightIntensity: 0.7
+  playerHeadLightIntensity: 1
+  intensityAboveGround: 1
+  intensityBelowGround: 0.02
+  transitionSpeed: 1
+  transitionPoint: -1
+  intensityThreshold: 0.01

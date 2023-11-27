@@ -175,15 +175,18 @@ public class MapManager : MonoBehaviour
     private void RenderWalls()
     {
         wallTilemap.ClearAllTiles();
+        int extraHeight = 100;
+
         for (var x = 0; x < fullWidth; x++)
         {
-            for (var y = 0; y < Height + wallThickness; y++)
+            for (var y = -extraHeight; y < Height + wallThickness + extraHeight; y++)
             {
-                if (x < wallThickness || x >= fullWidth - wallThickness || y >= Height)
+                if (x < wallThickness || x >= fullWidth - wallThickness)
                     wallTilemap.SetTile(new Vector3Int(x - wallThickness, -y, 0) + mapOffset, wallTile);
             }
         }
     }
+
 
 
     private static T[,] ShuffleArray<T>(Random random, T[,] array)
