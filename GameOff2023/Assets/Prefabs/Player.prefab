@@ -47,7 +47,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 170111699640925248}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a0c1c4c01dfc53d43a3f9f22cb355130, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -121,6 +121,18 @@ MonoBehaviour:
   digLayer:
     serializedVersion: 2
     m_Bits: 128
+  rb: {fileID: 492240474437432000}
+  walkSpeed: 5
+  climbSpeed: 2
+  jumpForce: 320
+  jumpCooldownSeconds: 0.25
+  groundCheckBoxSize: {x: 0.8, y: 0.12}
+  groundCheckCastDistance: 0.82
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  climbCheckBoxSize: {x: -0.1, y: 0.7}
+  climbCheckCastDistance: 0.43
   Digging: 0
   diggingDistance: 3
 --- !u!1 &2229298709384645410
@@ -570,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 5.8541665
       objectReference: {fileID: 0}
     - target: {fileID: 8565103515720241256, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_Name

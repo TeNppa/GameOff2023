@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+using UnityEngine.U2D;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +17,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject torch;
     [SerializeField] private BoxCollider2D torchChecker;
     [SerializeField] private LayerMask digLayer;
+
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float climbSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldownSeconds;
+
+    [SerializeField] private Vector2 groundCheckBoxSize;
+    [SerializeField] private float groundCheckCastDistance;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Vector2 climbCheckBoxSize;
+    [SerializeField] private float climbCheckCastDistance;
+
     public UnityAction<Vector3, float> OnDig;
     public Tool CurrentTool;
     public bool Digging;
@@ -22,6 +38,10 @@ public class PlayerController : MonoBehaviour
     private float runSpeed = 0.1f;
     private float runSpeedUpgrade = 0.125f;
 
+    private bool isFacingRight;
+    private float horizontal;
+    private float vertical;
+    private float jumpCooldownEnd;
 
     private void Start()
     {
@@ -55,23 +75,62 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.W))
+        #region Jumping
+
+        if (Input.GetButton("Jump") && IsGrounded() && jumpCooldownEnd <= Time.time)
         {
-            transform.position += Vector3.up * 0.1f;
+            jumpCooldownEnd = Time.time + jumpCooldownSeconds;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+            
             playerAnimator.SetIsJumping(true);
         }
-        else playerAnimator.SetIsJumping(false);
+        else
+        {
+            playerAnimator.SetIsJumping(false);
+        }
 
+        #endregion
+        #region Walking
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) playerAnimator.SetIsMoving(true);
-        else playerAnimator.SetIsMoving(false);
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
+        rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
 
-        if (Input.GetKey(KeyCode.D))
-            transform.position += Vector3.right * runSpeed;
+        if (horizontal != 0 || vertical != 0)
+        {
+            playerAnimator.SetIsMoving(true);
+        }
+        else
+        {
+            playerAnimator.SetIsMoving(false);
+        }
 
-        if (Input.GetKey(KeyCode.A))
-            transform.position += Vector3.left * runSpeed;
+        #endregion
+        #region Climbing
+
+        if (vertical > 0 && CanClimb())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
+        }
+
+        #endregion
+        #region Facing
+
+        if (horizontal > .01f)
+        {
+            climbCheckCastDistance = Math.Abs(climbCheckCastDistance);
+            climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+        }
+
+        if (horizontal < -.01f)
+        {
+            climbCheckCastDistance = -Math.Abs(climbCheckCastDistance);
+            climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+        }
+
+        #endregion
     }
 
 
@@ -203,5 +262,30 @@ public class PlayerController : MonoBehaviour
             math.floor(vector.y) + 0.5f,
             math.floor(vector.z) + 0.5f
         );
+    }
+
+    bool IsGrounded()
+    {
+        return Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckCastDistance, groundLayer);
+    }
+
+    bool CanClimb()
+    {
+        return Physics2D.BoxCast(
+            new Vector2(transform.position.x, transform.position.y - .5f),
+            climbCheckBoxSize,
+            0,
+            transform.right,
+            climbCheckCastDistance,
+            groundLayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // REF: IsGrounded
+        Gizmos.DrawWireCube(transform.position - transform.up * groundCheckCastDistance, groundCheckBoxSize);
+
+        // REF: CanClimb
+        Gizmos.DrawWireCube(new Vector2(transform.position.x + climbCheckCastDistance, transform.position.y - .5f), climbCheckBoxSize);
     }
 }

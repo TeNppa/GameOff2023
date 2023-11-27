@@ -244,6 +244,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
   m_PrefabInstance: {fileID: 3281076551579965419}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &117116447 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 492240474437432000, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+  m_PrefabInstance: {fileID: 3281076551579965419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &124909339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2292679156958425005, guid: a46c378be574c9647bc8773519e49bf6, type: 3}
@@ -374,6 +379,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456360293239522195, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681286773579435307, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3751341361805361462, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -1558,10 +1567,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2900110690842258914, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: orthographic size
+      value: 5.8541665
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970321671728912170, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a0c1c4c01dfc53d43a3f9f22cb355130, type: 2}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 117116447}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
       value: 
       objectReference: {fileID: 124909339}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: jumpForce
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: walkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: climbSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: digTilemap
       value: 
@@ -1570,6 +1603,38 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 347666357}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: climbCheckBoxSize.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: climbCheckBoxSize.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: jumpCooldownSeconds
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: groundCheckBoxSize.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: groundCheckBoxSize.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: climbCheckCastDistance
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: groundCheckCastDistance
+      value: 0.82
+      objectReference: {fileID: 0}
     - target: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
