@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     private PlayerController playerCtrlr;
     private MapManager mapManager;
     public PlayerInventory playerInventory;
-
-
+    public AudioManager audioManager;
+    
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         mapManager = GroundTileMap.GetComponent<MapManager>();
         playerCtrlr = Player.GetComponent<PlayerController>();
         playerInventory = gameObject.GetComponent<PlayerInventory>();
+        audioManager = Player.GetComponentInChildren<AudioManager>();
         ConnectEvents();
     }
 
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviour
     void ConnectEvents()
     {
         playerCtrlr.OnDig += mapManager.Dig;
+        playerCtrlr.OnDig += audioManager.Dig;
+        playerCtrlr.OnClimb += audioManager.Climb;
+        playerCtrlr.OnWalk += audioManager.Walk;
         mapManager.OnEndDig += playerCtrlr.EndDig;
     }
 }

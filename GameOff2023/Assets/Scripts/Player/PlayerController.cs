@@ -32,12 +32,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int climbStaminaCost = 3;
     [SerializeField] private int jumpStaminaCost = 5;
     [SerializeField] private int staminaPotionreplenish = 200;
-
+    
     [Header("Tools")]
     [SerializeField] private ToolBase startingTool;
-    public ToolBase CurrentTool;
 
+    public ToolBase CurrentTool;
+    
+    [HideInInspector] public UnityAction<Vector3, float> OnJump;
+    [HideInInspector] public UnityAction<Vector3, float> OnWalk;
+    [HideInInspector] public UnityAction<Vector3, float> OnClimb;
     [HideInInspector] public UnityAction<Vector3, float> OnDig;
+    
     [HideInInspector] public bool Digging;
     [HideInInspector] public bool isFacingRight = true;
     [HideInInspector] public bool isClimbing = false;
@@ -49,11 +54,12 @@ public class PlayerController : MonoBehaviour
     private float coyoteTimeCounter;
     private bool isJumping = false;
     private bool isGrounded = true;
-
+    private float tickrate = 0.6f;
 
     private void Start()
     {
-        InvokeRepeating("PassiveStaminaDrain", 1, 1);
+        InvokeRepeating(nameof(PassiveStaminaDrain), 1, 1);
+        InvokeRepeating(nameof(TriggerMovementActions), tickrate, tickrate);
         EquipTool(startingTool);
     }
 
@@ -90,7 +96,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void TriggerMovementActions()
+    {
+        if (isClimbing)
+        {
+            OnClimb?.Invoke(transform.position, Math.Max(0, rb.velocity.y));
+        }
+        else if (IsGrounded() && rb.velocity.magnitude > 0)
+        {
+            OnWalk?.Invoke(transform.position, rb.velocity.magnitude);
+        }
+    }
+    
     void Movement()
     {
         // Capture movement
@@ -137,6 +154,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             shouldJump = false;
             isJumping = true;
+            OnJump?.Invoke(transform.position, jumpForce);
         }
         #endregion
 

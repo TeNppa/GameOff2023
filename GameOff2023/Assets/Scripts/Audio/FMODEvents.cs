@@ -20,14 +20,18 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference Music { get; private set; }
 
-    [field: Header("Test SFX")]
-    [field: SerializeField]
-    public EventReference Test { get; private set; }
-
     [field: Header("Footsteps SFX")]
     [field: SerializeField]
     public EventReference Footsteps { get; private set; }
 
+    [field: Header("Digging SFX")]
+    [field: SerializeField]
+    public EventReference Digging { get; private set; }
+    
+    [field: Header("Climbing SFX")]
+    [field: SerializeField]
+    public EventReference Climbing { get; private set; }
+    
     private void Awake()
     {
         if (Instance != null)

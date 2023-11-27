@@ -52,9 +52,8 @@ public class AudioManager : MonoBehaviour
             Console.Error.WriteLine(e);
         }
 
-        var events = FMODEvents.Instance;
-        InitializeAmbience(events.OverworldAmbience, events.CaveAmbience);
-        InitializeMusic(events.Music);
+        InitializeAmbience(FMODEvents.Instance.OverworldAmbience, FMODEvents.Instance.CaveAmbience);
+        InitializeMusic(FMODEvents.Instance.Music);
         InvokeRepeating(nameof(SetPlayerDepthParameter), 0.5f, 0.5f);
     }
 
@@ -99,7 +98,32 @@ public class AudioManager : MonoBehaviour
         musicEventInstance.setParameterByName(PLAYER_DEPTH_PARAMETER, depth);
     }
 
-    public void PlayOneShot(EventReference sound, Vector3 position)
+    public void Dig(Vector3 pos, float dmg)
+    {
+        PlayOneShot(FMODEvents.Instance.Digging, pos);
+    }
+
+    public void Climb(Vector3 pos, float speed)
+    {
+        if (speed <= 0)
+        {
+            return;
+        }
+
+        PlayOneShot(FMODEvents.Instance.Climbing, pos);
+    }
+    
+    public void Walk(Vector3 pos, float speed)
+    {
+        if (speed <= 0)
+        {
+            return;
+        }
+
+        PlayOneShot(FMODEvents.Instance.Footsteps, pos);
+    }
+
+    private void PlayOneShot(EventReference sound, Vector3 position)
     {
         RuntimeManager.PlayOneShot(sound, position);
     }
