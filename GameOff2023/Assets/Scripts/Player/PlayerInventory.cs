@@ -178,7 +178,7 @@ public class PlayerInventory : MonoBehaviour
     {
         staminaSlider.maxValue = maxStamina;
         staminaSlider.value = currentStamina;
-        staminaText.text = currentStamina + " " + currentStamina;
+        staminaText.text = currentStamina + " / " + maxStamina;
     }
 
 
