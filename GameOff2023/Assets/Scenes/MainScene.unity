@@ -1267,20 +1267,27 @@ MonoBehaviour:
       Data3: -1916508241
       Data4: 151994319
     Path: event:/Music/Music
-  <Test>k__BackingField:
-    Guid:
-      Data1: 775319633
-      Data2: 1286565557
-      Data3: 717846174
-      Data4: -2023860486
-    Path: event:/TestEvent
   <Footsteps>k__BackingField:
     Guid:
       Data1: 1217714416
       Data2: 1323126459
       Data3: -638107459
       Data4: 1134692332
-    Path: event:/PlayerFootsteps
+    Path: event:/Player/PlayerFootsteps
+  <Digging>k__BackingField:
+    Guid:
+      Data1: 1036044822
+      Data2: 1184295971
+      Data3: -2084521793
+      Data4: -200102955
+    Path: event:/Player/PlayerDigging
+  <Climbing>k__BackingField:
+    Guid:
+      Data1: -1458732094
+      Data2: 1172055525
+      Data3: 1663006653
+      Data4: 1114243772
+    Path: event:/Player/PlayerClimbing
 --- !u!1001 &764484673
 PrefabInstance:
   m_ObjectHideFlags: 0
