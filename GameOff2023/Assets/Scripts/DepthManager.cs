@@ -12,6 +12,11 @@ public class DepthManager : MonoBehaviour
     {
         currentDepth = Mathf.Floor(-player.transform.position.y);
 
+        if (currentDepth < 0)
+        {
+            return;
+        }
+
         if (currentDepth > personalBest)
         {
             personalBest = currentDepth;
