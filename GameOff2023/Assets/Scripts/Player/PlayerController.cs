@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     private bool isJumping = false;
+    private bool isGrounded = true;
 
 
     private void Start()
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movementphysics();
+        isGrounded = IsGrounded();
     }
 
 
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         // Coyote jumping
-        if (IsGrounded())
+        if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
         }
@@ -152,7 +154,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Climbing
-        if (CanClimb() && !IsGrounded())
+        if (CanClimb() && !isGrounded)
         {
             isClimbing = true;
 
@@ -258,8 +260,10 @@ public class PlayerController : MonoBehaviour
 
     void Dig()
     {
-        if (Digging)
+        if (Digging || isClimbing || !isGrounded)
+        {
             return;
+        }
 
         if (Input.GetMouseButton(0))
         {
@@ -285,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
     void MouseLook()
     {
-        if (isClimbing)
+        if (isClimbing || !isGrounded)
         {
             Highlight.SetActive(false);
             return;
