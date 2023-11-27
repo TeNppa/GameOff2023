@@ -8,7 +8,7 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private float lightSwapSpeed = 10;
     private float lightTargetZRotation = -90f;
     private Animator animator;
-
+    private float spriteFlipDeadzoneSize = 0.15f;
 
     void Start()
     {
@@ -105,7 +105,8 @@ public class PlayerAnimator : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // Compare the player's position to the mouse position
-            if (mousePosition.x < transform.position.x)
+            var worldDeadzone = transform.right * (spriteFlipDeadzoneSize * (spriteRenderer.flipX ? 1 : -1));
+            if (mousePosition.x < (transform.position + worldDeadzone).x)
             {
                 spriteRenderer.flipX = true;
                 lightTargetZRotation = 90f;
