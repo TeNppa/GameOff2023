@@ -376,10 +376,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3681286773579435307, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3751341361805361462, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1562,14 +1558,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5970321671728912170, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: m_Radius
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5970321671728912170, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.58
-      objectReference: {fileID: 0}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
       value: 
@@ -1582,14 +1570,6 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 347666357}
-    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: groundCheckBoxSize.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: groundCheckCastDistance
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

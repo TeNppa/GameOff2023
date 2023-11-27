@@ -70,9 +70,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4084612}
+  m_Offset: {x: 0, y: -0.58}
   serializedVersion: 2
-  m_Radius: 0.4690869
+  m_Radius: 0.35
 --- !u!50 &492240474437432000
 Rigidbody2D:
   serializedVersion: 4
@@ -126,8 +126,8 @@ MonoBehaviour:
   climbSpeed: 2
   jumpForce: 320
   jumpCooldownSeconds: 0.25
-  groundCheckBoxSize: {x: 0.8, y: 0.12}
-  groundCheckCastDistance: 0.82
+  groundCheckBoxSize: {x: 0.5, y: 0.12}
+  groundCheckCastDistance: 0.9
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -136,7 +136,8 @@ MonoBehaviour:
   startingTool: {fileID: 11400000, guid: 868481894cd6d6941a909964c37b6d78, type: 2}
   CurrentTool: {fileID: 0}
   Digging: 0
-  diggingDistance: 3
+  isFacingRight: 1
+  isClimbing: 0
 --- !u!1 &2229298709384645410
 GameObject:
   m_ObjectHideFlags: 0
