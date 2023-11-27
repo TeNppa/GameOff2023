@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1251,6 +1251,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1050460963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050460964}
+  - component: {fileID: 1050460965}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1050460964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050460963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2122259943}
+  m_Father: {fileID: 117116446}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050460965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050460963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1677f681726e61a47a5252d6f58986b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1079864871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5179320116061875613, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -1493,6 +1538,85 @@ Transform:
   - {fileID: 1640925148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2122259942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122259943}
+  - component: {fileID: 2122259944}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2122259943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122259942}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1050460964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2122259944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122259942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0662849c49c6a4184a675624942635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <OverworldAmbience>k__BackingField:
+    Guid:
+      Data1: -429211321
+      Data2: 1248178326
+      Data3: 1722945452
+      Data4: 849713091
+    Path: event:/Ambience/OverworldAmbience
+  <CaveAmbience>k__BackingField:
+    Guid:
+      Data1: 1478460379
+      Data2: 1154444851
+      Data3: 799819406
+      Data4: -389396314
+    Path: event:/Ambience/CaveAmbience
+  <Music>k__BackingField:
+    Guid:
+      Data1: 1046545378
+      Data2: 1241886072
+      Data3: -1916508241
+      Data4: 151994319
+    Path: event:/Music/Music
+  <Test>k__BackingField:
+    Guid:
+      Data1: 775319633
+      Data2: 1286565557
+      Data3: 717846174
+      Data4: -2023860486
+    Path: event:/TestEvent
+  <Footsteps>k__BackingField:
+    Guid:
+      Data1: 1217714416
+      Data2: 1323126459
+      Data3: -638107459
+      Data4: 1134692332
+    Path: event:/PlayerFootsteps
 --- !u!1001 &1074595484522124640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1616,7 +1740,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1050460964}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
 --- !u!1001 &4850586946925859905

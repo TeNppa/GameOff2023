@@ -4,9 +4,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
-using UnityEngine.U2D;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-
 
 public class PlayerController : MonoBehaviour
 {
