@@ -26,6 +26,7 @@ public class QuestManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private PlayerController playerController;
 
     private int questIndex = 1;
 
@@ -138,16 +139,17 @@ public class QuestManager : MonoBehaviour
 
     private void Quest6Handler()
     {
-        // TODO: get player current tool tier and see if it is 5 ( or whatever best is)
-        int progress = 1;
-        quest6Progression.text = "Tool obtainer: " + progress + "/1";
-
-        if (progress >= 1)
+        if (playerController.CurrentTool.Tier == 5)
         {
+            quest6Progression.text = "Tool obtained: 1/1";
             quest6.SetActive(false);
             quest7.SetActive(true);
             questIndex++;
             HandQuestRewards(25, 25, 25);
+        }
+        else
+        {
+            quest6Progression.text = "Tool obtained: 0/1";
         }
     }
 
