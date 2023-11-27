@@ -4,8 +4,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
-using UnityEngine.U2D;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 
 public class PlayerController : MonoBehaviour
@@ -35,26 +33,21 @@ public class PlayerController : MonoBehaviour
     public UnityAction<Vector3, float> OnDig;
     public ToolBase CurrentTool;
     public bool Digging;
+    public bool isFacingRight = true;
+    public bool isClimbing = false;
     private Vector3 lookPosition;
-    public float diggingDistance = 3;
-    private float runSpeed = 0.1f;
-    private float runSpeedUpgrade = 0.125f;
-
-    private bool isFacingRight;
     private float horizontal;
     private float vertical;
-    private float jumpCooldownEnd;
+    private bool shouldJump = false;
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    private bool isJumping = false;
+
 
     private void Start()
     {
         InvokeRepeating("PassiveStaminaDrain", 1, 1);
         EquipTool(startingTool);
-    }
-
-
-    private void FixedUpdate()
-    {
-        Movement();
     }
 
 
@@ -64,6 +57,13 @@ public class PlayerController : MonoBehaviour
         Dig();
         UseTorch();
         UseStaminaPotion();
+        Movement();
+    }
+
+
+    private void FixedUpdate()
+    {
+        Movementphysics();
     }
 
 
@@ -78,27 +78,53 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        #region Jumping
-
-        if (Input.GetButton("Jump") && IsGrounded() && jumpCooldownEnd <= Time.time)
-        {
-            jumpCooldownEnd = Time.time + jumpCooldownSeconds;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-            
-            playerAnimator.SetIsJumping(true);
-        }
-        else
-        {
-            playerAnimator.SetIsJumping(false);
-        }
-
-        #endregion
-        #region Walking
-
+        // Capture movement
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
+        // Coyote jumping
+        if (IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        // Jumping inputs
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
+        {
+            shouldJump = true;
+            coyoteTimeCounter = 0;
+            playerAnimator.TriggerJumping();
+        }
+
+        // Variable jump height
+        if (Input.GetButtonUp("Jump") && isJumping)
+        {
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+            isJumping = false;
+        }
+    }
+
+
+    void Movementphysics()
+    {
+        #region Jumping
+        if (shouldJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+            shouldJump = false;
+            isJumping = true;
+        }
+        #endregion
+
+        #region Walking
         rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
 
         if (horizontal != 0 || vertical != 0)
@@ -109,43 +135,55 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetIsMoving(false);
         }
-
         #endregion
+
         #region Climbing
-
-        if (vertical > 0 && CanClimb())
+        if (CanClimb() && !IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
+            isClimbing = true;
+
+            if (vertical > 0)
+            {
+                playerAnimator.SetIsMoving(false);
+                rb.velocity = new Vector2(0, climbSpeed);
+            }
         }
-
+        else
+        {
+            isClimbing = false;
+        }
+        playerAnimator.SetIsClimbing(isClimbing);
         #endregion
-        #region Facing
 
+        #region Facing
         if (horizontal > .01f)
         {
             climbCheckCastDistance = Math.Abs(climbCheckCastDistance);
             climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+            isFacingRight = true;
         }
 
         if (horizontal < -.01f)
         {
             climbCheckCastDistance = -Math.Abs(climbCheckCastDistance);
             climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+            isFacingRight = false;
         }
-
         #endregion
     }
 
 
     public void ActivateRunBoost()
     {
-        runSpeed = runSpeedUpgrade;
+        walkSpeed *= 1.25f;
     }
+
 
     public void EquipTool(ToolBase newTool)
     {
         CurrentTool = newTool;
     }
+
 
     void UseStaminaPotion()
     {
@@ -208,7 +246,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Digging)
             return;
-    
+
         if (Input.GetMouseButton(0))
         {
             playerAnimator.TriggerDigging(CurrentTool.Tier);
@@ -233,11 +271,17 @@ public class PlayerController : MonoBehaviour
 
     void MouseLook()
     {
+        if (isClimbing)
+        {
+            Highlight.SetActive(false);
+            return;
+        }
+
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, CurrentTool.Range, digLayer);
-
+       
         Highlight.SetActive(false);
 
         if (hit.collider != null)
@@ -271,10 +315,12 @@ public class PlayerController : MonoBehaviour
         );
     }
 
+
     bool IsGrounded()
     {
         return Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckCastDistance, groundLayer);
     }
+
 
     bool CanClimb()
     {
@@ -286,6 +332,7 @@ public class PlayerController : MonoBehaviour
             climbCheckCastDistance,
             groundLayer);
     }
+
 
     private void OnDrawGizmos()
     {
