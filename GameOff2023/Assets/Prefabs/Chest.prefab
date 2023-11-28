@@ -333,13 +333,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0deb0a89bdefe42b026d97d18697de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootArea: {fileID: 4556074554309440070}
-  lootNoticeDistance: 5
   lootText: {fileID: 5484969734645593773}
   rewardText: {fileID: 450560191916084498}
-  playerInventory: {fileID: 0}
   minGoldReward: 5
   maxGoldReward: 25
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &4556074554309440070
 BoxCollider2D:
   m_ObjectHideFlags: 0

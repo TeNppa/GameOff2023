@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using Unity.Burst.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +40,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] private int maxCaveLength = 20;
     [SerializeField] [Range(0, 1f)] private float branchingChance = 0.1f;
     [SerializeField] private int branchingLimit = 2;
+    [SerializeField] [Range(0, 1f)] private float chestSpawnChance = 0.01f;
+    [SerializeField] private GameObject chestPrefab;
 
 
     private void Start()
@@ -284,6 +288,12 @@ public class MapManager : MonoBehaviour
             if (rnd.NextDouble() < branchingChance)
             {
                 CreateCaveBranch(currentPoint, maxLength, currentDepth + 1);
+            }
+
+            // Chance to spawn a GameObject at this point
+            if (rnd.NextDouble() < chestSpawnChance)
+            {
+                Instantiate(chestPrefab, new Vector3(currentPoint.x + mapOffset.x + 0.45f, -currentPoint.y - 1.25f, 0), Quaternion.identity);
             }
         }
     }

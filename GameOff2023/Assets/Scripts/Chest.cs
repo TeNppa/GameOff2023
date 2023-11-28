@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private Text rewardText;
     [SerializeField] private int minGoldReward = 5;
     [SerializeField] private int maxGoldReward = 25;
+    [SerializeField] private LayerMask groundLayer;
     private Animator animator;
     private PlayerInventory playerInventory;
     private bool isOpened = false;
@@ -18,6 +19,17 @@ public class Chest : MonoBehaviour
         playerInventory = gameManager.GetComponent<PlayerInventory>();
         animator = GetComponent<Animator>();
         lootText.text = "";
+        Invoke("PositionChestOnGround", 2);
+    }
+
+
+    private void PositionChestOnGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 50f, groundLayer);
+        if (hit.collider != null)
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y + 0.6f, transform.position.z);
+        }
     }
 
 
@@ -55,6 +67,5 @@ public class Chest : MonoBehaviour
         int goldReward = Random.Range(minGoldReward, maxGoldReward + 1);
         playerInventory.AddValuable(0, goldReward);
         rewardText.text = goldReward.ToString();
-        lootText.text = "";
     }
 }
