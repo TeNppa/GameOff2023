@@ -11,6 +11,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private GameObject endDayView;
 
     [Header("UI Elements")]
+    [SerializeField] private Text dayOverText;
     [SerializeField] private Text dayText;
     [SerializeField] private Text sleepButton;
     [SerializeField] private Text staminaIncreaseText;
@@ -43,14 +44,23 @@ public class DayManager : MonoBehaviour
     {
         if (!playerInventory.HasStamina())
         {
-            CancelInvoke("CheckPlayerStamina");
             EndDay();
         }
     }
 
 
-    private void EndDay()
+    public void EndDay(bool died = false)
     {
+        if (died)
+        {
+            dayOverText.text = "You have collapsed in fear";
+        }
+        else
+        {
+            dayOverText.text = "Out of energy";
+        }
+
+        CancelInvoke("CheckPlayerStamina");
         playerController.enabled = false;
         endDayViewDayText.text = "End of day " + currentDay;
         string staminaIncrease = purchaseManager.isStaminaUpgradeBought ? "150" : "100";
