@@ -6,6 +6,7 @@ TagManager:
   tags:
   - torch
   - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX
