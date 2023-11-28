@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnEnable()
+    {
+        Digging = false;
+    }
+
+
     private void Update()
     {
         MouseLook();

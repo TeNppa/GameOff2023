@@ -335,6 +335,6 @@ public class MapManager : MonoBehaviour
 
     private bool IsInsideMapBounds(Vector2Int point)
     {
-        return point.x > 0 && point.x + 1 < Width && point.y > 0 && point.y + 1 < Height;
+        return point.x > 0 && point.x + 1 < Width && point.y > 5 && point.y + 10 < Height;
     }
 }

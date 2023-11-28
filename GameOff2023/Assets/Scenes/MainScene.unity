@@ -3022,6 +3022,11 @@ Transform:
   - {fileID: 580687331}
   m_Father: {fileID: 2069428966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1846330871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1958036223854073812, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1871284861 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3376886888266335970, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -3132,6 +3137,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1242239346730070978, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
   m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2036336458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4062603060411224610, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+  m_PrefabInstance: {fileID: 3281076551579965419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2069428965
 GameObject:
@@ -3250,7 +3260,7 @@ PrefabInstance:
       objectReference: {fileID: 347666357}
     - target: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.39
+      value: 23.56
       objectReference: {fileID: 0}
     - target: {fileID: 8975625538920520563, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3521,6 +3531,14 @@ PrefabInstance:
       propertyPath: quest7
       value: 
       objectReference: {fileID: 63495805}
+    - target: {fileID: 5351267036389588766, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: credits
+      value: 
+      objectReference: {fileID: 1846330871}
+    - target: {fileID: 5351267036389588766, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2036336458}
     - target: {fileID: 5351267036389588766, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: playerController
       value: 

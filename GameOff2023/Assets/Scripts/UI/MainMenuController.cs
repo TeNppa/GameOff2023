@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class MainMenuController : MonoBehaviour
@@ -127,7 +129,7 @@ public class MainMenuController : MonoBehaviour
     // Unity mouse click event
     public void StartGame()
     {
-        Debug.Log("start game");
+        SceneManager.LoadScene("MainScene");
     }
 
     // Unity mouse click event

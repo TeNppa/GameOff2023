@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject mainCamera;
 
     private int questIndex = 1;
 
@@ -163,8 +166,20 @@ public class QuestManager : MonoBehaviour
             quest7.SetActive(false);
             questIndex++;
             HandQuestRewards(1337);
+
+            // Play end credits
+            credits.SetActive(true);
+            mainCamera.transform.parent = null;
+            Invoke("EndGame", 22f);
         }
     }
+
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
     private void HandQuestRewards(int? gold = null, int? amethyst = null, int? diamonds = null, int? maxStamina = null)
     {
