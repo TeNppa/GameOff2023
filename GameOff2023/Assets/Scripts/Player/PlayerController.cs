@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int climbStaminaCost = 3;
     [SerializeField] private int jumpStaminaCost = 5;
     [SerializeField] [Range(0,1)]private float staminaPotionReplenish = 0.2f;
+    private bool isPassiveStaminaCostActive = true;
     
     [Header("Tools")]
     [SerializeField] private ToolBase startingTool;
@@ -65,6 +66,12 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         Digging = false;
+        isPassiveStaminaCostActive = true;
+    }
+
+    private void OnDisable()
+    {
+        isPassiveStaminaCostActive = false;
     }
 
 
@@ -87,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
     private void PassiveStaminaDrain()
     {
+        if (!isPassiveStaminaCostActive) return;
+
         int passiveEnergyCost = passiveStaminaCost;
 
         if (isClimbing)
