@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayManager: {fileID: 0}
-  moveSpeed: 1.5
-  chaseSpeed: 2.5
+  moveSpeed: 1.25
+  chaseSpeed: 2
   searchAreaMin: {x: -10, y: -80}
   searchAreaMax: {x: 60, y: -150}
   aggroDistance: 8
