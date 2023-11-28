@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5351267036389588766}
   - component: {fileID: 936480824385137851}
   - component: {fileID: 383494482856144074}
+  - component: {fileID: 3719407431274873583}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -82,8 +83,8 @@ MonoBehaviour:
     Amount: 0
   torches: 0
   staminaPotions: 0
-  maxStamina: 1000
-  currentStamina: 1000
+  maxStamina: 500
+  currentStamina: 500
   goldText: {fileID: 0}
   amethystText: {fileID: 0}
   diamondText: {fileID: 0}
@@ -180,3 +181,33 @@ MonoBehaviour:
   transitionSpeed: 1
   transitionPoint: -1
   intensityThreshold: 0.01
+--- !u!114 &3719407431274873583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ca4124eb0f80544a2714f999899a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  startingPosition: {fileID: 0}
+  shop: {fileID: 0}
+  endDayView: {fileID: 0}
+  dayText: {fileID: 0}
+  sleepButton: {fileID: 0}
+  endDayViewDayText: {fileID: 0}
+  endDayViewDirtText: {fileID: 0}
+  endDayViewStoneText: {fileID: 0}
+  endDayViewBedrockText: {fileID: 0}
+  endDayViewDragonStoneText: {fileID: 0}
+  endDayViewDirtParent: {fileID: 0}
+  endDayViewStoneParent: {fileID: 0}
+  endDayViewBedrockParent: {fileID: 0}
+  endDayViewDragonStoneParent: {fileID: 0}
+  playerInventory: {fileID: 1070133540470240815}
+  playerController: {fileID: 0}
+  shopManager: {fileID: 0}

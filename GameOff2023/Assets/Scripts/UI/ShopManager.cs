@@ -80,12 +80,20 @@ public class ShopManager : MonoBehaviour
     }
 
 
-    // Unity event called from shop next button
-    public void startNewDay()
+    public void ResetShopUI()
     {
-        this.gameObject.SetActive(false);
+        previousPageButton.SetActive(false);
+        consumablesPage.SetActive(false);
+        nextDayPage.SetActive(false);
+        CancelHoverPaginationButton();
+        shopAnimator.SetTrigger("Turn Previous Page");
+        nextPageButton.SetActive(true);
+        toolsPage.SetActive(true);
+        upgradesPage.SetActive(true);
     }
 
+
+    // Unity event called from shop next button
     public void HoverstartNewDayButton()
     {
         startNextDayButton.color = startButtonHoverColor;

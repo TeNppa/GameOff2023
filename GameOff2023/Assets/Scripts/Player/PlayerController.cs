@@ -84,10 +84,7 @@ public class PlayerController : MonoBehaviour
             passiveEnergyCost = climbStaminaCost;
         }
 
-        if (playerInventory.RemoveStamina(passiveEnergyCost) == false)
-        {
-            Debug.Log("Player is out of stamina!");
-        }
+        playerInventory.RemoveStamina(passiveEnergyCost);
     }
 
 
@@ -276,8 +273,11 @@ public class PlayerController : MonoBehaviour
     // Called from animator to time block breaking with animations
     public void BreakBlock()
     {
-        OnDig?.Invoke(lookPosition, CurrentTool.Damage);
-        playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
+        if (playerInventory.HasStamina())
+        {
+            OnDig?.Invoke(lookPosition, CurrentTool.Damage);
+            playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
+        }
     }
 
 
