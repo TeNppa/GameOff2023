@@ -31,6 +31,7 @@ public class PurchaseManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Text errorMessageText;
     private Dictionary<string, bool> purchasedItems = new Dictionary<string, bool>();
+    public bool isStaminaUpgradeBought = false;
 
 
     [Header("Purchase Buttons")]
@@ -187,6 +188,7 @@ public class PurchaseManager : MonoBehaviour
                 break;
             case "upgrade_stamina":
                 playerInventory.AddMaxStamina(playerInventory.GetMaxStamina() * 0.5f);
+                isStaminaUpgradeBought = true;
                 SetAsBought(purchaseButtonUpgradeStamina, itemIdentifier);
                 break;
             case "upgrade_movement":

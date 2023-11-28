@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int passiveStaminaCost = 1;
     [SerializeField] private int climbStaminaCost = 3;
     [SerializeField] private int jumpStaminaCost = 5;
-    [SerializeField] private int staminaPotionreplenish = 200;
+    [SerializeField] [Range(0,1)]private float staminaPotionReplenish = 0.2f;
     
     [Header("Tools")]
     [SerializeField] private ToolBase startingTool;
@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
             if (playerInventory.HasStaminaPotions())
             {
                 playerInventory.RemoveStaminaPotion(1);
-                playerInventory.AddStamina(staminaPotionreplenish);
+                playerInventory.AddStamina(Mathf.Floor(playerInventory.GetMaxStamina() * staminaPotionReplenish));
             }
         }
     }

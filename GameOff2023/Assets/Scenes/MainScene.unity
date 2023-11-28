@@ -1166,6 +1166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f535e81f1292743b4c25559f50d47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &418153560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 986445751193604579, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418153557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d6d62b684d7cf43b6bb55a7ed4ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &435647452 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2295976766132971871, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -2534,6 +2545,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1348633025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3487676422379712939, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1438491700 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 785745163391455529, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
@@ -3456,6 +3478,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 624123009}
     - target: {fileID: 3719407431274873583, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: purchaseManager
+      value: 
+      objectReference: {fileID: 418153560}
+    - target: {fileID: 3719407431274873583, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 117116443}
@@ -3475,6 +3501,10 @@ PrefabInstance:
       propertyPath: endDayViewStoneText
       value: 
       objectReference: {fileID: 1553284965}
+    - target: {fileID: 3719407431274873583, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: staminaIncreaseText
+      value: 
+      objectReference: {fileID: 1348633025}
     - target: {fileID: 3719407431274873583, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: endDayViewDirtParent
       value: 

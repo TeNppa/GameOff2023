@@ -137,7 +137,7 @@ MonoBehaviour:
   passiveStaminaCost: 1
   climbStaminaCost: 3
   jumpStaminaCost: 5
-  staminaPotionreplenish: 200
+  staminaPotionReplenish: 0.2
   startingTool: {fileID: 11400000, guid: 868481894cd6d6941a909964c37b6d78, type: 2}
   CurrentTool: {fileID: 0}
   Digging: 0

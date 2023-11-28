@@ -11192,7 +11192,7 @@ MonoBehaviour:
       amount: 50
     - text: {fileID: 2798712111649453102}
       currency: 1
-      amount: 10
+      amount: 8
     - text: {fileID: 2274657184791095288}
       currency: 2
       amount: 0
@@ -11269,7 +11269,7 @@ MonoBehaviour:
       amount: 5
     - text: {fileID: 6972685631010767968}
       currency: 1
-      amount: 3
+      amount: 2
     - text: {fileID: 433437434771762278}
       currency: 2
       amount: 0
@@ -11277,6 +11277,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   playerController: {fileID: 0}
   errorMessageText: {fileID: 3749580277202799156}
+  isStaminaUpgradeBought: 0
   purchaseButtonShovel: {fileID: 7491824925245435403}
   purchaseButtonIronPick: {fileID: 1217728295091125428}
   purchaseButtonGoldPick: {fileID: 1474890812766524604}

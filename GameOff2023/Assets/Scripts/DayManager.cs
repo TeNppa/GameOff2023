@@ -13,6 +13,7 @@ public class DayManager : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private Text dayText;
     [SerializeField] private Text sleepButton;
+    [SerializeField] private Text staminaIncreaseText;
     [SerializeField] private Text endDayViewDayText;
     [SerializeField] private Text endDayViewDirtText;
     [SerializeField] private Text endDayViewStoneText;
@@ -27,6 +28,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private ShopManager shopManager;
+    [SerializeField] private PurchaseManager purchaseManager;
 
     private int currentDay = 1;
 
@@ -51,10 +53,14 @@ public class DayManager : MonoBehaviour
     {
         playerController.enabled = false;
         endDayViewDayText.text = "End of day " + currentDay;
+        string staminaIncrease = purchaseManager.isStaminaUpgradeBought ? "150" : "100";
+        staminaIncreaseText.text = "As the sun sets and a new dawn rises, your urgy to dig more grows stronger,\r\nincreasing your maximum Stamina by " + staminaIncrease;
+
         RewardsFromDirt();
         RewardsFromStone();
         RewardsFromBedrock();
         RewardsFromDragonStone();
+
         currentDay++;
         endDayView.SetActive(true);
     }
@@ -129,7 +135,8 @@ public class DayManager : MonoBehaviour
     public void CloseShop()
     {
         shop.SetActive(false);
-        playerInventory.AddMaxStamina(100);
+        int staminaIncrease = purchaseManager.isStaminaUpgradeBought ? 150 : 100;
+        playerInventory.AddMaxStamina(staminaIncrease);
         playerInventory.SetStamina(playerInventory.GetMaxStamina());
         InvokeRepeating("CheckPlayerStamina", 1, 1);
         shopManager.ResetShopUI();
