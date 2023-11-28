@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    private enum MenuOption { StartGame, Settings, Credits, Leaderboards, QuitGame }
+    private enum MenuOption { StartGame, Leaderboards, Credits, QuitGame }
     private MenuOption menuIndex = MenuOption.StartGame;
     [SerializeField] private MainMenuCamera mainMenuCamera;
     [SerializeField] private Text cancelCreditsText;
@@ -68,9 +68,8 @@ public class MainMenuController : MonoBehaviour
         switch (menuIndex)
         {
             case MenuOption.StartGame: StartGame(); break;
-            case MenuOption.Settings: OpenSettings(); break;
-            case MenuOption.Credits: OpenCredits(); break;
             case MenuOption.Leaderboards: OpenLeaderboards(); break;
+            case MenuOption.Credits: OpenCredits(); break;
             case MenuOption.QuitGame: QuitGame(); break;
         }
     }
@@ -80,13 +79,6 @@ public class MainMenuController : MonoBehaviour
     public void HoverStartGameButtonEvent()
     {
         menuIndex = MenuOption.StartGame;
-        UpdateLinks();
-    }
-
-    // Unity mouse over event
-    public void HoverSettingsButtonEvent()
-    {
-        menuIndex = MenuOption.Settings;
         UpdateLinks();
     }
 
@@ -129,12 +121,6 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("MainScene");
-    }
-
-    // Unity mouse click event
-    public void OpenSettings()
-    {
-        Debug.Log("Opened settings");
     }
 
     // Unity mouse click event
