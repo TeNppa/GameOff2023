@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
         #region Walking
         rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
 
-        if (horizontal != 0 || vertical != 0)
+        if (horizontal != 0)
         {
             playerAnimator.SetIsMoving(true);
         }
