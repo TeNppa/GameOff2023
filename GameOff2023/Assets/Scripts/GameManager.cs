@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private PlayerController playerCtrlr;
     private MapManager mapManager;
     public PlayerInventory playerInventory;
-    public AudioManager audioManager;
+    [HideInInspector] public AudioManager audioManager;
     
     private void Awake()
     {
