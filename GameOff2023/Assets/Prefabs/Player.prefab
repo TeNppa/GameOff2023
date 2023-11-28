@@ -36,6 +36,7 @@ Transform:
   - {fileID: 1471529303867995214}
   - {fileID: 9162857754467953690}
   - {fileID: 3159313556823236634}
+  - {fileID: 8346374591517210563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5970321671728912170
@@ -142,6 +143,92 @@ MonoBehaviour:
   Digging: 0
   isFacingRight: 1
   isClimbing: 0
+--- !u!1 &1189129430014888854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8444431007471949444}
+  - component: {fileID: 6281021511237260801}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8444431007471949444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189129430014888854}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8346374591517210563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6281021511237260801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189129430014888854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0662849c49c6a4184a675624942635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <OverworldAmbience>k__BackingField:
+    Guid:
+      Data1: -429211321
+      Data2: 1248178326
+      Data3: 1722945452
+      Data4: 849713091
+    Path: event:/Ambience/OverworldAmbience
+  <CaveAmbience>k__BackingField:
+    Guid:
+      Data1: 1478460379
+      Data2: 1154444851
+      Data3: 799819406
+      Data4: -389396314
+    Path: event:/Ambience/CaveAmbience
+  <Music>k__BackingField:
+    Guid:
+      Data1: 1046545378
+      Data2: 1241886072
+      Data3: -1916508241
+      Data4: 151994319
+    Path: event:/Music/Music
+  <Footsteps>k__BackingField:
+    Guid:
+      Data1: 1217714416
+      Data2: 1323126459
+      Data3: -638107459
+      Data4: 1134692332
+    Path: event:/Player/PlayerFootsteps
+  <Digging>k__BackingField:
+    Guid:
+      Data1: 1036044822
+      Data2: 1184295971
+      Data3: -2084521793
+      Data4: -200102955
+    Path: event:/Player/PlayerDigging
+  <Climbing>k__BackingField:
+    Guid:
+      Data1: -1458732094
+      Data2: 1172055525
+      Data3: 1663006653
+      Data4: 1114243772
+    Path: event:/Player/PlayerClimbing
 --- !u!1 &2229298709384645410
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +311,51 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &3803360127065612372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8346374591517210563}
+  - component: {fileID: 2664060844915999282}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8346374591517210563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803360127065612372}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8444431007471949444}
+  m_Father: {fileID: 8975625538920520563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2664060844915999282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803360127065612372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1677f681726e61a47a5252d6f58986b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4222601702901545615
 GameObject:
   m_ObjectHideFlags: 0
