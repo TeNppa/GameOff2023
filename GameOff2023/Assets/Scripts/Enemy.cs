@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         {
             // Target position is the player's position
             targetPosition = player.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, chaseSpeed * Time.deltaTime);
         }
         else
         {

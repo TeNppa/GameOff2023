@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7648651448283714951}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   chaseSpeed: 2.5
   searchAreaMin: {x: -10, y: -80}
   searchAreaMax: {x: 60, y: -150}
-  aggroDistance: 5
-  loseInterestDistance: 10
+  aggroDistance: 8
+  loseInterestDistance: 12
 --- !u!95 &7989206882523860062
 Animator:
   serializedVersion: 5
