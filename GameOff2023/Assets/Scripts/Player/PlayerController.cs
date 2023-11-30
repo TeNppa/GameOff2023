@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isClimbing = false;
     [HideInInspector] public bool isClimbingMoving = false;
     private Vector3 lookPosition;
+    private Vector3 digPosition;
     private float horizontal;
     private float vertical;
     private bool shouldJump = false;
@@ -303,7 +304,7 @@ public class PlayerController : MonoBehaviour
 
     void Dig()
     {
-        if (Digging || isClimbing || !isGrounded)
+        if (Digging || isClimbing || !isGrounded || !Highlight.activeSelf)
         {
             return;
         }
@@ -311,6 +312,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             playerAnimator.TriggerDigging(CurrentTool.Tier);
+            digPosition = lookPosition;
             Digging = true;
         }
     }
@@ -321,7 +323,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerInventory.HasStamina())
         {
-            OnDig?.Invoke(lookPosition, CurrentTool.Damage);
+            OnDig?.Invoke(digPosition, CurrentTool.Damage);
             playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
         }
     }
