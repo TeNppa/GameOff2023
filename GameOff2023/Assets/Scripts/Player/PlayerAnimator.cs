@@ -34,6 +34,12 @@ public class PlayerAnimator : MonoBehaviour
     }
 
 
+    public void SetClimbingMoving(bool isClimbingMoving)
+    {
+        animator.SetBool("isClimbingMoving", isClimbingMoving);
+    }
+
+
     public void TriggerJumping()
     {
         animator.SetTrigger("Jump");

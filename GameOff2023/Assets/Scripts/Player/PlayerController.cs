@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool Digging;
     [HideInInspector] public bool isFacingRight = true;
     [HideInInspector] public bool isClimbing = false;
+    [HideInInspector] public bool isClimbingMoving = false;
     private Vector3 lookPosition;
     private float horizontal;
     private float vertical;
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isClimbing)
         {
-            OnClimb?.Invoke(transform.position, Math.Max(0, rb.velocity.y));
+            OnClimb?.Invoke(transform.position, Math.Max(0, MathF.Abs(vertical)));
         }
         else if (IsGrounded() && rb.velocity.magnitude > 0)
         {
@@ -185,17 +186,25 @@ public class PlayerController : MonoBehaviour
         if (CanClimb() && !isGrounded)
         {
             isClimbing = true;
+            isClimbingMoving = false;
 
             if (vertical != 0)
             {
-                playerAnimator.SetIsMoving(false);
+                isClimbingMoving = true;
                 rb.velocity = new Vector2(0, climbSpeed * vertical);
+            }
+            else
+            {
+                isClimbingMoving = false;
             }
         }
         else
         {
             isClimbing = false;
+            isClimbingMoving = false;
         }
+
+        playerAnimator.SetClimbingMoving(isClimbingMoving);
         playerAnimator.SetIsClimbing(isClimbing);
         #endregion
 
