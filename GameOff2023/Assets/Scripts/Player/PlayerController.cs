@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, angle);
         foreach (Collider2D hit in hits)
         {
-            if (hit.gameObject.CompareTag("torch"))
+            if (hit.gameObject.CompareTag("Torch"))
             {
                 foundTorches.Add(hit.gameObject);
             }

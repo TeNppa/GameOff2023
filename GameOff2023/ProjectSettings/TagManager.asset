@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - torch
   - Enemy
   - GameManager
+  - Torch
+  - GhostRepellent
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - Player
   - Dig Tilemap
-  - 
+  - GhostRepellent
   - 
   - 
   - 
