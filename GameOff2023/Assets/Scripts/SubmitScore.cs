@@ -27,7 +27,7 @@ public class SubmitScore : MonoBehaviour
     private IEnumerator SubmitScoreCoroutine(string username, string score)
     {
         long timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-        string hash = CreateMD5(username + score + timestamp + secretKey);
+        string hash = CreateSHA256(username + score + timestamp + secretKey);
 
         WWWForm form = new WWWForm();
         form.AddField("username", username);
@@ -54,12 +54,12 @@ public class SubmitScore : MonoBehaviour
     }
 
 
-    string CreateMD5(string input)
+    string CreateSHA256(string input)
     {
-        using (MD5 md5 = MD5.Create())
+        using (SHA256 sha256 = SHA256.Create())
         {
             byte[] inputBytes = Encoding.ASCII.GetBytes(input);
-            byte[] hashBytes = md5.ComputeHash(inputBytes);
+            byte[] hashBytes = sha256.ComputeHash(inputBytes);
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hashBytes.Length; i++)
@@ -69,4 +69,5 @@ public class SubmitScore : MonoBehaviour
             return sb.ToString();
         }
     }
+
 }
