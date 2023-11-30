@@ -58,6 +58,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = true;
     private float tickrate = 0.6f;
 
+    // For gizmos
+    RaycastHit2D groundHit;
+
     private void Start()
     {
         InvokeRepeating(nameof(PassiveStaminaDrain), 1, 1);
@@ -379,7 +382,10 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckCastDistance, groundLayer);
+        var hit = Physics2D.BoxCast(transform.position - transform.up * groundCheckCastDistance / 2, groundCheckBoxSize, 0, -transform.up, groundCheckCastDistance, groundLayer);
+        groundHit = hit;
+
+        return hit;
     }
 
 
@@ -399,6 +405,7 @@ public class PlayerController : MonoBehaviour
     {
         // REF: IsGrounded
         Gizmos.DrawWireCube(transform.position - transform.up * groundCheckCastDistance, groundCheckBoxSize);
+        Gizmos.DrawWireSphere(groundHit.point, .25f);
 
         // REF: CanClimb
         Gizmos.DrawWireCube(new Vector2(transform.position.x + climbCheckCastDistance, transform.position.y - .5f), climbCheckBoxSize);
