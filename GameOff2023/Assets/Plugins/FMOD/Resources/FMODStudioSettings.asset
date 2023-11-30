@@ -630,7 +630,7 @@ MonoBehaviour:
   sourceProjectPath: Assets/FMOD/Project/GameOff2023.fspro
   sourceBankPath: Assets/FMOD/Project/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -652,8 +652,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Ambience
+  - Mob
+  - Music
+  - Player
   - SFX
-  - World
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

@@ -46,9 +46,14 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    public void UseGround(int ground, int amount)
+    public void RemoveGround(Grounds ground, int amount)
     {
-        // Skipped, as there is not enough time to implement building mechanics
+        var inventoryItem = grounds.FirstOrDefault(v => v.Ground == ground);
+        if (inventoryItem != null && inventoryItem.Amount >= amount)
+        {
+            inventoryItem.Amount -= amount;
+            UpdateGroundsUI();
+        }
     }
 
 
@@ -153,6 +158,19 @@ public class PlayerInventory : MonoBehaviour
         UpdateStaminaUI();
     }
 
+
+    public void SetStamina(float amount)
+    {
+        currentStamina = amount;
+
+        if (currentStamina > maxStamina)
+        {
+            currentStamina = maxStamina;
+        }
+
+        UpdateStaminaUI();
+    }
+
     public void AddMaxStamina(float amount)
     {
         maxStamina += amount;
@@ -166,10 +184,15 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    public bool RemoveStamina(float amount)
+    public void RemoveStamina(float amount)
     {
         currentStamina -= amount;
         UpdateStaminaUI();
+    }
+
+
+    public bool HasStamina()
+    {
         return currentStamina > 0;
     }
 
@@ -178,7 +201,7 @@ public class PlayerInventory : MonoBehaviour
     {
         staminaSlider.maxValue = maxStamina;
         staminaSlider.value = currentStamina;
-        staminaText.text = currentStamina + " " + currentStamina;
+        staminaText.text = currentStamina + " / " + maxStamina;
     }
 
 

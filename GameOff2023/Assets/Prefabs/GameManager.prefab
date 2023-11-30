@@ -13,9 +13,13 @@ GameObject:
   - component: {fileID: 1070133540470240815}
   - component: {fileID: 7189994850224041909}
   - component: {fileID: 5351267036389588766}
+  - component: {fileID: 936480824385137851}
+  - component: {fileID: 383494482856144074}
+  - component: {fileID: 3719407431274873583}
+  - component: {fileID: 137312466992842558}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +54,7 @@ MonoBehaviour:
   GroundTileMap: {fileID: 0}
   Player: {fileID: 0}
   playerInventory: {fileID: 1070133540470240815}
+  audioManager: {fileID: 0}
 --- !u!114 &1070133540470240815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +85,8 @@ MonoBehaviour:
     Amount: 0
   torches: 0
   staminaPotions: 0
-  maxStamina: 1000
-  currentStamina: 1000
+  maxStamina: 500
+  currentStamina: 500
   goldText: {fileID: 0}
   amethystText: {fileID: 0}
   diamondText: {fileID: 0}
@@ -140,3 +145,93 @@ MonoBehaviour:
   quest7Progression: {fileID: 0}
   player: {fileID: 0}
   playerInventory: {fileID: 1070133540470240815}
+  playerController: {fileID: 0}
+  credits: {fileID: 0}
+  mainCamera: {fileID: 0}
+  submitScore: {fileID: 0}
+  gameCompletedText: {fileID: 0}
+  dayManager: {fileID: 3719407431274873583}
+--- !u!114 &936480824385137851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c068b066f840545a030e6dfa1aee47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthText: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &383494482856144074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af08e3fc3e346d94894a5276bba69fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  globalLight: {fileID: 0}
+  playerLight: {fileID: 0}
+  PlayerHeadLight: {fileID: 0}
+  playerLightIntensity: 0.7
+  playerHeadLightIntensity: 1
+  intensityAboveGround: 1
+  intensityBelowGround: 0.02
+  transitionSpeed: 1
+  transitionPoint: -1
+  intensityThreshold: 0.01
+--- !u!114 &3719407431274873583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ca4124eb0f80544a2714f999899a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  startingPosition: {fileID: 0}
+  shop: {fileID: 0}
+  endDayView: {fileID: 0}
+  dayOverText: {fileID: 0}
+  dayText: {fileID: 0}
+  staminaIncreaseText: {fileID: 0}
+  endDayViewDayText: {fileID: 0}
+  endDayViewDirtText: {fileID: 0}
+  endDayViewStoneText: {fileID: 0}
+  endDayViewBedrockText: {fileID: 0}
+  endDayViewDragonStoneText: {fileID: 0}
+  endDayViewDirtParent: {fileID: 0}
+  endDayViewStoneParent: {fileID: 0}
+  endDayViewBedrockParent: {fileID: 0}
+  endDayViewDragonStoneParent: {fileID: 0}
+  playerInventory: {fileID: 1070133540470240815}
+  playerController: {fileID: 0}
+  shopManager: {fileID: 0}
+  purchaseManager: {fileID: 0}
+  currentDay: 1
+--- !u!114 &137312466992842558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905151071861528357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862b2f41ba1c200479910da3f21b747f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  playerController: {fileID: 0}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
@@ -20,11 +21,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite PaginationHoverSprite;
     [SerializeField] private float pageTurnDuration = 0.25f;
 
-    [Header("Start New Day")]
-    [SerializeField] private Text startNextDayButton;
-    [SerializeField] private Color startButtonNormalColor = new Color(1f, 0.843f, 0f);
-    [SerializeField] private Color startButtonHoverColor = new Color(1f, 0.647f, 0f);
-
+    public UnityAction OnPageChange;
 
     // Unity event called from shop next button
     public void CancelHoverPaginationButton()
@@ -53,6 +50,7 @@ public class ShopManager : MonoBehaviour
         upgradesPage.SetActive(false);
         CancelHoverPaginationButton();
         shopAnimator.SetTrigger("Turn Next Page");
+        OnPageChange?.Invoke();
 
         yield return new WaitForSeconds(pageTurnDuration);
 
@@ -71,6 +69,7 @@ public class ShopManager : MonoBehaviour
         nextDayPage.SetActive(false);
         CancelHoverPaginationButton();
         shopAnimator.SetTrigger("Turn Previous Page");
+        OnPageChange?.Invoke();
 
         yield return new WaitForSeconds(pageTurnDuration);
 
@@ -80,19 +79,15 @@ public class ShopManager : MonoBehaviour
     }
 
 
-    // Unity event called from shop next button
-    public void startNewDay()
+    public void ResetShopUI()
     {
-        this.gameObject.SetActive(false);
-    }
-
-    public void HoverstartNewDayButton()
-    {
-        startNextDayButton.color = startButtonHoverColor;
-    }
-
-    public void ExitHoverstartNewDayButton()
-    {
-        startNextDayButton.color = startButtonNormalColor;
+        previousPageButton.SetActive(false);
+        consumablesPage.SetActive(false);
+        nextDayPage.SetActive(false);
+        CancelHoverPaginationButton();
+        shopAnimator.SetTrigger("Turn Previous Page");
+        nextPageButton.SetActive(true);
+        toolsPage.SetActive(true);
+        upgradesPage.SetActive(true);
     }
 }

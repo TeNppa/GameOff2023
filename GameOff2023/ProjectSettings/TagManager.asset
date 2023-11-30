@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - torch
+  - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX

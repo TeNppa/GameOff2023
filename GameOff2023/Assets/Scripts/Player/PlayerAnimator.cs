@@ -8,7 +8,7 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private float lightSwapSpeed = 10;
     private float lightTargetZRotation = -90f;
     private Animator animator;
-
+    private float spriteFlipDeadzoneSize = 0.15f;
 
     void Start()
     {
@@ -28,9 +28,21 @@ public class PlayerAnimator : MonoBehaviour
     }
 
 
-    public void SetIsJumping(bool isJumping)
+    public void SetIsClimbing(bool isClimbing)
     {
-        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isClimbing", isClimbing);
+    }
+
+
+    public void SetClimbingMoving(bool isClimbingMoving)
+    {
+        animator.SetBool("isClimbingMoving", isClimbingMoving);
+    }
+
+
+    public void TriggerJumping()
+    {
+        animator.SetTrigger("Jump");
     }
 
 
@@ -80,18 +92,36 @@ public class PlayerAnimator : MonoBehaviour
 
     private void HandleSpriteFlipping()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Compare the player's position to the mouse position
-        if (mousePosition.x < transform.position.x)
+        if (playerController.isClimbing)
         {
-            spriteRenderer.flipX = true;
-            lightTargetZRotation = 90f;
+            // Incase player is climbing, always point to the climb direction
+            if (playerController.isFacingRight)
+            {
+                spriteRenderer.flipX = false;
+                lightTargetZRotation = -90f;
+            }
+            else
+            {
+                spriteRenderer.flipX = true;
+                lightTargetZRotation = 90f;
+            }
         }
         else
         {
-            spriteRenderer.flipX = false;
-            lightTargetZRotation = -90f;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // Compare the player's position to the mouse position
+            var worldDeadzone = transform.right * (spriteFlipDeadzoneSize * (spriteRenderer.flipX ? 1 : -1));
+            if (mousePosition.x < (transform.position + worldDeadzone).x)
+            {
+                spriteRenderer.flipX = true;
+                lightTargetZRotation = 90f;
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+                lightTargetZRotation = -90f;
+            }
         }
 
         // Smoothly rotate the headlight to the target direction

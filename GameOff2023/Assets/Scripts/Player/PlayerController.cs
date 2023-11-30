@@ -4,9 +4,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
-using UnityEngine.U2D;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,43 +15,66 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D torchChecker;
     [SerializeField] private LayerMask digLayer;
 
+    [Header("Movement")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float climbSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldownSeconds;
-
     [SerializeField] private Vector2 groundCheckBoxSize;
     [SerializeField] private float groundCheckCastDistance;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Vector2 climbCheckBoxSize;
     [SerializeField] private float climbCheckCastDistance;
 
+    [Header("Stamina costs")]
+    [SerializeField] private int passiveStaminaCost = 1;
+    [SerializeField] private int climbStaminaCost = 3;
+    [SerializeField] private int jumpStaminaCost = 5;
+    [SerializeField] [Range(0,1)]private float staminaPotionReplenish = 0.2f;
+    private bool isPassiveStaminaCostActive = true;
+    
+    [Header("Tools")]
     [SerializeField] private ToolBase startingTool;
-
-    public UnityAction<Vector3, float> OnDig;
     public ToolBase CurrentTool;
-    public bool Digging;
+    
+    public UnityAction<Vector3, float> OnJump;
+    public UnityAction<Vector3, float> OnLand; // TODO: Implement.
+    public UnityAction<Vector3, float> OnWalk;
+    public UnityAction<Vector3, float> OnClimb;
+    public UnityAction<Vector3, float> OnDig;
+    public UnityAction OnPlaceTorch;
+    [HideInInspector] public bool Digging;
+    [HideInInspector] public bool isFacingRight = true;
+    [HideInInspector] public bool isClimbing = false;
+    [HideInInspector] public bool isClimbingMoving = false;
     private Vector3 lookPosition;
-    public float diggingDistance = 3;
-    private float runSpeed = 0.1f;
-    private float runSpeedUpgrade = 0.125f;
-
-    private bool isFacingRight;
     private float horizontal;
     private float vertical;
-    private float jumpCooldownEnd;
+    private bool shouldJump = false;
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    private bool isJumping = false;
+    private bool isGrounded = true;
+    private float tickrate = 0.6f;
 
     private void Start()
     {
-        InvokeRepeating("PassiveStaminaDrain", 1, 1);
+        InvokeRepeating(nameof(PassiveStaminaDrain), 1, 1);
+        InvokeRepeating(nameof(TriggerMovementActions), tickrate, tickrate);
         EquipTool(startingTool);
     }
 
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        Movement();
+        Digging = false;
+        isPassiveStaminaCostActive = true;
+    }
+
+    private void OnDisable()
+    {
+        isPassiveStaminaCostActive = false;
     }
 
 
@@ -64,44 +84,97 @@ public class PlayerController : MonoBehaviour
         Dig();
         UseTorch();
         UseStaminaPotion();
+        Movement();
+    }
+
+
+    private void FixedUpdate()
+    {
+        Movementphysics();
+        isGrounded = IsGrounded();
     }
 
 
     private void PassiveStaminaDrain()
     {
-        if (playerInventory.RemoveStamina(1) == false)
+        if (!isPassiveStaminaCostActive) return;
+
+        int passiveEnergyCost = passiveStaminaCost;
+
+        if (isClimbing)
         {
-            Debug.Log("Player is out of stamina!");
+            passiveEnergyCost = climbStaminaCost;
+        }
+
+        playerInventory.RemoveStamina(passiveEnergyCost);
+    }
+
+    private void TriggerMovementActions()
+    {
+        if (isClimbing)
+        {
+            OnClimb?.Invoke(transform.position, Math.Max(0, MathF.Abs(vertical)));
+        }
+        else if (IsGrounded() && rb.velocity.magnitude > 0)
+        {
+            OnWalk?.Invoke(transform.position, rb.velocity.magnitude);
+        }
+    }
+    
+    void Movement()
+    {
+        // Capture movement
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        // Coyote jumping
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        // Jumping inputs
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
+        {
+            shouldJump = true;
+            coyoteTimeCounter = 0;
+            playerAnimator.TriggerJumping();
+        }
+
+        // Variable jump height
+        if (Input.GetButtonUp("Jump") && isJumping)
+        {
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+            isJumping = false;
         }
     }
 
 
-    void Movement()
+    void Movementphysics()
     {
         #region Jumping
-
-        if (Input.GetButton("Jump") && IsGrounded() && jumpCooldownEnd <= Time.time)
+        if (shouldJump)
         {
-            jumpCooldownEnd = Time.time + jumpCooldownSeconds;
+            playerInventory.RemoveStamina(jumpStaminaCost);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-            
-            playerAnimator.SetIsJumping(true);
+            shouldJump = false;
+            isJumping = true;
+            OnJump?.Invoke(transform.position, jumpForce);
         }
-        else
-        {
-            playerAnimator.SetIsJumping(false);
-        }
-
         #endregion
+
         #region Walking
-
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
         rb.velocity = new Vector2(horizontal * walkSpeed, rb.velocity.y);
 
-        if (horizontal != 0 || vertical != 0)
+        if (horizontal != 0)
         {
             playerAnimator.SetIsMoving(true);
         }
@@ -109,43 +182,63 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetIsMoving(false);
         }
-
         #endregion
-        #region Climbing
 
-        if (vertical > 0 && CanClimb())
+        #region Climbing
+        if (CanClimb() && !isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, climbSpeed);
+            isClimbing = true;
+            isClimbingMoving = false;
+
+            if (vertical != 0)
+            {
+                isClimbingMoving = true;
+                rb.velocity = new Vector2(0, climbSpeed * vertical);
+            }
+            else
+            {
+                isClimbingMoving = false;
+            }
+        }
+        else
+        {
+            isClimbing = false;
+            isClimbingMoving = false;
         }
 
+        playerAnimator.SetClimbingMoving(isClimbingMoving);
+        playerAnimator.SetIsClimbing(isClimbing);
         #endregion
-        #region Facing
 
+        #region Facing
         if (horizontal > .01f)
         {
             climbCheckCastDistance = Math.Abs(climbCheckCastDistance);
             climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+            isFacingRight = true;
         }
 
         if (horizontal < -.01f)
         {
             climbCheckCastDistance = -Math.Abs(climbCheckCastDistance);
             climbCheckBoxSize = new Vector2(Math.Abs(climbCheckBoxSize.x), climbCheckBoxSize.y);
+            isFacingRight = false;
         }
-
         #endregion
     }
 
 
     public void ActivateRunBoost()
     {
-        runSpeed = runSpeedUpgrade;
+        walkSpeed *= 1.25f;
     }
+
 
     public void EquipTool(ToolBase newTool)
     {
         CurrentTool = newTool;
     }
+
 
     void UseStaminaPotion()
     {
@@ -154,7 +247,7 @@ public class PlayerController : MonoBehaviour
             if (playerInventory.HasStaminaPotions())
             {
                 playerInventory.RemoveStaminaPotion(1);
-                playerInventory.AddStamina(200);
+                playerInventory.AddStamina(Mathf.Floor(playerInventory.GetMaxStamina() * staminaPotionReplenish));
             }
         }
     }
@@ -164,6 +257,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.T))
         {
+            OnPlaceTorch?.Invoke();
             List<GameObject> nearbyTorches = GetNearbyTorches();
             if (nearbyTorches.Count > 0)
             {
@@ -206,9 +300,11 @@ public class PlayerController : MonoBehaviour
 
     void Dig()
     {
-        if (Digging)
+        if (Digging || isClimbing || !isGrounded)
+        {
             return;
-    
+        }
+
         if (Input.GetMouseButton(0))
         {
             playerAnimator.TriggerDigging(CurrentTool.Tier);
@@ -220,8 +316,11 @@ public class PlayerController : MonoBehaviour
     // Called from animator to time block breaking with animations
     public void BreakBlock()
     {
-        OnDig?.Invoke(lookPosition, CurrentTool.Damage);
-        playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
+        if (playerInventory.HasStamina())
+        {
+            OnDig?.Invoke(lookPosition, CurrentTool.Damage);
+            playerInventory.RemoveStamina(CurrentTool.EnergyConsumption);
+        }
     }
 
 
@@ -233,6 +332,12 @@ public class PlayerController : MonoBehaviour
 
     void MouseLook()
     {
+        if (isClimbing || !isGrounded)
+        {
+            Highlight.SetActive(false);
+            return;
+        }
+
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
         Vector3 direction = mousePos - transform.position;
 
@@ -271,10 +376,12 @@ public class PlayerController : MonoBehaviour
         );
     }
 
+
     bool IsGrounded()
     {
         return Physics2D.BoxCast(transform.position, groundCheckBoxSize, 0, -transform.up, groundCheckCastDistance, groundLayer);
     }
+
 
     bool CanClimb()
     {
@@ -286,6 +393,7 @@ public class PlayerController : MonoBehaviour
             climbCheckCastDistance,
             groundLayer);
     }
+
 
     private void OnDrawGizmos()
     {

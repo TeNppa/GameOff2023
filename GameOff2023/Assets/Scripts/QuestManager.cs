@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestManager : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class QuestManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject submitScore;
+    [SerializeField] private Text gameCompletedText;
+    [SerializeField] private DayManager dayManager;
 
     private int questIndex = 1;
 
@@ -138,16 +145,17 @@ public class QuestManager : MonoBehaviour
 
     private void Quest6Handler()
     {
-        // TODO: get player current tool tier and see if it is 5 ( or whatever best is)
-        int progress = 1;
-        quest6Progression.text = "Tool obtainer: " + progress + "/1";
-
-        if (progress >= 1)
+        if (playerController.CurrentTool.Tier == 5)
         {
+            quest6Progression.text = "Tool obtained: 1/1";
             quest6.SetActive(false);
             quest7.SetActive(true);
             questIndex++;
             HandQuestRewards(25, 25, 25);
+        }
+        else
+        {
+            quest6Progression.text = "Tool obtained: 0/1";
         }
     }
 
@@ -161,8 +169,26 @@ public class QuestManager : MonoBehaviour
             quest7.SetActive(false);
             questIndex++;
             HandQuestRewards(1337);
+
+            // Play end credits
+            credits.SetActive(true);
+            mainCamera.transform.parent = null;
+            Invoke("ShowLeaderboard", 21f);
         }
     }
+
+    public void ShowLeaderboard()
+    {
+        gameCompletedText.text = "Congratulations, you cleared the game in " + dayManager.currentDay + " days.";
+        submitScore.SetActive(true);
+    }
+
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
     private void HandQuestRewards(int? gold = null, int? amethyst = null, int? diamonds = null, int? maxStamina = null)
     {

@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class MainMenuCamera : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private Transform defaultPosition;
+    [Header("Camera")]
+    [SerializeField] private Transform mainCamera;
+    [SerializeField] private Transform menuPosition;
     [SerializeField] private Transform leaderboardPosition;
     [SerializeField] private Transform creditsPosition;
     [SerializeField] private float speed = 1.0f;
+
+    [Header("Animators")]
+    [SerializeField] private Animator MenuAnimator;
+    [SerializeField] private Animator CreditsAnimator;
+    [SerializeField] private Animator LeaderboardAnimator;
+
+    [HideInInspector] public bool isAtMenu = false;
     private Vector3 startPosition;
     private Vector3 endPosition;
     private float journeyLength;
@@ -21,24 +29,44 @@ public class MainMenuCamera : MonoBehaviour
 
     private void Update()
     {
-        AnimateCamera();
+        Inputs();
+        AnimatemainCamera();
+        UpdateAnimatorParameters();
+        isAtMenu = mainCamera.position.y == menuPosition.position.y;
     }
 
 
-    private void AnimateCamera()
+    private void Inputs()
     {
-        animator.SetBool("showMenu", transform.position.y == defaultPosition.position.y);
-        animator.SetBool("showCredits", transform.position.y == creditsPosition.position.y);
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            if (mainCamera.position.y == creditsPosition.position.y || mainCamera.position.y == leaderboardPosition.position.y)
+            {
+                MoveToDefaultPosition();
+            }
+        }
+    }
 
-        // Move camera towards target position
+
+    private void UpdateAnimatorParameters()
+    {
+        MenuAnimator.SetBool("isVisible", mainCamera.position.y == menuPosition.position.y);
+        CreditsAnimator.SetBool("isVisible", mainCamera.position.y == creditsPosition.position.y);
+        LeaderboardAnimator.SetBool("isVisible", mainCamera.position.y == leaderboardPosition.position.y);
+    }
+
+
+    private void AnimatemainCamera()
+    {
+        // Move mainCamera towards target position
         float newY = Mathf.SmoothStep(startPosition.y, endPosition.y, (Time.time - startTime) * speed / journeyLength);
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        mainCamera.position = new Vector3(mainCamera.position.x, newY, mainCamera.position.z);
     }
 
 
     public void MoveToDefaultPosition()
     {
-        SetDestination(defaultPosition.position.y);
+        SetDestination(menuPosition.position.y);
     }
 
 
@@ -56,8 +84,8 @@ public class MainMenuCamera : MonoBehaviour
 
     private void SetDestination(float posY)
     {
-        startPosition = transform.position;
-        endPosition = new Vector3(transform.position.x, posY, transform.position.z);
+        startPosition = mainCamera.position;
+        endPosition = new Vector3(mainCamera.position.x, posY, mainCamera.position.z);
         startTime = Time.time;
         journeyLength = Mathf.Abs(startPosition.y - posY);
     }

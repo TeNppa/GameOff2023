@@ -9,12 +9,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject GroundTileMap;
     [SerializeField] private GameObject Player;
+    [SerializeField] private ShopManager ShopManager;
 
     private PlayerController playerCtrlr;
-    private MapManager mapManager;
+    private MapManager mapManager;  
     public PlayerInventory playerInventory;
-
-
+    [HideInInspector] public AudioManager audioManager;
+    
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         mapManager = GroundTileMap.GetComponent<MapManager>();
         playerCtrlr = Player.GetComponent<PlayerController>();
         playerInventory = gameObject.GetComponent<PlayerInventory>();
+        audioManager = Player.GetComponentInChildren<AudioManager>();
         ConnectEvents();
     }
 
@@ -38,6 +40,13 @@ public class GameManager : MonoBehaviour
     void ConnectEvents()
     {
         playerCtrlr.OnDig += mapManager.Dig;
+        playerCtrlr.OnDig += audioManager.Dig;
+        playerCtrlr.OnClimb += audioManager.Climb;
+        playerCtrlr.OnWalk += audioManager.Walk;
+        playerCtrlr.OnJump += audioManager.Jump;
+        playerCtrlr.OnLand += audioManager.Land;
+        playerCtrlr.OnPlaceTorch += audioManager.PlaceItem;
         mapManager.OnEndDig += playerCtrlr.EndDig;
+        ShopManager.OnPageChange += audioManager.PageTurn;
     }
 }

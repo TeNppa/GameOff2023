@@ -1,13 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
 public class MainMenuController : MonoBehaviour
 {
-    private enum MenuOption { StartGame, Settings, Credits, Leaderboards, QuitGame }
+    private enum MenuOption { StartGame, Leaderboards, Credits, QuitGame }
     private MenuOption menuIndex = MenuOption.StartGame;
     [SerializeField] private MainMenuCamera mainMenuCamera;
-    [SerializeField] private Text cancelCreditsText;
     [SerializeField] private Text[] menuButtons;
     [SerializeField] private Color activeColor = Color.yellow;
     [SerializeField] private Color unactiveColor = Color.white;
@@ -23,8 +23,11 @@ public class MainMenuController : MonoBehaviour
 
     private void Update()
     {
-        CheckActivationKeys();
-        CheckNavigationKeys();
+        if (mainMenuCamera.isAtMenu)
+        {
+            CheckActivationKeys();
+            CheckNavigationKeys();
+        }
     }
 
 
@@ -67,9 +70,8 @@ public class MainMenuController : MonoBehaviour
         switch (menuIndex)
         {
             case MenuOption.StartGame: StartGame(); break;
-            case MenuOption.Settings: OpenSettings(); break;
-            case MenuOption.Credits: OpenCredits(); break;
             case MenuOption.Leaderboards: OpenLeaderboards(); break;
+            case MenuOption.Credits: OpenCredits(); break;
             case MenuOption.QuitGame: QuitGame(); break;
         }
     }
@@ -79,13 +81,6 @@ public class MainMenuController : MonoBehaviour
     public void HoverStartGameButtonEvent()
     {
         menuIndex = MenuOption.StartGame;
-        UpdateLinks();
-    }
-
-    // Unity mouse over event
-    public void HoverSettingsButtonEvent()
-    {
-        menuIndex = MenuOption.Settings;
         UpdateLinks();
     }
 
@@ -111,29 +106,9 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Unity mouse click event
-    public void MouseEnterCancelCredits()
-    {
-        cancelCreditsText.color = activeColor;
-        cancelCreditsText.fontSize = activeFontSize;
-    }
-
-    // Unity mouse click event
-    public void MouseExitCancelCredits()
-    {
-        cancelCreditsText.color = unactiveColor;
-        cancelCreditsText.fontSize = unactiveFontSize;
-    }
-
-    // Unity mouse click event
     public void StartGame()
     {
-        Debug.Log("start game");
-    }
-
-    // Unity mouse click event
-    public void OpenSettings()
-    {
-        Debug.Log("Opened settings");
+        SceneManager.LoadScene("MainScene");
     }
 
     // Unity mouse click event
@@ -151,11 +126,17 @@ public class MainMenuController : MonoBehaviour
     // Unity mouse click event
     public void QuitGame()
     {
-        Debug.Log("Quit game");
+        Application.Quit();
     }
 
     // Unity mouse click event
     public void CancelCredits()
+    {
+        mainMenuCamera.MoveToDefaultPosition();
+    }
+
+    // Unity mouse click event
+    public void ReturnLeaderboard()
     {
         mainMenuCamera.MoveToDefaultPosition();
     }
