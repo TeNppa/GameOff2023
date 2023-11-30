@@ -186,10 +186,10 @@ public class PlayerController : MonoBehaviour
         {
             isClimbing = true;
 
-            if (vertical > 0)
+            if (vertical != 0)
             {
                 playerAnimator.SetIsMoving(false);
-                rb.velocity = new Vector2(0, climbSpeed);
+                rb.velocity = new Vector2(0, climbSpeed * vertical);
             }
         }
         else
