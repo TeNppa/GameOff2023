@@ -221,14 +221,21 @@ public class MapManager : MonoBehaviour
         {
             var groundTile = groundMap[mapPos.x, mapPos.y];
             var valuablesTile = valuablesMap[mapPos.x, mapPos.y];
-            if (groundTile != 0)
+            var canBreak = false;
+
+            if (groundTile == 1) canBreak = true;
+            else if (groundTile == 2 && dmg > 2) canBreak = true;
+            else if(groundTile == 3 && dmg > 6) canBreak = true;
+            else if(groundTile == 4 && dmg > 10) canBreak = true;
+
+            if (groundTile != 0 && canBreak)
             {
                 GameManager.Instance.AddGround(groundTile - 1, 1);
                 groundTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
                 groundMap[mapPos.x, mapPos.y] = 0;
             }
 
-            if (valuablesTile != 0)
+            if (valuablesTile != 0 && canBreak)
             {
                 GameManager.Instance.AddValuable(valuablesTile - 1, 1);
                 valuablesTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
