@@ -143,6 +143,7 @@ MonoBehaviour:
   Digging: 0
   isFacingRight: 1
   isClimbing: 0
+  isClimbingMoving: 0
 --- !u!1 &1189129430014888854
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +230,34 @@ MonoBehaviour:
       Data3: 1663006653
       Data4: 1114243772
     Path: event:/Player/PlayerClimbing
+  <PageTurn>k__BackingField:
+    Guid:
+      Data1: 795101326
+      Data2: 1263162513
+      Data3: -812405111
+      Data4: -1733973942
+    Path: event:/SFX/PageTurn
+  <Jump>k__BackingField:
+    Guid:
+      Data1: -735215863
+      Data2: 1332831302
+      Data3: 1379496629
+      Data4: 319771839
+    Path: event:/Player/PlayerJump
+  <Land>k__BackingField:
+    Guid:
+      Data1: -220491854
+      Data2: 1233965369
+      Data3: 2123592074
+      Data4: -901126944
+    Path: event:/Player/PlayerLand
+  <ItemPlace>k__BackingField:
+    Guid:
+      Data1: -812058069
+      Data2: 1255694399
+      Data3: -1571719790
+      Data4: 1019706765
+    Path: event:/SFX/ItemPlace
 --- !u!1 &2229298709384645410
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 2229298709384645410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.052, y: 0.362, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -458,6 +487,7 @@ MonoBehaviour:
   playerController: {fileID: 8829420660106092979}
   headlight: {fileID: 5008025657092793781}
   lightSwapSpeed: 10
+  upwardLightDistanceThreshold: 10
 --- !u!95 &5660305546286734548
 Animator:
   serializedVersion: 5
@@ -627,7 +657,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 4
+  m_PointLightOuterRadius: 3.2
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -679,6 +709,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8975625538920520563}
     m_Modifications:
+    - target: {fileID: 1372207015485195163, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 170111699640925248}
     - target: {fileID: 3572793925744946768, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -721,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 6.0104165
+      value: 5.890625
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_BackGroundColor.b
