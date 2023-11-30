@@ -38,10 +38,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ToolBase startingTool;
     public ToolBase CurrentTool;
     
-    [HideInInspector] public UnityAction<Vector3, float> OnJump;
-    [HideInInspector] public UnityAction<Vector3, float> OnWalk;
-    [HideInInspector] public UnityAction<Vector3, float> OnClimb;
-    [HideInInspector] public UnityAction<Vector3, float> OnDig;
+    public UnityAction<Vector3, float> OnJump;
+    public UnityAction<Vector3, float> OnWalk;
+    public UnityAction<Vector3, float> OnClimb;
+    public UnityAction<Vector3, float> OnDig;
     [HideInInspector] public bool Digging;
     [HideInInspector] public bool isFacingRight = true;
     [HideInInspector] public bool isClimbing = false;

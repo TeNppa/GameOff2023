@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject GroundTileMap;
     [SerializeField] private GameObject Player;
+    [SerializeField] private ShopManager ShopManager;
 
     private PlayerController playerCtrlr;
-    private MapManager mapManager;
+    private MapManager mapManager;  
     public PlayerInventory playerInventory;
     [HideInInspector] public AudioManager audioManager;
     
@@ -43,5 +44,6 @@ public class GameManager : MonoBehaviour
         playerCtrlr.OnClimb += audioManager.Climb;
         playerCtrlr.OnWalk += audioManager.Walk;
         mapManager.OnEndDig += playerCtrlr.EndDig;
+        ShopManager.OnPageChange += audioManager.PageTurn;
     }
 }

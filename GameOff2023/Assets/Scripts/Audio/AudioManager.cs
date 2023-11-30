@@ -112,7 +112,7 @@ public class AudioManager : MonoBehaviour
 
         PlayOneShot(FMODEvents.Instance.Climbing, pos);
     }
-    
+
     public void Walk(Vector3 pos, float speed)
     {
         if (speed <= 0)
@@ -121,6 +121,11 @@ public class AudioManager : MonoBehaviour
         }
 
         PlayOneShot(FMODEvents.Instance.Footsteps, pos);
+    }
+
+    public void PageTurn()
+    {
+        PlayOneShot(FMODEvents.Instance.PageTurn, player.transform.position);
     }
 
     private void PlayOneShot(EventReference sound, Vector3 position)
