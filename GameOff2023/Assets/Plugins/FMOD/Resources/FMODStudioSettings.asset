@@ -653,6 +653,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Ambience
+  - Mob
   - Music
   - Player
   - SFX
