@@ -11477,10 +11477,10 @@ MonoBehaviour:
       amount: 250
     - text: {fileID: 2758859758948465555}
       currency: 1
-      amount: 100
+      amount: 75
     - text: {fileID: 5096134717507707080}
       currency: 2
-      amount: 100
+      amount: 75
   - identifier: upgrade_stamina
     prices:
     - text: {fileID: 8910331456389360285}
@@ -11518,7 +11518,7 @@ MonoBehaviour:
     prices:
     - text: {fileID: 7691307572978164118}
       currency: 0
-      amount: 2
+      amount: 1
     - text: {fileID: 2118046562136794652}
       currency: 1
       amount: 0
