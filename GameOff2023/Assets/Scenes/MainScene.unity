@@ -2472,12 +2472,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: chaseSpeed
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: dayManager
       value: 
       objectReference: {fileID: 874091338}
+    - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
+      propertyPath: searchAreaMax.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: searchAreaMin.y
       value: -150
@@ -3232,12 +3236,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: chaseSpeed
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: dayManager
       value: 
       objectReference: {fileID: 874091338}
+    - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
+      propertyPath: searchAreaMax.y
+      value: -200
+      objectReference: {fileID: 0}
     - target: {fileID: 7923315890569109401, guid: 84becd9343de3fd4197c144a863c11d0, type: 3}
       propertyPath: searchAreaMin.y
       value: -120
