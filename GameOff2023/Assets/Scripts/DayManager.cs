@@ -13,7 +13,6 @@ public class DayManager : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private Text dayOverText;
     [SerializeField] private Text dayText;
-    [SerializeField] private Text sleepButton;
     [SerializeField] private Text staminaIncreaseText;
     [SerializeField] private Text endDayViewDayText;
     [SerializeField] private Text endDayViewDirtText;
@@ -31,7 +30,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private ShopManager shopManager;
     [SerializeField] private PurchaseManager purchaseManager;
 
-    private int currentDay = 1;
+    public int currentDay = 1;
 
 
     private void Start()
@@ -128,16 +127,6 @@ public class DayManager : MonoBehaviour
         shop.SetActive(true);
         dayText.text = currentDay.ToString();
         player.position = startingPosition.position;
-    }
-
-    public void HoverSleepButton()
-    {
-        sleepButton.color = new Color(1f, 0.647f, 0f);
-    }
-
-    public void ExitHoverSleepButton()
-    {
-        sleepButton.color = Color.white;
     }
 
 

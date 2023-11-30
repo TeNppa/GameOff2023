@@ -8,7 +8,6 @@ public class MainMenuController : MonoBehaviour
     private enum MenuOption { StartGame, Leaderboards, Credits, QuitGame }
     private MenuOption menuIndex = MenuOption.StartGame;
     [SerializeField] private MainMenuCamera mainMenuCamera;
-    [SerializeField] private Text cancelCreditsText;
     [SerializeField] private Text[] menuButtons;
     [SerializeField] private Color activeColor = Color.yellow;
     [SerializeField] private Color unactiveColor = Color.white;
@@ -24,8 +23,11 @@ public class MainMenuController : MonoBehaviour
 
     private void Update()
     {
-        CheckActivationKeys();
-        CheckNavigationKeys();
+        if (mainMenuCamera.isAtMenu)
+        {
+            CheckActivationKeys();
+            CheckNavigationKeys();
+        }
     }
 
 
@@ -104,20 +106,6 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Unity mouse click event
-    public void MouseEnterCancelCredits()
-    {
-        cancelCreditsText.color = activeColor;
-        cancelCreditsText.fontSize = activeFontSize;
-    }
-
-    // Unity mouse click event
-    public void MouseExitCancelCredits()
-    {
-        cancelCreditsText.color = unactiveColor;
-        cancelCreditsText.fontSize = unactiveFontSize;
-    }
-
-    // Unity mouse click event
     public void StartGame()
     {
         SceneManager.LoadScene("MainScene");
@@ -138,11 +126,17 @@ public class MainMenuController : MonoBehaviour
     // Unity mouse click event
     public void QuitGame()
     {
-        Debug.Log("Quit game");
+        Application.Quit();
     }
 
     // Unity mouse click event
     public void CancelCredits()
+    {
+        mainMenuCamera.MoveToDefaultPosition();
+    }
+
+    // Unity mouse click event
+    public void ReturnLeaderboard()
     {
         mainMenuCamera.MoveToDefaultPosition();
     }

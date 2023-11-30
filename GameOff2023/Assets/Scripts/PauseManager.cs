@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private Text resumeButton;
-    [SerializeField] private Text restartButton;
-    [SerializeField] private Text quitButton;
     [SerializeField] private PlayerController playerController;
     private Enemy[] enemies;
     private bool isPaused = false;
@@ -65,32 +62,5 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
         // Small delay to avoid digging when clicking UI
         Invoke("UpdateGameStatus", 0.1f);
-    }
-
-    public void HoverQuitGameButton()
-    {
-        quitButton.color = new Color(1f, 0.647f, 0f);
-    }
-    public void ExitHoverQuitGameButton()
-    {
-        quitButton.color = Color.white;
-    }
-
-    public void HoverRestartGameButton()
-    {
-        restartButton.color = new Color(1f, 0.647f, 0f);
-    }
-    public void ExitHoverRestartGameButton()
-    {
-        restartButton.color = Color.white;
-    }
-
-    public void HoverResumeGameButton()
-    {
-        resumeButton.color = new Color(1f, 0.647f, 0f);
-    }
-    public void ExitHoverResumeGameButton()
-    {
-        resumeButton.color = Color.white;
     }
 }

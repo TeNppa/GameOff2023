@@ -20,11 +20,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite PaginationHoverSprite;
     [SerializeField] private float pageTurnDuration = 0.25f;
 
-    [Header("Start New Day")]
-    [SerializeField] private Text startNextDayButton;
-    [SerializeField] private Color startButtonNormalColor = new Color(1f, 0.843f, 0f);
-    [SerializeField] private Color startButtonHoverColor = new Color(1f, 0.647f, 0f);
-
 
     // Unity event called from shop next button
     public void CancelHoverPaginationButton()
@@ -90,17 +85,5 @@ public class ShopManager : MonoBehaviour
         nextPageButton.SetActive(true);
         toolsPage.SetActive(true);
         upgradesPage.SetActive(true);
-    }
-
-
-    // Unity event called from shop next button
-    public void HoverstartNewDayButton()
-    {
-        startNextDayButton.color = startButtonHoverColor;
-    }
-
-    public void ExitHoverstartNewDayButton()
-    {
-        startNextDayButton.color = startButtonNormalColor;
     }
 }

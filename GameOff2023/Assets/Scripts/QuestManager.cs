@@ -30,6 +30,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject submitScore;
+    [SerializeField] private Text gameCompletedText;
+    [SerializeField] private DayManager dayManager;
 
     private int questIndex = 1;
 
@@ -170,8 +173,14 @@ public class QuestManager : MonoBehaviour
             // Play end credits
             credits.SetActive(true);
             mainCamera.transform.parent = null;
-            Invoke("EndGame", 22f);
+            Invoke("ShowLeaderboard", 21f);
         }
+    }
+
+    public void ShowLeaderboard()
+    {
+        gameCompletedText.text = "Congratulations, you cleared the game in " + dayManager.currentDay + " days.";
+        submitScore.SetActive(true);
     }
 
 
