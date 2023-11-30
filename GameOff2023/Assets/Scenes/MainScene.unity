@@ -3322,8 +3322,52 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Path
+      value: event:/Player/PlayerJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Path
+      value: event:/Player/PlayerLand
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: <PageTurn>k__BackingField.Path
       value: event:/SFX/PageTurn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Path
+      value: event:/SFX/ItemPlace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data1
+      value: -735215863
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data2
+      value: 1332831302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data3
+      value: 1379496629
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data4
+      value: 319771839
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data1
+      value: -220491854
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data2
+      value: 1233965369
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data3
+      value: 2123592074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data4
+      value: -901126944
       objectReference: {fileID: 0}
     - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: <PageTurn>k__BackingField.Guid.Data1
@@ -3340,6 +3384,22 @@ PrefabInstance:
     - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: <PageTurn>k__BackingField.Guid.Data4
       value: -1733973942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data1
+      value: -812058069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data2
+      value: 1255694399
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data3
+      value: -1571719790
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data4
+      value: 1019706765
       objectReference: {fileID: 0}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight

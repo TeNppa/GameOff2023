@@ -35,6 +35,18 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Page turn SFX")]
     [field: SerializeField]
     public EventReference PageTurn { get; private set; }
+    
+    [field: Header("Jump SFX")]
+    [field: SerializeField]
+    public EventReference Jump { get; private set; }
+    
+    [field: Header("Land SFX")]
+    [field: SerializeField]
+    public EventReference Land { get; private set; }
+    
+    [field: Header("Item Place SFX")]
+    [field: SerializeField]
+    public EventReference ItemPlace { get; private set; }
 
     private void Awake()
     {
