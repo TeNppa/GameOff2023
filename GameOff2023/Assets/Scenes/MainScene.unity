@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3321,6 +3321,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Path
+      value: event:/Player/PlayerJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Path
+      value: event:/Player/PlayerLand
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <PageTurn>k__BackingField.Path
+      value: event:/SFX/PageTurn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Path
+      value: event:/SFX/ItemPlace
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data1
+      value: -735215863
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data2
+      value: 1332831302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data3
+      value: 1379496629
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Jump>k__BackingField.Guid.Data4
+      value: 319771839
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data1
+      value: -220491854
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data2
+      value: 1233965369
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data3
+      value: 2123592074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <Land>k__BackingField.Guid.Data4
+      value: -901126944
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <PageTurn>k__BackingField.Guid.Data1
+      value: 795101326
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <PageTurn>k__BackingField.Guid.Data2
+      value: 1263162513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <PageTurn>k__BackingField.Guid.Data3
+      value: -812405111
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <PageTurn>k__BackingField.Guid.Data4
+      value: -1733973942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data1
+      value: -812058069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data2
+      value: 1255694399
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data3
+      value: -1571719790
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: <ItemPlace>k__BackingField.Guid.Data4
+      value: 1019706765
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752884528685433297, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 117116442}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
       value: 
@@ -3510,6 +3594,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 117116442}
+    - target: {fileID: 3555197610470542227, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: ShopManager
+      value: 
+      objectReference: {fileID: 418153559}
     - target: {fileID: 3555197610470542227, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: GroundTileMap
       value: 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite PaginationHoverSprite;
     [SerializeField] private float pageTurnDuration = 0.25f;
 
+    public UnityAction OnPageChange;
 
     // Unity event called from shop next button
     public void CancelHoverPaginationButton()
@@ -48,6 +50,7 @@ public class ShopManager : MonoBehaviour
         upgradesPage.SetActive(false);
         CancelHoverPaginationButton();
         shopAnimator.SetTrigger("Turn Next Page");
+        OnPageChange?.Invoke();
 
         yield return new WaitForSeconds(pageTurnDuration);
 
@@ -66,6 +69,7 @@ public class ShopManager : MonoBehaviour
         nextDayPage.SetActive(false);
         CancelHoverPaginationButton();
         shopAnimator.SetTrigger("Turn Previous Page");
+        OnPageChange?.Invoke();
 
         yield return new WaitForSeconds(pageTurnDuration);
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7923315890569109401}
   - component: {fileID: 7989206882523860062}
   - component: {fileID: 7648651448283714951}
+  - component: {fileID: -5970698047611658756}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -172,3 +173,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.375618, y: 1.3760071}
   m_EdgeRadius: 0
+--- !u!114 &-5970698047611658756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696391659985276394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 820758402
+      Data2: 1290196615
+      Data3: -867146072
+      Data4: 506262139
+    Path: event:/Ghost/GhostIdle
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20

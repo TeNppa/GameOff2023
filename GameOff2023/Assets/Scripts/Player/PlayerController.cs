@@ -38,10 +38,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ToolBase startingTool;
     public ToolBase CurrentTool;
     
-    [HideInInspector] public UnityAction<Vector3, float> OnJump;
-    [HideInInspector] public UnityAction<Vector3, float> OnWalk;
-    [HideInInspector] public UnityAction<Vector3, float> OnClimb;
-    [HideInInspector] public UnityAction<Vector3, float> OnDig;
+    public UnityAction<Vector3, float> OnJump;
+    public UnityAction<Vector3, float> OnLand; // TODO: Implement.
+    public UnityAction<Vector3, float> OnWalk;
+    public UnityAction<Vector3, float> OnClimb;
+    public UnityAction<Vector3, float> OnDig;
+    public UnityAction OnPlaceTorch;
     [HideInInspector] public bool Digging;
     [HideInInspector] public bool isFacingRight = true;
     [HideInInspector] public bool isClimbing = false;
@@ -255,6 +257,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.T))
         {
+            OnPlaceTorch?.Invoke();
             List<GameObject> nearbyTorches = GetNearbyTorches();
             if (nearbyTorches.Count > 0)
             {
