@@ -3325,6 +3325,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 5.625
       objectReference: {fileID: 0}
+    - target: {fileID: 6120069625252984647, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: <Jump>k__BackingField.Path
       value: event:/Player/PlayerJump
@@ -3498,6 +3502,10 @@ PrefabInstance:
       propertyPath: PlayerHeadLight
       value: 
       objectReference: {fileID: 518095350}
+    - target: {fileID: 383494482856144074, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: playerLightIntensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 936480824385137851, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: player
       value: 
