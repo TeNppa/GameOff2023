@@ -3401,6 +3401,10 @@ PrefabInstance:
       propertyPath: <ItemPlace>k__BackingField.Guid.Data4
       value: 1019706765
       objectReference: {fileID: 0}
+    - target: {fileID: 6752884528685433297, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 117116442}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
       value: 
