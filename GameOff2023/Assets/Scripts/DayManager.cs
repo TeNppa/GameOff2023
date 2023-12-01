@@ -31,6 +31,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private PurchaseManager purchaseManager;
 
     public int currentDay = 1;
+    private bool dayAlreadyEnded = false;
 
 
     private void Start()
@@ -50,6 +51,10 @@ public class DayManager : MonoBehaviour
 
     public void EndDay(bool died = false)
     {
+        // Make sure we never end the day twice
+        if (dayAlreadyEnded) return;
+        dayAlreadyEnded = true;
+
         if (died)
         {
             dayOverText.text = "You have collapsed in fear";
@@ -139,6 +144,7 @@ public class DayManager : MonoBehaviour
         playerInventory.SetStamina(playerInventory.GetMaxStamina());
         InvokeRepeating("CheckPlayerStamina", 1, 1);
         shopManager.ResetShopUI();
+        dayAlreadyEnded = false;
 
         // Add a little delay so clicking UI, doesn't make player dig
         Invoke("ActivatePlayer", 0.33f);
