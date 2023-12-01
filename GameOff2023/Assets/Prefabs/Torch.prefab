@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLightDistanceFromPlayer: 15
   updateInterval: 0.25
+  canBePickedUp: 0
 --- !u!212 &4038161605169418673
 SpriteRenderer:
   m_ObjectHideFlags: 0

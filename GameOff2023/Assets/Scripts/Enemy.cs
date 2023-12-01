@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -26,10 +27,12 @@ public class Enemy : MonoBehaviour
     private Vector3 targetPosition;
     private GameObject torchToDestroy;
     private bool reachedDest => Vector3.Distance(transform.position, targetPosition) < 0.1f;
+    private List<GameObject> torchBuffer;
 
 
     void Start()
     {
+        torchBuffer = new List<GameObject>();
         moveSpeed = baseSpeed;
         player = GameObject.FindWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
@@ -85,8 +88,16 @@ public class Enemy : MonoBehaviour
                 if (torchDestroyTimer <= 0)
                 {
                     Destroy(torchToDestroy);
+                    torchBuffer.Remove(torchToDestroy);
                     torchDestroyTimer = torchDestroyTime;
-                    ChangeState(EnemyMoveState.Patrolling);
+                    if (torchBuffer.Any())
+                    {
+                        GetTorchFromBuffer();
+                    }
+                    else
+                    {
+                        ChangeState(EnemyMoveState.Patrolling);
+                    }
                     return;
                 }
             }
@@ -122,9 +133,32 @@ public class Enemy : MonoBehaviour
                 moveState = EnemyMoveState.Patrolling;
                 break;
             case EnemyMoveState.GoingForTorch:
+                if (!torchBuffer.Any())
+                {
+                    ChangeState(EnemyMoveState.Patrolling);
+                    return;
+                }
                 moveState = EnemyMoveState.GoingForTorch;
                 moveSpeed = torchSpeed;
+                GetTorchFromBuffer();
                 break;
+        }
+
+    }
+    private void GetTorchFromBuffer()
+    {
+        if (torchBuffer.Any())
+        {
+            var torch = torchBuffer.First();
+            if (torch == null)
+            {
+                torchBuffer.Remove(torch);
+                GetTorchFromBuffer();
+                return;
+            }
+            targetPosition = torch.transform.position;
+            torchToDestroy = torch;
+            torch.tag = "TorchUnpickable";
         }
     }
 
@@ -142,21 +176,11 @@ public class Enemy : MonoBehaviour
         {
             dayManager.EndDay("feared");
         }
-        else if (other.gameObject.CompareTag("TorchAggro") && moveState != EnemyMoveState.GoingForTorch)
+        else if (other.gameObject.CompareTag("TorchAggro"))
         {
-            targetPosition = other.transform.position;
-            torchToDestroy = other.transform.parent.gameObject;
-            ChangeState(EnemyMoveState.GoingForTorch);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("TorchAggro") && moveState != EnemyMoveState.GoingForTorch)
-        {
-            targetPosition = other.transform.position;
-            torchToDestroy = other.transform.parent.gameObject;
-            ChangeState(EnemyMoveState.GoingForTorch);
+            torchBuffer.Add(other.transform.parent.gameObject);
+            if(moveState != EnemyMoveState.GoingForTorch)
+                ChangeState(EnemyMoveState.GoingForTorch);
         }
     }
 
