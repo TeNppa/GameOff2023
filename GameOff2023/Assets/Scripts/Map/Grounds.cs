@@ -16,4 +16,6 @@ public struct GroundTiles
 {
     public Grounds Name;
     public TileBase Tile;
+    public float MinDamage;
+    public float MaxHealth;
 }

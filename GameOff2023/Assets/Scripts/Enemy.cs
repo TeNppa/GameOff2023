@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -140,10 +142,20 @@ public class Enemy : MonoBehaviour
         {
             dayManager.EndDay("feared");
         }
-        else if (other.gameObject.CompareTag("Torch"))
+        else if (other.gameObject.CompareTag("TorchAggro") && moveState != EnemyMoveState.GoingForTorch)
         {
             targetPosition = other.transform.position;
-            torchToDestroy = other.gameObject;
+            torchToDestroy = other.transform.parent.gameObject;
+            ChangeState(EnemyMoveState.GoingForTorch);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("TorchAggro") && moveState != EnemyMoveState.GoingForTorch)
+        {
+            targetPosition = other.transform.position;
+            torchToDestroy = other.transform.parent.gameObject;
             ChangeState(EnemyMoveState.GoingForTorch);
         }
     }

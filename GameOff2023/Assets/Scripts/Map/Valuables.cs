@@ -17,7 +17,9 @@ public enum Valuables
 {
     Gold,
     Amethyst,
-    Diamond
+    Diamond,
+    Torch,
+    StaminaPotion
 }
 
 [Serializable]

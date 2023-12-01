@@ -65,13 +65,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isClimbingMoving = false;
     private Vector3 lookPosition;
     private Vector3 digPosition;
-    private float horizontal;
-    private float vertical;
-    private bool shouldJump = false;
+    public float horizontal;
+    public float vertical;
+    public bool shouldJump = false;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    private bool isJumping = false;
-    private bool isGrounded = true;
+    public bool isJumping = false;
+    public bool isGrounded = true;
     private float tickrate = 0.6f;
 
     // For gizmos
@@ -271,6 +271,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             shouldJump = false;
+            playerAnimator.StopJumpParticles();
             isJumping = true;
             OnJump?.Invoke(transform.position, jumpForce);
         }
