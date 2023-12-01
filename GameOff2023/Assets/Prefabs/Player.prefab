@@ -25170,6 +25170,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181131960200310197, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_Dithering
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7181131960200310197, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7181131960200310197, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
