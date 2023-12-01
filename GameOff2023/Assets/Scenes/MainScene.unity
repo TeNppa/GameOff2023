@@ -3331,7 +3331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2900110690842258914, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: orthographic size
-      value: 5.625
+      value: 5.6875
       objectReference: {fileID: 0}
     - target: {fileID: 6120069625252984647, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: m_PointLightOuterRadius
