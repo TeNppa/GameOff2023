@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using Unity.Burst.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
@@ -221,25 +222,21 @@ public class MapManager : MonoBehaviour
         {
             var groundTile = groundMap[mapPos.x, mapPos.y];
             var valuablesTile = valuablesMap[mapPos.x, mapPos.y];
-            var canBreak = false;
-
-            if (groundTile == 1) canBreak = true;
-            else if (groundTile == 2 && dmg > 2) canBreak = true;
-            else if(groundTile == 3 && dmg > 6) canBreak = true;
-            else if(groundTile == 4 && dmg > 10) canBreak = true;
-
-            if (groundTile != 0 && canBreak)
+            if (dmg >= groundTiles[groundTile-1].MinDamage)
             {
-                GameManager.Instance.AddGround(groundTile - 1, 1);
-                groundTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
-                groundMap[mapPos.x, mapPos.y] = 0;
-            }
-
-            if (valuablesTile != 0 && canBreak)
-            {
-                GameManager.Instance.AddValuable(valuablesTile - 1, 1);
-                valuablesTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
-                valuablesMap[mapPos.x, mapPos.y] = 0;
+                // TODO Implement tile health here.
+                if (groundTile != 0)
+                {
+                    GameManager.Instance.AddGround(groundTile - 1, 1);
+                    groundTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
+                    groundMap[mapPos.x, mapPos.y] = 0;
+                }
+                if (valuablesTile != 0)
+                {
+                    GameManager.Instance.AddValuable(valuablesTile - 1, 1);
+                    valuablesTilemap.SetTile(new Vector3Int(tileMapPos.x, tileMapPos.y, 0), null);
+                    valuablesMap[mapPos.x, mapPos.y] = 0;
+                }
             }
         }
         OnEndDig?.Invoke();

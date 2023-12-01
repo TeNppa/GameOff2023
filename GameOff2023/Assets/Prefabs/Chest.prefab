@@ -335,11 +335,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootText: {fileID: 5484969734645593773}
   rewardText: {fileID: 450560191916084498}
-  minGoldReward: 5
-  maxGoldReward: 25
+  rewardAnimator: {fileID: 6817941561975577218}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  rewards:
+  - type: 0
+    animation: {fileID: 9100000, guid: efc4718a940c154478d80babd9cb6ca7, type: 2}
+    minAmount: 4
+    maxAmount: 12
+    textColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+    chanceWeight: 1
+  - type: 1
+    animation: {fileID: 9100000, guid: 867c894e34ce7ea419976405d611f797, type: 2}
+    minAmount: 4
+    maxAmount: 12
+    textColor: {r: 0.7176471, g: 0.105882354, b: 0.16862746, a: 1}
+    chanceWeight: 1
+  - type: 2
+    animation: {fileID: 9100000, guid: 188cf9a61756ce34896dec8cc85646d0, type: 2}
+    minAmount: 4
+    maxAmount: 12
+    textColor: {r: 0, g: 0.9490196, b: 1, a: 1}
+    chanceWeight: 1
+  - type: 3
+    animation: {fileID: 9100000, guid: bca80304fb7d09949bf060ee51a29c67, type: 2}
+    minAmount: 4
+    maxAmount: 12
+    textColor: {r: 1, g: 1, b: 1, a: 0}
+    chanceWeight: 1
 --- !u!61 &4556074554309440070
 BoxCollider2D:
   m_ObjectHideFlags: 0

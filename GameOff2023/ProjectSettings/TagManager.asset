@@ -7,7 +7,7 @@ TagManager:
   - Enemy
   - GameManager
   - Torch
-  - GhostRepellent
+  - TorchAggro
   layers:
   - Default
   - TransparentFX

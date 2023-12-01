@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6162492417591478545}
   m_Layer: 8
   m_Name: TorchAggroArea
-  m_TagString: Torch
+  m_TagString: TorchAggro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
