@@ -70,7 +70,7 @@ public class DayManager : MonoBehaviour
         }
         else if (cause == "wasted")
         {
-            dayOverText.text = "Torille Perkeleeee!!";
+            dayOverText.text = "What, who!, where.. what?.. Torille!!";
         }
         else
         {
