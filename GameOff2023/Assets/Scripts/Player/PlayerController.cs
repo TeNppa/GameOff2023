@@ -377,10 +377,15 @@ public class PlayerController : MonoBehaviour
             }
             else if (playerInventory.HasTorches())
             {
-                Instantiate(torch, transform.position, Quaternion.identity);
+                Instantiate(torch, RoundTorchPosition(transform.position), Quaternion.identity);
                 playerInventory.RemoveTorch(1);
             }
         }
+    }
+
+    private Vector3 RoundTorchPosition(Vector3 ogPos)
+    {
+        return new Vector3(Mathf.Floor(ogPos.x) + 0.5f, Mathf.Ceil(ogPos.y) - 0.25f, ogPos.z);
     }
 
 
