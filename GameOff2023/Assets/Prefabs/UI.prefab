@@ -2173,7 +2173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -280}
+  m_AnchoredPosition: {x: -100, y: -310}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4464991085303697865
@@ -17470,9 +17470,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Time to become a real miner, gather some gold to buy your first mining
-    tool. Gathering dirt can also be transformed into additional gold at the end
-    of the day if you are not yet skilled to find gold.
+  m_Text: It is time to become a real miner! Gather some gold to buy your first mining
+    tool. Remember, even if you're not yet skilled enough to find gold, gathering
+    dirt can also be transformed into additional gold at the end of the day.
 --- !u!1 &5794706852238787437
 GameObject:
   m_ObjectHideFlags: 0
@@ -25880,7 +25880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -320}
+  m_AnchoredPosition: {x: -100, y: -350}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3873829683356016943
