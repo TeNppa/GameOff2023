@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float DrunknessHueShiftMultiplier = 2f;
     [SerializeField] private float DrunknessCameraShiftMultiplier = 1f;
     [SerializeField] private float CameraShiftMaxDistance = 3f;
+    [SerializeField] private float staminaPotionDrunknessGain = 40f;
     public float drunknessLevel;
     private ColorAdjustments colorAdjustments;
     private LensDistortion lensDistortion;
@@ -136,12 +137,20 @@ public class PlayerController : MonoBehaviour
             mainCamera.position = new Vector3(transform.position.x + cameraShiftAmount, mainCamera.position.y, mainCamera.position.z);
 
             // Hue shifting
-            currentHueShift = currentHueShift + (intensity * DrunknessHueShiftMultiplier);
-            if (currentHueShift > 180)
+            if (drunknessLevel > 150)
             {
-                currentHueShift -= 360;
+                currentHueShift = currentHueShift + (intensity * DrunknessHueShiftMultiplier);
+                if (currentHueShift > 180)
+                {
+                    currentHueShift -= 360;
+                }
+                colorAdjustments.hueShift.value = currentHueShift;
             }
-            colorAdjustments.hueShift.value = currentHueShift;
+            else
+            {
+                colorAdjustments.hueShift.value = 0;
+                currentHueShift = 0;
+            }
         }
         else
         {
@@ -344,7 +353,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerInventory.RemoveStaminaPotion(1);
                 playerInventory.AddStamina(Mathf.Floor(playerInventory.GetMaxStamina() * staminaPotionReplenish));
-                drunknessLevel += 50;
+                drunknessLevel += staminaPotionDrunknessGain;
             }
         }
     }
