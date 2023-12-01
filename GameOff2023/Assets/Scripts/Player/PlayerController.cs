@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Climbing
-        if (CanClimb() && !isGrounded)
+        if (CanClimb() && (!isGrounded || vertical > 0))
         {
             isClimbing = true;
             isClimbingMoving = false;
