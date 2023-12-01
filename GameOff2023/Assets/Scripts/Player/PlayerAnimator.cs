@@ -10,7 +10,13 @@ public class PlayerAnimator : MonoBehaviour
     private float lightTargetZRotation = -90f;
     private Animator animator;
     private float spriteFlipDeadzoneSize = 0.15f;
- 
+
+    [SerializeField] private ParticleSystem moveParticles;
+    [SerializeField] private ParticleSystem jumpParticles;
+    [SerializeField] private ParticleSystem jumpLaunchParticles;
+    [SerializeField] private ParticleSystem wallSlideParticles;
+    [SerializeField] private ParticleSystem landParticles;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,6 +26,44 @@ public class PlayerAnimator : MonoBehaviour
     void Update()
     {
         HandleSpriteFlipping();
+        handleParticles();
+    }
+
+    private void handleParticles()
+    {
+        // Move particles get bigger as you gain momentum
+        float speedPoint = Mathf.InverseLerp(0, 1, Mathf.Abs(playerController.horizontal));
+        moveParticles.transform.localScale = Vector3.MoveTowards(moveParticles.transform.localScale, Vector3.one * speedPoint, 2 * Time.deltaTime);
+
+        // walking particles
+        if (playerController.isGrounded && playerController.horizontal != 0 && !moveParticles.isPlaying)
+        {
+            moveParticles.Play();
+        }
+        else if ((playerController.horizontal == 0 || !playerController.isGrounded) && moveParticles.isPlaying)
+        {
+            moveParticles.Stop();
+        }
+
+        // Wall Sliding particles
+        if (playerController.isClimbing && playerController.vertical <= 0 && !wallSlideParticles.isPlaying)
+        {
+            wallSlideParticles.Play();
+        }
+        else if (!playerController.isClimbing && wallSlideParticles.isPlaying)
+        {
+            wallSlideParticles.Stop();
+        }
+
+        // Jumping particles
+        if (playerController.shouldJump)
+        {
+            jumpParticles.Play();
+            jumpLaunchParticles.Play();
+        }
+
+        // Landing particles
+        // TODO: too hard to implement for now..
     }
 
 
