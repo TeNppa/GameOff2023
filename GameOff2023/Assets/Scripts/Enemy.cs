@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private DayManager dayManager;
     [SerializeField] private float baseSpeed = 1f;
     [SerializeField] private float chaseSpeed = 2f;
-    [SerializeField] private float torchSpeed = 4f;
+    [SerializeField] private float torchSpeed = 1.5f;
     [SerializeField] private Vector2 searchAreaMin;
     [SerializeField] private Vector2 searchAreaMax;
     [SerializeField] private float aggroDistance = 5f;
