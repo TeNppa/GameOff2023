@@ -271,6 +271,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
             shouldJump = false;
+            playerAnimator.StopJumpParticles();
             isJumping = true;
             OnJump?.Invoke(transform.position, jumpForce);
         }

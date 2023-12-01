@@ -55,17 +55,21 @@ public class PlayerAnimator : MonoBehaviour
             wallSlideParticles.Stop();
         }
 
-        // Jumping particles
-        if (playerController.shouldJump)
-        {
-            jumpParticles.Play();
-            jumpLaunchParticles.Play();
-        }
-
         // Landing particles
         // TODO: too hard to implement for now..
     }
 
+    public void StartJumpParticles()
+    {
+        jumpParticles.Play();
+        jumpLaunchParticles.Play();
+    }
+
+    public void StopJumpParticles()
+    {
+        jumpParticles.Stop();
+        jumpLaunchParticles.Stop();
+    }
 
     public void SetIsMoving(bool isMoving)
     {
@@ -87,6 +91,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void TriggerJumping()
     {
+        StartJumpParticles();
         animator.SetTrigger("Jump");
     }
 
