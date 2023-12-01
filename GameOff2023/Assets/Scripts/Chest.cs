@@ -1,7 +1,5 @@
 using System;
-using System.ComponentModel;
 using System.Linq;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -118,15 +116,15 @@ public class Chest : MonoBehaviour
         rewardAnimator.runtimeAnimatorController = rewardWithAmount.reward.animation;
         animator.SetTrigger("Open Chest");
     }
+    [Serializable]
+    public struct Reward
+    {
+        public Valuables type;
+        public RuntimeAnimatorController animation;
+        public int minAmount;
+        public int maxAmount;
+        public Color textColor;
+        public int chanceWeight;
+    }
 }
 
-[Serializable]
-public struct Reward
-{
-    public Valuables type;
-    public AnimatorController animation;
-    public int minAmount;
-    public int maxAmount;
-    public Color textColor;
-    public int chanceWeight;
-}
