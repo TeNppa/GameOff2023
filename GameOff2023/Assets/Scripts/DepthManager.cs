@@ -4,11 +4,12 @@ using UnityEngine.UI;
 public class DepthManager : MonoBehaviour
 {
     [SerializeField] private Text depthText;
+    [SerializeField] private Text bestDepthText;
     [SerializeField] private Transform player;
     private float personalBest = 0f;
     private float currentDepth = 0f;
 
-    void Update()
+    private void Update()
     {
         currentDepth = Mathf.Floor(-player.transform.position.y);
 
@@ -20,8 +21,9 @@ public class DepthManager : MonoBehaviour
         if (currentDepth > personalBest)
         {
             personalBest = currentDepth;
+            bestDepthText.text = "(Best: " + personalBest + " meters)";
         }
 
-        depthText.text = currentDepth + " meters (best: " + personalBest + " meters)";
+        depthText.text = currentDepth + " meters";
     }
 }

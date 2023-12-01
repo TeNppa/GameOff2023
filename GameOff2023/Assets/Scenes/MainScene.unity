@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 874091338}
+    - target: {fileID: 980822382459901417, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4850586946925859907}
     - target: {fileID: 986445751193604579, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
       propertyPath: playerAnimator
       value: 
@@ -3143,6 +3147,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1242239346730070978, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
   m_PrefabInstance: {fileID: 155213087}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2017165660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7029531924214538432, guid: cbdaa18ddff3a194b95bcce81be88434, type: 3}
+  m_PrefabInstance: {fileID: 155213087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2036336458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4062603060411224610, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
@@ -3339,96 +3354,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2900110690842258914, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: orthographic size
-      value: 5.6875
+      value: 6.5104165
       objectReference: {fileID: 0}
-    - target: {fileID: 6120069625252984647, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 3.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Jump>k__BackingField.Path
-      value: event:/Player/PlayerJump
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Land>k__BackingField.Path
-      value: event:/Player/PlayerLand
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <PageTurn>k__BackingField.Path
-      value: event:/SFX/PageTurn
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <ItemPlace>k__BackingField.Path
-      value: event:/SFX/ItemPlace
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Jump>k__BackingField.Guid.Data1
-      value: -735215863
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Jump>k__BackingField.Guid.Data2
-      value: 1332831302
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Jump>k__BackingField.Guid.Data3
-      value: 1379496629
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Jump>k__BackingField.Guid.Data4
-      value: 319771839
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Land>k__BackingField.Guid.Data1
-      value: -220491854
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Land>k__BackingField.Guid.Data2
-      value: 1233965369
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Land>k__BackingField.Guid.Data3
-      value: 2123592074
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <Land>k__BackingField.Guid.Data4
-      value: -901126944
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <PageTurn>k__BackingField.Guid.Data1
-      value: 795101326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <PageTurn>k__BackingField.Guid.Data2
-      value: 1263162513
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <PageTurn>k__BackingField.Guid.Data3
-      value: -812405111
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <PageTurn>k__BackingField.Guid.Data4
-      value: -1733973942
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <ItemPlace>k__BackingField.Guid.Data1
-      value: -812058069
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <ItemPlace>k__BackingField.Guid.Data2
-      value: 1255694399
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <ItemPlace>k__BackingField.Guid.Data3
-      value: -1571719790
-      objectReference: {fileID: 0}
-    - target: {fileID: 6281021511237260801, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: <ItemPlace>k__BackingField.Guid.Data4
-      value: 1019706765
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752884528685433297, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
-      propertyPath: attenuationObject
-      value: 
-      objectReference: {fileID: 117116442}
     - target: {fileID: 8829420660106092979, guid: 5fd2baddacd856e4898a1c978fea4c17, type: 3}
       propertyPath: Highlight
       value: 
@@ -3518,10 +3445,6 @@ PrefabInstance:
       propertyPath: PlayerHeadLight
       value: 
       objectReference: {fileID: 518095350}
-    - target: {fileID: 383494482856144074, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
-      propertyPath: playerLightIntensity
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 936480824385137851, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: player
       value: 
@@ -3530,6 +3453,10 @@ PrefabInstance:
       propertyPath: depthText
       value: 
       objectReference: {fileID: 506835427}
+    - target: {fileID: 936480824385137851, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
+      propertyPath: bestDepthText
+      value: 
+      objectReference: {fileID: 2017165660}
     - target: {fileID: 1070133540470240815, guid: 9f03e4168bf852b49b923350b14f013b, type: 3}
       propertyPath: dirtText
       value: 

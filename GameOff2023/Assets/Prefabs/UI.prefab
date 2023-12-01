@@ -483,7 +483,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 580, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2540135929674016366
 CanvasRenderer:
@@ -601,8 +601,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Break through the planet's core and mine it from the inside out. A task
-    for only the most daring and skilled miners
+  m_Text: Break through the planet's core and mine deeper than anyone has ever gone.
+    A task for the most foolish... ahem, the bravest of miners. Prove your mettle
+    and earn a place in history as a legendary miner!
 --- !u!1 &363193098735491532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1560,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 260}
+  m_SizeDelta: {x: 580, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &823059144786342166
 CanvasRenderer:
@@ -1599,6 +1600,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &851665141699573190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6853060595151268098}
+  - component: {fileID: 6352103987271811564}
+  - component: {fileID: 7029531924214538432}
+  m_Layer: 5
+  m_Name: Best Depth Text Value (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6853060595151268098
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851665141699573190}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 429798262778377886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 124.1, y: -30}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &6352103987271811564
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851665141699573190}
+  m_CullTransparentMesh: 1
+--- !u!114 &7029531924214538432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851665141699573190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: c691dc4c1c6993545923beb555a971b3, type: 2}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 3bc8dbedb09601249a7702ab54b6e294, type: 2}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 72
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: '(Best: 0 meters)'
 --- !u!1 &863791708333221153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2093,7 +2173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -210}
+  m_AnchoredPosition: {x: -100, y: -280}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4464991085303697865
@@ -3223,6 +3303,7 @@ RectTransform:
   m_Children:
   - {fileID: 1822453547358692682}
   - {fileID: 6427363954695637982}
+  - {fileID: 7915113341276191723}
   - {fileID: 1680747657440830508}
   - {fileID: 7178909337976602728}
   m_Father: {fileID: 6681002644073640381}
@@ -6400,7 +6481,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 260}
+  m_SizeDelta: {x: 580, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7020978231891723825
 CanvasRenderer:
@@ -6475,7 +6556,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5839884036617792231
 CanvasRenderer:
@@ -6520,7 +6601,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: The earth beneath your feet. It's the first layer you encounter when digging
     for treasure. While it may not seem valuable on its own, it's a crucial step
-    in your quest for gold. You can wash dirt at your home to extract valuable resources.
+    in your quest for gold. You can wash dirt at the end of the day to extract valuable
+    resources.
 --- !u!1 &2609587080225058130
 GameObject:
   m_ObjectHideFlags: 0
@@ -6790,7 +6872,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8679132269522562273
 CanvasRenderer:
@@ -6834,7 +6916,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Amethysts are rare gems found in the cracks between stones. They can be
-    used to purchase expensive items.
+    used to purchase rare items.
 --- !u!1 &2714555006842392769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8543,7 +8625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -160}
+  m_AnchoredPosition: {x: -100, y: -210}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3759144429717022478
@@ -8886,7 +8968,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 260}
+  m_SizeDelta: {x: 580, y: 260}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &63802901277218959
 CanvasRenderer:
@@ -9167,8 +9249,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Collect 10 sparkling diamonds to trade a mighty diamond pick, a tool worthy
-    of a master miner
+  m_Text: Gather 10 shimmering diamonds to trade a legendary Diamond Pickaxe, the
+    ultimate tool for any master miner and crafter.
 --- !u!1 &3300614593402237391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10662,7 +10744,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2572420748934861338
 CanvasRenderer:
@@ -12542,7 +12624,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Dig your way down to a depth of 40 meters to uncover a wealth of resources
-    waiting in the depths
+    waiting in the there.
 --- !u!1 &4038577305409674353
 GameObject:
   m_ObjectHideFlags: 0
@@ -13117,7 +13199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -190}
+  m_AnchoredPosition: {x: -100, y: -210}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &583916058128379540
@@ -14507,7 +14589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -250}
+  m_AnchoredPosition: {x: -100, y: -320}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4734680376061892812
@@ -15587,7 +15669,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1740867183686414272
 CanvasRenderer:
@@ -15630,11 +15712,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Torches will help you light the way, you can buy more from the merchant.
+  m_Text: 'When darkness surrounds you and you need safety, a torch will be your
+    best.. and only friend. You can buy more from the merchant.
 
 
-    Place
-    and pickup torches by using right mouse click or pressing the ''T'' key'
+    Place and pickup
+    torches by using right mouse click or pressing the ''T'' key.'
 --- !u!1 &4993910304030886894
 GameObject:
   m_ObjectHideFlags: 0
@@ -15668,7 +15751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 45}
+  m_AnchoredPosition: {x: 0, y: 65}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &5056327373089898848
@@ -16228,7 +16311,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 330}
+  m_SizeDelta: {x: 580, y: 330}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5078475271289533718
 CanvasRenderer:
@@ -16825,7 +16908,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Venture even deep into the earth and reach a depth of 140 meters
+  m_Text: Descend even deep into the earth and reach a depth of 140 meters.
 --- !u!1 &5627978522657669749
 GameObject:
   m_ObjectHideFlags: 0
@@ -16907,6 +16990,130 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Shovel
+--- !u!1 &5657369422329344705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7915113341276191723}
+  - component: {fileID: 140004682029666689}
+  - component: {fileID: 1710464356326247674}
+  - component: {fileID: 980822382459901417}
+  - component: {fileID: 8023526151339784011}
+  m_Layer: 5
+  m_Name: End Day Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7915113341276191723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657369422329344705}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2144949391580100049}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -75, y: -100}
+  m_SizeDelta: {x: 150, y: 50}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &140004682029666689
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657369422329344705}
+  m_CullTransparentMesh: 1
+--- !u!114 &1710464356326247674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657369422329344705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: c691dc4c1c6993545923beb555a971b3, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 3bc8dbedb09601249a7702ab54b6e294, type: 2}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 72
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: End Day
+--- !u!114 &980822382459901417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657369422329344705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+          m_MethodName: ClickEndDay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &8023526151339784011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657369422329344705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3447815475033c441ac568c0e240a0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 1, g: 0.64705884, b: 0, a: 1}
+  hoverSize: 50
 --- !u!1 &5674401611735249354
 GameObject:
   m_ObjectHideFlags: 0
@@ -17263,8 +17470,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Gather gold to buy your first mining tool. Remember, gathering dirt can
-    also be transformed into additional gold at day's end
+  m_Text: Time to become a real miner, gather some gold to buy your first mining
+    tool. Gathering dirt can also be transformed into additional gold at the end
+    of the day if you are not yet skilled to find gold.
 --- !u!1 &5794706852238787437
 GameObject:
   m_ObjectHideFlags: 0
@@ -18834,7 +19042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -100}
+  m_AnchoredPosition: {x: -75, y: 0}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1551655281098317
@@ -19035,7 +19243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &6330192232642252096
@@ -19774,7 +19982,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 290}
+  m_SizeDelta: {x: 580, y: 290}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5387473102902542416
 CanvasRenderer:
@@ -20603,7 +20811,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Show your might as a true miner by breaking a stone block
+  m_Text: Time to prove your strength! Smash a stone block, and remember, 'passing'
+    is for the weak. It's all about the smash!
 --- !u!1 &6695883377598519490
 GameObject:
   m_ObjectHideFlags: 0
@@ -20639,7 +20848,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &54877581996645324
 CanvasRenderer:
@@ -20682,8 +20891,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Diamonds are the rarest gems, hidden deep within the bedrock. They are
-    precious and can be used to obtain powerful tools.
+  m_Text: Diamonds are the rarest gems, hidden deep within the depths of the world.
+    They are precious and can be used to purchase powerful tools.
 --- !u!1 &6752508673720961107
 GameObject:
   m_ObjectHideFlags: 0
@@ -21359,7 +21568,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 580, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3736016681412591986
 CanvasRenderer:
@@ -22082,7 +22291,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 580, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &243085243324979920
 CanvasRenderer:
@@ -22159,7 +22368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -205}
+  m_AnchoredPosition: {x: -100, y: -255}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4257819174048297947
@@ -22400,8 +22609,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: There is only one thing that can go past this point.You need to earn the
-    most powerful tool available by proving your mining prowess to the merchant
+  m_Text: There is only one thing that allows you to go past this point.You need
+    to earn the most powerful tool available by proving your mining prowess to the
+    merchant.
 --- !u!1 &7258835010604970645
 GameObject:
   m_ObjectHideFlags: 0
@@ -22640,7 +22850,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3116697227637798449
 CanvasRenderer:
@@ -22689,9 +22899,9 @@ MonoBehaviour:
 
 
     Drink by using right mouse click or pressing
-    the ''F'' key
+    the ''F'' key.
 
-    Restores 20% stamina'
+    Restores 20% stamina.'
 --- !u!1 &7331360994378585408
 GameObject:
   m_ObjectHideFlags: 0
@@ -23063,6 +23273,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2503397279019039446}
+  - {fileID: 6853060595151268098}
   m_Father: {fileID: 6477158557077277693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23149,7 +23360,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 500, y: 380}
+  m_SizeDelta: {x: 580, y: 380}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3160712870898465428
 CanvasRenderer:
@@ -23348,7 +23559,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1639662133696525115
 CanvasRenderer:
@@ -23392,7 +23603,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: The impenetrable foundation of the earth. This formidable layer presents
-    the great  challenge to miners. But don't give up! With the right tools and techniques,
+    the great challenge to miners. But don't give up! With the right tools and techniques,
     you might find a way to break through
 --- !u!1 &7678994899906726097
 GameObject:
@@ -23672,7 +23883,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 555/1000
+  m_Text: 500/500
 --- !u!1 &7867854667746864435
 GameObject:
   m_ObjectHideFlags: 0
@@ -23905,7 +24116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -230}
+  m_AnchoredPosition: {x: -100, y: -250}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &7235105633490533345
@@ -23985,7 +24196,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &822474068617762597
 CanvasRenderer:
@@ -25669,7 +25880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -250}
+  m_AnchoredPosition: {x: -100, y: -320}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3873829683356016943
@@ -26826,7 +27037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '0 meters (Best: 44 meters)'
+  m_Text: 0 meters
 --- !u!1 &8934764068821610026
 GameObject:
   m_ObjectHideFlags: 0
@@ -27044,7 +27255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -210}
+  m_AnchoredPosition: {x: -100, y: -280}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1499075212629111763
@@ -27200,7 +27411,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 22, y: -60}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1799340372394387188
 CanvasRenderer:
@@ -27245,7 +27456,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: A mysterious stone known for its radiant, otherworldly glow. Melted by
     the dragon's flame, this stone possesses incredible strength. Only the strongest
-    of picks could break it.
+    of tools could break it.
 --- !u!1 &9054227788950982831
 GameObject:
   m_ObjectHideFlags: 0

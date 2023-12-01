@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
+    [SerializeField] private DayManager dayManager;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private PlayerController playerController;
     private Enemy[] enemies;
@@ -50,6 +51,13 @@ public class PauseManager : MonoBehaviour
     public void ClickQuitGame()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ClickEndDay()
+    {
+        isPaused = false;
+        UpdateGameStatus();
+        dayManager.EndDay("surrender");
     }
 
     public void ClickReloadGame()

@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && playerController.isActiveAndEnabled)
         {
-            dayManager.EndDay(true);
+            dayManager.EndDay("feared");
         }
         else if (other.gameObject.CompareTag("Torch"))
         {

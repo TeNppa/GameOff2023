@@ -49,19 +49,28 @@ public class DayManager : MonoBehaviour
     }
 
 
-    public void EndDay(bool died = false)
+    public void EndDay(string cause = "energy")
     {
         // Make sure we never end the day twice
         if (dayAlreadyEnded) return;
         dayAlreadyEnded = true;
 
-        if (died)
+
+        if (cause == "energy")
+        {
+            dayOverText.text = "Out of energy";
+        }
+        else if (cause == "surrender")
+        {
+            dayOverText.text = "You have decided to end the day early and return home";
+        }
+        else if (cause == "feared")
         {
             dayOverText.text = "You have collapsed in fear";
         }
         else
         {
-            dayOverText.text = "Out of energy";
+            dayOverText.text = "Time to end the day";
         }
 
         CancelInvoke("CheckPlayerStamina");
