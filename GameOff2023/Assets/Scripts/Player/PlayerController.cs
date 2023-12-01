@@ -4,9 +4,12 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform mainCamera;
     [SerializeField] private GameObject Highlight;
     [SerializeField] private Tilemap digTilemap;
     [SerializeField] private PlayerAnimator playerAnimator;
@@ -14,6 +17,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject torch;
     [SerializeField] private BoxCollider2D torchChecker;
     [SerializeField] private LayerMask digLayer;
+    [SerializeField] private Transform[] enemies;
+    [SerializeField] private Volume volume;
+    [SerializeField] private DayManager dayManager;
+    [SerializeField] private float DrunknessDistortionMultiplier = 3f;
+    [SerializeField] private float DrunknessHueShiftMultiplier = 2f;
+    [SerializeField] private float DrunknessCameraShiftMultiplier = 1f;
+    [SerializeField] private float CameraShiftMaxDistance = 3f;
+    public float drunknessLevel;
+    private ColorAdjustments colorAdjustments;
+    private LensDistortion lensDistortion;
+    private float currentHueShift = 0;
 
     [Header("Movement")]
     [SerializeField] private Rigidbody2D rb;
@@ -64,9 +78,18 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        drunknessLevel = 0;
+        volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
+        volume.profile.TryGet<LensDistortion>(out lensDistortion);
         InvokeRepeating(nameof(PassiveStaminaDrain), 1, 1);
+        InvokeRepeating(nameof(Drunkness), 1, 1);
         InvokeRepeating(nameof(TriggerMovementActions), tickrate, tickrate);
         EquipTool(startingTool);
+    }
+
+    private void Drunkness()
+    {
+        drunknessLevel = Mathf.Max(0, drunknessLevel - 1);
     }
 
 
@@ -94,10 +117,75 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void drunknessEffect()
+    {
+        if (drunknessLevel > 200)
+        {
+            dayManager.EndDay("wasted");
+        }
+        else if (drunknessLevel > 100)
+        {
+            float intensity = Mathf.Clamp((drunknessLevel - 100) / 100f, 0, 1);
+
+            // Lens Distortion
+            float lensDistortionIntensity = Mathf.Sin(Time.time * DrunknessDistortionMultiplier) * 0.5f * intensity;
+            lensDistortion.intensity.value = lensDistortionIntensity;
+
+            // Camera Shift
+            float cameraShiftAmount = Mathf.Cos(Time.time * DrunknessCameraShiftMultiplier) * CameraShiftMaxDistance * intensity;
+            mainCamera.position = new Vector3(transform.position.x + cameraShiftAmount, mainCamera.position.y, mainCamera.position.z);
+
+            // Hue shifting
+            currentHueShift = currentHueShift + (intensity * DrunknessHueShiftMultiplier);
+            if (currentHueShift > 180)
+            {
+                currentHueShift -= 360;
+            }
+            colorAdjustments.hueShift.value = currentHueShift;
+        }
+        else
+        {
+            lensDistortion.intensity.value = 0;
+            colorAdjustments.hueShift.value = 0;
+            currentHueShift = 0;
+            mainCamera.position = new Vector3(transform.position.x, transform.position.y, -10);
+        }
+    }
+
+
+    private void ApplyGrayscaleEffectBasedOnClosestEnemy()
+    {
+        GameObject closestEnemy = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (Transform enemyTransform in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemyTransform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemyTransform.gameObject;
+            }
+        }
+
+        if (closestEnemy != null && closestDistance <= 25f)
+        {
+            float effectIntensity = Mathf.Clamp01(1 - (closestDistance / 25f));
+            colorAdjustments.saturation.value = Mathf.Lerp(0, -100, effectIntensity);
+        }
+        else
+        {
+            colorAdjustments.saturation.value = 0;
+        }
+    }
+
+
     private void FixedUpdate()
     {
-        Movementphysics();
         isGrounded = IsGrounded();
+        Movementphysics();
+        ApplyGrayscaleEffectBasedOnClosestEnemy();
+        drunknessEffect();
     }
 
 
@@ -115,6 +203,7 @@ public class PlayerController : MonoBehaviour
         playerInventory.RemoveStamina(passiveEnergyCost);
     }
 
+
     private void TriggerMovementActions()
     {
         if (isClimbing)
@@ -127,6 +216,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+
     void Movement()
     {
         // Capture movement
@@ -254,6 +344,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerInventory.RemoveStaminaPotion(1);
                 playerInventory.AddStamina(Mathf.Floor(playerInventory.GetMaxStamina() * staminaPotionReplenish));
+                drunknessLevel += 50;
             }
         }
     }

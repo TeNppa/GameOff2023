@@ -85,7 +85,7 @@ MonoBehaviour:
   - Ground: 3
     Amount: 0
   torches: 0
-  staminaPotions: 0
+  staminaPotions: 444
   maxStamina: 500
   currentStamina: 500
   goldText: {fileID: 0}

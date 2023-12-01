@@ -68,6 +68,10 @@ public class DayManager : MonoBehaviour
         {
             dayOverText.text = "You have collapsed in fear";
         }
+        else if (cause == "wasted")
+        {
+            dayOverText.text = "Torille Perkeleeee!!";
+        }
         else
         {
             dayOverText.text = "Time to end the day";
@@ -75,6 +79,7 @@ public class DayManager : MonoBehaviour
 
         CancelInvoke("CheckPlayerStamina");
         playerController.enabled = false;
+        playerController.drunknessLevel = 0;
         endDayViewDayText.text = "End of day " + currentDay;
         string staminaIncrease = purchaseManager.isStaminaUpgradeBought ? "150" : "100";
         staminaIncreaseText.text = "As the sun sets and a new dawn rises, your urgy to dig more grows stronger,\r\nincreasing your maximum Stamina by " + staminaIncrease;

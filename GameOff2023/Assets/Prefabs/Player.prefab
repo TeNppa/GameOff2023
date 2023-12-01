@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fac27040fc2519409ccfc305cd60720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 9162857754467953690}
   Highlight: {fileID: 0}
   digTilemap: {fileID: 0}
   playerAnimator: {fileID: 962317312919104076}
@@ -122,6 +123,17 @@ MonoBehaviour:
   digLayer:
     serializedVersion: 2
     m_Bits: 128
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  volume: {fileID: 0}
+  dayManager: {fileID: 0}
+  DrunknessDistortionMultiplier: 3
+  DrunknessHueShiftMultiplier: 2
+  DrunknessCameraShiftMultiplier: 1
+  CameraShiftMaxDistance: 3
+  drunknessLevel: 0
   rb: {fileID: 492240474437432000}
   walkSpeed: 5
   climbSpeed: 2
@@ -753,9 +765,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7181131960200310197, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: orthographic size
-      value: 6.5104165
+      value: 6.8333335
       objectReference: {fileID: 0}
     - target: {fileID: 7386850064661655464, guid: feb2b8c8a6865dc4ab86ae60197cefca, type: 3}
       propertyPath: m_BackGroundColor.b
