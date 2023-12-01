@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +14,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Color unactiveColor = Color.white;
     [SerializeField] private int activeFontSize = 50;
     [SerializeField] private int unactiveFontSize = 40;
-
 
     private void Start()
     {
@@ -108,6 +108,9 @@ public class MainMenuController : MonoBehaviour
     // Unity mouse click event
     public void StartGame()
     {
+        var camera = GameObject.Find("Main Camera");
+        camera.SetActive(false);
+    
         SceneManager.LoadScene("MainScene");
     }
 
