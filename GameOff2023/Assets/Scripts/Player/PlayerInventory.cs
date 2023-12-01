@@ -187,6 +187,12 @@ public class PlayerInventory : MonoBehaviour
     public void RemoveStamina(float amount)
     {
         currentStamina -= amount;
+
+        if (currentStamina < 0)
+        {
+            currentStamina = 0;
+        }
+
         UpdateStaminaUI();
     }
 
