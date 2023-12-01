@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     
     private float moveSpeed;
     private GameObject player;
+    private PlayerController playerController;
     private SpriteRenderer spriteRenderer;
     private Vector3 targetPosition;
     private GameObject torchToDestroy;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
     {
         moveSpeed = baseSpeed;
         player = GameObject.FindWithTag("Player");
+        playerController = player.GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         torchDestroyTimer = torchDestroyTime;
         PickNextPatrolPoint();
@@ -44,6 +46,13 @@ public class Enemy : MonoBehaviour
 
     private void CheckPlayerAggro()
     {
+        // Do not chase player incase player is not active (day already ended)
+        if (!playerController.isActiveAndEnabled)
+        {
+            ChangeState(EnemyMoveState.Patrolling);
+            return;
+        }
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         if (moveState != EnemyMoveState.ChasingPlayer && distanceToPlayer <= aggroDistance)
@@ -88,8 +97,7 @@ public class Enemy : MonoBehaviour
                 PickNextPatrolPoint();
             }
         }
-        transform.position =
-            Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     private void FlipSprite()
@@ -128,7 +136,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && playerController.isActiveAndEnabled)
         {
             dayManager.EndDay(true);
         }
